@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Carousel from "./app/components/Carousel/Carousel";
 import Footer from "./app/components/Footer/Footer";
 import Header from "./app/components/Header/Header";
+
 import imagePayment from "./assets/image/payments/secure-payment-min.webp";
 import imageHandmade from "./assets/image/payments/100-handmade-min.webp";
 import imageFreeShipping from "./assets/image/payments/shipping-min.webp";
@@ -35,7 +36,7 @@ import img1 from "./assets/image/shop-by-color/beige.jpg";
 import img2 from "./assets/image/shop-by-color/blue-rugs.jpg";
 import img3 from "./assets/image/shop-by-color/black-rugs.jpg";
 import img4 from "./assets/image/shop-by-color/camel.jpg";
-import img6 from "../assets/image/shop-by-color/gold-rugs.jpg";
+import img6 from "./assets/image/shop-by-color/gold-rugs.jpg";
 import img7 from "./assets/image/shop-by-color/graphite-rugs.jpg";
 import img8 from "./assets/image/shop-by-color/green-rugs.jpg";
 import img9 from "./assets/image/shop-by-color/grey-rugs.jpg";
@@ -45,7 +46,7 @@ import img12 from "./assets/image/shop-by-color/multicolor-rugs.gif";
 import img13 from "./assets/image/shop-by-color/orange-rugs.jpg";
 import img14 from "./assets/image/shop-by-color/pink-rugs.jpg";
 import img15 from "./assets/image/shop-by-color/purple-rugs.jpg";
-import img16 from "../assets/image/shop-by-color/red-rugs.jpg";
+import img16 from "./assets/image/shop-by-color/red-rugs.jpg";
 import img17 from "./assets/image/shop-by-color/yellow-rugs.jpg";
 
 import CarouselBySize from "./app/components/Carousel/CarouselBySize";
@@ -114,23 +115,74 @@ function App() {
     },
   ];
   const dataColor = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img10,
-    img11,
-    img12,
-    img13,
-    img14,
-    img15,
-    img16,
-    img17,
+    {
+      title: "",
+      url: img1,
+    },
+    {
+      title: "",
+      url: img2,
+    },
+    {
+      title: "",
+      url: img3,
+    },
+    {
+      title: "",
+      url: img4,
+    },
+    {
+      title: "",
+      url: img4,
+    },
+    {
+      title: "",
+      url: img6,
+    },
+    {
+      title: "",
+      url: img7,
+    },
+    {
+      title: "",
+      url: img8,
+    },
+    {
+      title: "",
+      url: img9,
+    },
+    {
+      title: "",
+      url: img10,
+    },
+    {
+      title: "",
+      url: img11,
+    },
+    {
+      title: "",
+      url: img12,
+    },
+    {
+      title: "",
+      url: img13,
+    },
+    {
+      title: "",
+      url: img14,
+    },
+    {
+      title: "",
+      url: img15,
+    },
+    {
+      title: "",
+      url: img16,
+    },
+    {
+      title: "",
+      url: img17,
+    },
   ];
   return (
     <div className="App">
@@ -171,7 +223,7 @@ function App() {
         <p className=" text-3xl font-medium pb-10 font-mei">Shop By Style</p>
         <div className="flex justify-center flex-wrap gap-x-3 gap-y-6  ">
           {cardDataShopByStyle.map(({ title, url }) => {
-            return <CardImage title={title} url={url} classname2 />;
+            return <CardImage title={title} url={url} />;
           })}
         </div>
       </div>
@@ -180,8 +232,8 @@ function App() {
         <CarouselBySize />
       </div>
       <div className="w-full h-[400] py-12 px-12">
-        {dataColor.map(({img}) => {
-          <CarouselByColor />;
+        {dataColor.map(({ title, url }) => {
+          <CarouselByColor title={title} url />;
         })}
       </div>
 

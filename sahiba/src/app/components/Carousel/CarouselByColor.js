@@ -46,7 +46,8 @@ function SamplePrevArrow(props) {
   );
 }
 
-const CarouselByColor = () => {
+const CarouselByColor = (props) => {
+  const { title, url } = props;
   const settings = {
     dots: true,
     infinite: true,
@@ -61,6 +62,9 @@ const CarouselByColor = () => {
   return (
     <Slider {...settings}>
       <div className="px-4">
+        <img src={url} className="object-fit h-[90px] w-[90px]"></img>
+      </div>
+      {/* <div className="px-4">
         <img src={img1} className="object-fit h-[90px] w-[90px]"></img>
       </div>
       <div className="px-4">
@@ -107,10 +111,7 @@ const CarouselByColor = () => {
       </div>
       <div className="px-4">
         <img src={img1} className="object-fit h-[90px] w-[90px]"></img>
-      </div>
-      <div className="px-4">
-        <img src={img1} className="object-fit h-[90px] w-[90px]"></img>
-      </div>
+      </div> */}
     </Slider>
   );
 };

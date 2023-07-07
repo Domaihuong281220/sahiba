@@ -16,7 +16,8 @@ function SampleNextArrow(props) {
       style={{
         ...style,
         display: "flex",
-        background: "black",
+        background: "white",
+
         height: "30px",
         width: "30px",
         justifyContent: "center",
@@ -37,7 +38,7 @@ function SamplePrevArrow(props) {
       style={{
         ...style,
         display: "flex",
-        background: "black",
+        background: "white",
         height: "30px",
         width: "30px",
         borderRadius: "50px",
@@ -50,7 +51,8 @@ function SamplePrevArrow(props) {
   );
 }
 
-const CarouselBySize = () => {
+const CarouselBySize = (props) => {
+  const { title, url } = props;
   const settings = {
     dots: true,
     infinite: true,
@@ -66,7 +68,7 @@ const CarouselBySize = () => {
     <Slider {...settings} className="flex items-center">
       <div className="px-4">
         <img src={img1} className="object-fit h-full w-full"></img>
-        <p className="font-mar text-lg">2x3 ft</p>
+        <p className="font-mar text-lg">{title}</p>
       </div>
       <div className="px-4">
         <img src={img2} className="object-fit h-full w-full"></img>
