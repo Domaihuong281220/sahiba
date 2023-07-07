@@ -16,7 +16,7 @@ function SampleNextArrow(props) {
       style={{
         ...style,
         display: "flex",
-        background: "black",
+        background: "white",
         height: "30px",
         width: "30px",
         justifyContent: "center",
@@ -37,7 +37,7 @@ function SamplePrevArrow(props) {
       style={{
         ...style,
         display: "flex",
-        background: "black",
+        background: "white",
         height: "30px",
         width: "30px",
         borderRadius: "50px",
@@ -49,41 +49,50 @@ function SamplePrevArrow(props) {
     />
   );
 }
-
+const DataSize = [
+  {
+    url: img1,
+    title: "2x3 ft",
+  },
+  {
+    url: img2,
+    title: "4x6 ft",
+  },
+  {
+    url: img3,
+    title: "5x8 ft",
+  },
+  {
+    url: img4,
+    title: "8x10 ft",
+  },
+  {
+    url: img5,
+    title: "9x12 ft",
+  },
+];
 const CarouselBySize = () => {
   const settings = {
     dots: true,
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <Slider {...settings} className="flex items-center">
-      <div className="px-4">
-        <img src={img1} className="object-fit h-full w-full"></img>
-        <p className="font-mar text-lg">2x3 ft</p>
-      </div>
-      <div className="px-4">
-        <img src={img2} className="object-fit h-full w-full"></img>
-        <p className="font-mar text-lg">4x6 ft</p>
-      </div>
-      <div className="px-4">
-        <img src={img3} className="object-fit h-full w-full"></img>
-        <p className="font-mar text-lg">5x8 ft</p>
-      </div>
-      <div className="px-4">
-        <img src={img4} className="object-fit h-full w-full"></img>
-        <p className="font-mar text-lg">8x10 ft</p>
-      </div>
-      <div className="px-4">
-        <img src={img5} className="object-fit h-full w-full"></img>
-        <p className="font-mar text-lg">9x12 ft</p>
-      </div>
+    <Slider {...settings} className="flex items-center" ider>
+      {DataSize.map(({ title, url }) => {
+        return (
+          <div className="px-4">
+            <img src={url} className="object-fit h-full w-full"></img>
+            <p className="font-mar text-lg">{title}</p>
+          </div>
+        );
+      })}
     </Slider>
   );
 };
