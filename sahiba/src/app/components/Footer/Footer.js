@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 
 const Footer = () => {
   return (
-    <div class="grid grid-cols-6 h-96 w-full bg-slate-500 font-mar">
+    <div class="grid grid-cols-6 h-96 w-full bg-[#F4EFEF] font-mar">
       <div className="py-5">
         <div className="py-5">
           <p className="text-xl ">INFOMATION</p>
