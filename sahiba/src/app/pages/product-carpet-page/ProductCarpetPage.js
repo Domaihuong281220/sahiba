@@ -220,6 +220,25 @@ const ProductCarpetPage = () => {
         { title: "yelow" },
         { title: "blue" },
         { title: "black" },
+        { title: "pink" },
+        { title: "red" },
+        { title: "yelow" },
+        { title: "blue" },
+        { title: "black" },
+        { title: "pink" },
+        { title: "red" },
+        { title: "yelow" },
+        { title: "blue" },
+        { title: "black" },
+        { title: "pink" },
+        { title: "red" },
+        { title: "yelow" },
+        { title: "blue" },
+        { title: "black" },
+        { title: "pink" },
+        { title: "pink" },
+        { title: "pink" },
+        { title: "pink" },
       ],
     },
     {
@@ -370,12 +389,12 @@ const ProductCarpetPage = () => {
       {/* start fillter product */}
       <div className="grid grid-cols-4 py-8">
         <div className="pl-8 w-full h-full font-mar">
-          <p className="text-2xl font-mar"> FILTERS</p>
+          <p className="text-2xl font-mar">FILTERS</p>
           {list.map((item, key) => {
             return <AcconrdionComponent key={key} datas={item} />;
           })}
         </div>
-        <div className="  h-full w-full flex flex-wrap justify-center gap-x-20 gap-y-10 col-span-3 ">
+        <div className="h-full w-full flex flex-wrap justify-center gap-x-20 gap-y-10 col-span-3 ">
           {CardProductFilter.map(({ url, title, price, description }) => {
             return (
               <CardProduct
