@@ -1,6 +1,11 @@
 /** @format */
 
 import React from "react";
+import { useState } from "react";
+import CarouselBySize from "../../components/Carousel/CarouselBySize";
+import CarouselByColor from "../../components/Carousel/CarouselByColor";
+import Carousel from "../../components/Carousel/Carousel";
+import CardProduct from "../../components/CardProduct/CardProduct";
 //shop by type
 import imageCard_1 from "../../../assets/image/shop-by-weaving-type/hand-tufted-min.webp";
 import imageCard_2 from "../../../assets/image/shop-by-weaving-type/hand-woven-min.webp";
@@ -18,81 +23,130 @@ import imageCard_11 from "../../../assets/image/shop-by-style/abstract.jpg";
 import imageCard_12 from "../../../assets/image/shop-by-style/natural.jpg";
 import imageCard_13 from "../../../assets/image/shop-by-style/kilim.jpg";
 import imageCard_14 from "../../../assets/image/shop-by-style/texture.jpg";
+import imagePromot from "../../../assets/image/free-shipping-slider.jpg";
+
+//Shop Banner
 
 import imagePayment from "../../../assets/image/payments/secure-payment-min.webp";
-
-
 import imageHandmade from "../../../assets/image/payments/100-handmade-min.webp";
 import imageFreeShipping from "../../../assets/image/payments/shipping-min.webp";
 import imageDesign from "../../../assets/image/payments/1000+design-min.webp";
 import CardImage from "../../components/CardImage/CardImage";
-import CarouselBySize from "../../components/Carousel/CarouselBySize";
-import CarouselByColor from "../../components/Carousel/CarouselByColor";
 
-import Carousel from "../../components/Carousel/Carousel";
+//Shop Collection
+import Imagecacollection from "../../../assets/image/canyan-collection/16757461481667293156.jpg";
 
-const cardDataShopByWeavingType = [
-  {
-    title: "Hand Tufted Rugs",
-    url: imageCard_1,
-  },
-  {
-    title: "Hand Woven Rugs",
-    url: imageCard_2,
-  },
-  {
-    title: "Hand Knotted Rugs",
-    url: imageCard_3,
-  },
-  {
-    title: "Flat Weave Rugs",
-    url: imageCard_4,
-  },
-];
+import Imagecacollection1 from "../../../assets/image/canyan-collection/CAN20508_MAIN.jpg";
+import Imagecacollection2 from "../../../assets/image/canyan-collection/CAN30508_MAIN.jpg";
+import Imagecacollection3 from "../../../assets/image/canyan-collection/CAN40508_MAIN.jpg";
+import Imagecacollection4 from "../../../assets/image/canyan-collection/CAN50508_MAIN.jpg";
+import AcconrdionComponent from "../../components/Acconrdion/AcconrdionComponent";
+import { timeline } from "@material-tailwind/react";
 
-const cardDataShopByStyle = [
-  {
-    title: "Classic",
-    url: imageCard_5,
-  },
-  {
-    title: "Traditional",
-    url: imageCard_6,
-  },
-  {
-    title: "Transitional",
-    url: imageCard_7,
-  },
-  {
-    title: "Geometric",
-    url: imageCard_8,
-  },
-  {
-    title: "Modern",
-    url: imageCard_9,
-  },
-  {
-    title: "Soild",
-    url: imageCard_10,
-  },
-  {
-    title: "Abstract",
-    url: imageCard_11,
-  },
-  {
-    title: "Natural",
-    url: imageCard_12,
-  },
-  {
-    title: "Kilim",
-    url: imageCard_13,
-  },
-  {
-    title: "Texture",
-    url: imageCard_14,
-  },
-];
 const ProductCarpetPage = () => {
+  const cardDataShopByWeavingType = [
+    {
+      title: "Hand Tufted Rugs",
+      url: imageCard_1,
+    },
+    {
+      title: "Hand Woven Rugs",
+      url: imageCard_2,
+    },
+    {
+      title: "Hand Knotted Rugs",
+      url: imageCard_3,
+    },
+    {
+      title: "Flat Weave Rugs",
+      url: imageCard_4,
+    },
+  ];
+
+  const cardDataShopByStyle = [
+    {
+      title: "Classic",
+      url: imageCard_5,
+    },
+    {
+      title: "Traditional",
+      url: imageCard_6,
+    },
+    {
+      title: "Transitional",
+      url: imageCard_7,
+    },
+    {
+      title: "Geometric",
+      url: imageCard_8,
+    },
+    {
+      title: "Modern",
+      url: imageCard_9,
+    },
+    {
+      title: "Soild",
+      url: imageCard_10,
+    },
+    {
+      title: "Abstract",
+      url: imageCard_11,
+    },
+    {
+      title: "Natural",
+      url: imageCard_12,
+    },
+    {
+      title: "Kilim",
+      url: imageCard_13,
+    },
+    {
+      title: "Texture",
+      url: imageCard_14,
+    },
+  ];
+
+  const CardProductColection = [
+    {
+      url: Imagecacollection1,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecacollection2,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecacollection3,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$ ",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecacollection4,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+  ];
+  const [list, setList] = useState([
+    {
+      filterType: "Color?",
+      properties: [
+        { title: "red" },
+        { title: "yelow" },
+        { title: "blue" },
+        { title: "black" },
+      ],
+    },
+    {
+      filterType: "Size",
+      properties: [{ title: "s" }, { title: "xl" }, { title: "m" }],
+    },
+  ]);
   return (
     <div>
       <Carousel autoSlide={true} />
@@ -125,6 +179,7 @@ const ProductCarpetPage = () => {
           })}
         </div>
       </div>
+      {/* stop shop by weaving type */}
 
       {/* start shop by style */}
       <div className="w-full py-4 ">
@@ -135,19 +190,99 @@ const ProductCarpetPage = () => {
           })}
         </div>
       </div>
+      {/* end shop by style */}
 
-      <div className="py-12 px-12 w-full h-[550px] ">
+      {/* start shop by size */}
+      <div className="py-12 px-12 w-full h-[400px] ">
         <p className="font-mei text-3xl pb-4">Shop By Size</p>
         <CarouselBySize />
       </div>
+      {/* end shop by size */}
 
+      {/*  start shop by color */}
       <div className="py-12 px-12 w-full h-[300px] ">
         <p className="font-mei text-3xl pb-4">Shop By Color</p>
         <CarouselByColor />
       </div>
+      {/*  end shop by color */}
 
-      <div className=" h-auto w-full">
-        <p className="text-3xl ">New Canyan Collection</p>
+      {/*  start shop canyan collection */}
+      <div className=" h-auto w-full pb-5 ">
+        <p className="text-3xl font-mei ">New Canyan Collection</p>
+        <div className="flex flex-col items-center justify-center pt-8">
+          <p className="text-xl font-mar px-8 font-mar">
+            The Canyan Rug is the perfect rug for any room! Its hand-tufted
+            construction offers a textured feel underfoot and a delightful
+            display of naïve designs. With a multi-level pile height, Canyan
+            offers a subtle three- dimensional effect and a high-quality dense
+            pile that is soft to the touch
+          </p>
+          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+            View Collection {">>"}
+          </p>
+        </div>
+        <div className="grid grid-cols-2 px-8 pt-6 ">
+          <img src={Imagecacollection} className="h-full"></img>
+          <div className="  h-full w-full flex flex-wrap justify-end gap-x-10 gap-y-10 ">
+            {CardProductColection.map(({ url, title, price, description }) => {
+              return (
+                <CardProduct
+                  url={url}
+                  title={title}
+                  price={price}
+                  description={description}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      {/*  end shop canyan collection */}
+
+      {/* Start promot */}
+      <div className="w-auto h-auto py-6 mx-8 ">
+        <img src={imagePromot} className="w-full h-full"></img>
+      </div>
+      {/* end promot */}
+
+      {/* start shop milano collection */}
+      <div className=" h-auto w-full pb-5">
+        <p className="text-3xl font-mei ">New Milano Collection</p>
+        <div className="flex flex-col items-center justify-center pt-8">
+          <p className="text-xl font-mar px-8 font-mar">
+            The Canyan Rug is the perfect rug for any room! Its hand-tufted
+            construction offers a textured feel underfoot and a delightful
+            display of naïve designs. With a multi-level pile height, Canyan
+            offers a subtle three- dimensional effect and a high-quality dense
+            pile that is soft to the touch
+          </p>
+          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+            View Collection {">>"}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 px-8 pt-6 ">
+          <div className="  h-full w-full flex flex-wrap justify-start gap-x-10 gap-y-10 ">
+            {CardProductColection.map(({ url, title, price, description }) => {
+              return (
+                <CardProduct
+                  url={url}
+                  title={title}
+                  price={price}
+                  description={description}
+                />
+              );
+            })}
+          </div>
+          <img src={Imagecacollection} className="h-full"></img>
+        </div>
+      </div>
+      {/* end shop milano collection */}
+
+      <div className="">
+        {list.map((item, key) => {
+          return <AcconrdionComponent key={key} datas={item} />;
+        })}
       </div>
     </div>
   );

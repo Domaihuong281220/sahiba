@@ -8,25 +8,25 @@ const Footer = () => {
     <div class="grid grid-cols-6 h-96 w-full bg-slate-500 font-mar">
       <div className="py-5">
         <div className="py-5">
-          <p className="text-xl font-normal">INFOMATION</p>
+          <p className="text-xl ">INFOMATION</p>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Our Story
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Our Founder
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Our Foundation
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Contact Us
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Blog
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Carrer
           </a>
         </div>
@@ -36,19 +36,19 @@ const Footer = () => {
           <p className="text-xl font-normal">GUIDES & POLICIES </p>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             FAQ
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Returns
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Shippings
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Privacy Policy
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Terms and conditions
           </a>
         </div>
@@ -58,19 +58,19 @@ const Footer = () => {
           <p className="text-xl font-normal">OUR SERVICE</p>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Warranty
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Repairs
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Washing
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Track You Order
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Media
           </a>
         </div>
@@ -80,13 +80,13 @@ const Footer = () => {
           <p className="text-xl font-normal">MY ACCOUNT</p>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             Sign In
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             View Cart
           </a>
-          <a className="hover:font-medium" href="">
+          <a className="hover:font-bold" href="">
             My Wishlist
           </a>
         </div>

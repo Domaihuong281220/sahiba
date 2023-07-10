@@ -10,7 +10,7 @@ import {
   MenuList,
   MenuItem,
   Button,
-  IconButton,
+  Badge,
 } from "@material-tailwind/react";
 import Logo from "../../../assets/image/logo/Logo.png";
 import { Input } from "antd";
@@ -111,11 +111,35 @@ export default function Header() {
           <Search placeholder="Search Product" allowClear size="large" />
         </div>
         <div className="flex justify-between w-28">
-          <Icon icon="octicon:person-16" width={24} height={24} color="black" />
+          <button>
+            <Icon
+              icon="octicon:person-16"
+              width={24}
+              height={24}
+              color="black"
+            />
+          </button>
 
-          <Icon icon="mdi:heart-outline" width={24} height={24} color="black" />
+          <button>
+            <Icon
+              icon="mdi:heart-outline"
+              width={24}
+              height={24}
+              color="black"
+            />
+          </button>
 
-          <Icon icon="mdi:cart-outline" width={24} height={24} color="black" />
+          <button className=" relative">
+            <Icon
+              icon="mdi:cart-outline"
+              width={24}
+              height={24}
+              color="black"
+            />
+            <p className="bg-red-600 absolute h-3 w-3 text-[8px] top-[-4px] right-[-2px] rounded-full text-center">
+              1
+            </p>
+          </button>
         </div>
       </div>
     </Navbar>
