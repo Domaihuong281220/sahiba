@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import routes from "../utils/routes";
 import Header from "../app/components/Header/Header";
 import { Footer } from "antd/es/layout/layout";
+import { Homepage } from "../Pages/Homepage/Homepage";
 
 const DefaultLayout = () => {
   //Routes
