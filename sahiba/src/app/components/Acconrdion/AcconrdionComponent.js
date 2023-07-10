@@ -17,7 +17,7 @@ const AcconrdionComponent = (props) => {
   };
   return (
     <div
-      className={`bg-white p-2 border border-black rounded-md mb-2 w-[280px]  duration-500 group ${
+      className={`bg-white p-2 border border-gray-300 w-full  duration-500 group ${
         item.active === 1 ? "is-active bg-slate-400" : ""
       }`}
     >
@@ -33,18 +33,16 @@ const AcconrdionComponent = (props) => {
         </div>
       </div>
       <div
-        className={`overflow-hidden max-h-0 group-[.is-active]:max-h-[${
-          item.properties.length * 100
-        }px]  duration-500`}
+        className={`overflow-hidden max-h-0 group-[.is-active]:max-h-[400px]  duration-500`}
       >
         {item.properties.map(({ title }) => {
           return (
-            <div className="bg-slate-500  w-full flex justify-start items-center">
+            <div className="bg-white  w-full flex justify-start items-center border ">
               <List className="flex-col ">
                 <ListItem className="p-0">
                   <label
                     htmlFor="horizontal-list-react"
-                    className="py-2 flex items-start w-full cursor-pointer"
+                    className="py-2 flex items-start w-full cursor-pointer items-center"
                   >
                     <ListItemPrefix className="mr-3">
                       <Checkbox

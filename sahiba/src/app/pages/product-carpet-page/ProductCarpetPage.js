@@ -34,14 +34,20 @@ import imageDesign from "../../../assets/image/payments/1000+design-min.webp";
 import CardImage from "../../components/CardImage/CardImage";
 
 //Shop Collection
-import Imagecacollection from "../../../assets/image/canyan-collection/16757461481667293156.jpg";
+import Imagecollection from "../../../assets/image/canyan-collection/16757461481667293156.jpg";
+import Imagecollection1 from "../../../assets/image/canyan-collection/CAN20508_MAIN.jpg";
+import Imagecollection2 from "../../../assets/image/canyan-collection/CAN30508_MAIN.jpg";
+import Imagecollection3 from "../../../assets/image/canyan-collection/CAN40508_MAIN.jpg";
+import Imagecollection4 from "../../../assets/image/canyan-collection/CAN50508_MAIN.jpg";
 
-import Imagecacollection1 from "../../../assets/image/canyan-collection/CAN20508_MAIN.jpg";
-import Imagecacollection2 from "../../../assets/image/canyan-collection/CAN30508_MAIN.jpg";
-import Imagecacollection3 from "../../../assets/image/canyan-collection/CAN40508_MAIN.jpg";
-import Imagecacollection4 from "../../../assets/image/canyan-collection/CAN50508_MAIN.jpg";
+// How you are
+import videowhoyouare from "../../../assets/image/who-we-are.mp4";
+
+// Image store
+import Imagestore1 from "../../../assets/image/store/saraswati-global-jaipur.jpg";
+import Imagestore2 from "../../../assets/image/store/saraswati-global-newdelhi.jpg";
+
 import AcconrdionComponent from "../../components/Acconrdion/AcconrdionComponent";
-import { timeline } from "@material-tailwind/react";
 
 const ProductCarpetPage = () => {
   const cardDataShopByWeavingType = [
@@ -108,25 +114,99 @@ const ProductCarpetPage = () => {
 
   const CardProductColection = [
     {
-      url: Imagecacollection1,
+      url: Imagecollection1,
       title: "Hand Tufted Wool & Vicose",
       price: "1800$",
       description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
     },
     {
-      url: Imagecacollection2,
+      url: Imagecollection2,
       title: "Hand Tufted Wool & Vicose",
       price: "1800$",
       description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
     },
     {
-      url: Imagecacollection3,
+      url: Imagecollection3,
       title: "Hand Tufted Wool & Vicose",
       price: "1800$ ",
       description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
     },
     {
-      url: Imagecacollection4,
+      url: Imagecollection4,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+  ];
+  const CardProductFilter = [
+    {
+      url: Imagecollection1,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection2,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection3,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$ ",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection4,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection1,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection2,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection3,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$ ",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection4,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection1,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection2,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection3,
+      title: "Hand Tufted Wool & Vicose",
+      price: "1800$ ",
+      description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
+    },
+    {
+      url: Imagecollection4,
       title: "Hand Tufted Wool & Vicose",
       price: "1800$",
       description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
@@ -145,6 +225,14 @@ const ProductCarpetPage = () => {
     {
       filterType: "Size",
       properties: [{ title: "s" }, { title: "xl" }, { title: "m" }],
+    },
+    {
+      filterType: "Price",
+      properties: [
+        { title: "1000$-2000$" },
+        { title: "2000$-4000$" },
+        { title: "4000$-7000$" },
+      ],
     },
   ]);
   return (
@@ -222,7 +310,7 @@ const ProductCarpetPage = () => {
           </p>
         </div>
         <div className="grid grid-cols-2 px-8 pt-6 ">
-          <img src={Imagecacollection} className="h-full"></img>
+          <img src={Imagecollection} className="h-full"></img>
           <div className="  h-full w-full flex flex-wrap justify-end gap-x-10 gap-y-10 ">
             {CardProductColection.map(({ url, title, price, description }) => {
               return (
@@ -274,16 +362,85 @@ const ProductCarpetPage = () => {
               );
             })}
           </div>
-          <img src={Imagecacollection} className="h-full"></img>
+          <img src={Imagecollection} className="h-full"></img>
         </div>
       </div>
       {/* end shop milano collection */}
 
-      <div className="">
-        {list.map((item, key) => {
-          return <AcconrdionComponent key={key} datas={item} />;
-        })}
+      {/* start fillter product */}
+      <div className="grid grid-cols-4 py-8">
+        <div className="pl-8 w-full h-full font-mar">
+          <p className="text-2xl font-mar"> FILTERS</p>
+          {list.map((item, key) => {
+            return <AcconrdionComponent key={key} datas={item} />;
+          })}
+        </div>
+        <div className="  h-full w-full flex flex-wrap justify-center gap-x-20 gap-y-10 col-span-3 ">
+          {CardProductFilter.map(({ url, title, price, description }) => {
+            return (
+              <CardProduct
+                url={url}
+                title={title}
+                price={price}
+                description={description}
+              />
+            );
+          })}
+        </div>
       </div>
+      {/* end filter product */}
+
+      {/*  start who you are  */}
+      <div className=" h-auto w-full pb-10 ">
+        <p className="text-3xl font-mei ">Who We Are</p>
+        <div className="flex flex-col items-center justify-center pt-8">
+          <p className="text-xl font-mar px-8 font-mar">
+            With a strong legacy of intricate patterns, technological
+            innovations, and cultural heritage in rug making,Saraswatii Global
+            has taken the rug manufacturing industry to the next level of
+            artisanship.
+          </p>
+          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+            Know More {">>"}
+          </p>
+        </div>
+        <div className="flex justify-center pt-3">
+          <video className="h-full w-10/12 rounded-lg" controls autoPlay>
+            <source src={videowhoyouare} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      {/*  end who you are */}
+
+      {/*  start who you are  */}
+      <div className=" h-auto w-full pb-5 ">
+        <p className="text-3xl font-mei ">Our Stores</p>
+        <div className="flex flex-col items-center justify-center pt-8">
+          <p className="text-xl font-mar px-8 font-mar">
+            Explore the wide range of designer Rugs & Carpets at stores with
+            amazing deals. We're sure thatyou'll find something special.
+          </p>
+          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+            Know More {">>"}
+          </p>
+        </div>
+        <div className="flex justify-center py-10 gap-x-3 ">
+          <div className="relative">
+            <img className="" src={Imagestore1}></img>
+            <p className=" font-mar absolute text-white font-medium top-[225px] left-20 w-[300px]">
+              Jaipur 3 Ganesh Colony, Amer Road, Jaipur-302002, Rajasthan, INDIA
+            </p>
+          </div>
+          <div className="relative">
+            <img className="" src={Imagestore2}></img>
+            <p className="font-mar absolute text-white font-medium top-[225px] left-20 w-[300px]">
+              New Delhi1st Floor, Khasra No.426, Opp. pillar no.132MG.Road ,
+              Ghitorni , Delhi 110030
+            </p>
+          </div>
+        </div>
+      </div>
+      {/*  end who you are */}
     </div>
   );
 };
