@@ -2,7 +2,9 @@
 import "./style.css";
 
 import img1 from "../../assets/image/Homepage/img1.jpg";
-import imgslider from "../../assets/image/Homepage/Saree.jpg";
+import imgslider1 from "../../assets/image/Homepage/Saree.jpg";
+import imgslider2 from "../../assets/image/Homepage/furniture.jpg";
+
 import { Carousel, Col, Row } from 'antd';
 import React from "react";
 
@@ -46,7 +48,7 @@ const Homepage = () => {
             <div>
             <Row gutter={16}>
             <Col className="gutter-row" span={24}>
-              <img src={imgslider} alt="Logo" border="0" className="logo" />
+              <img src={imgslider1} alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
               <Row gutter={16}>
@@ -71,7 +73,7 @@ const Homepage = () => {
             <div>
             <Row gutter={16}>
             <Col className="gutter-row" span={24}>
-              <img src={imgslider} alt="Logo" border="0" className="logo" />
+              <img src={imgslider2} alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
               <Row gutter={16}>
@@ -95,7 +97,7 @@ const Homepage = () => {
             <div>
             <Row gutter={16}>
             <Col className="gutter-row" span={24}>
-              <img src={imgslider} alt="Logo" border="0" className="logo" />
+              <img src="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
               <Row gutter={16}>
@@ -116,7 +118,7 @@ const Homepage = () => {
             </Col>
           </Row>
             </div>
-            <div>
+            {/* <div>
             <Row gutter={16}>
             <Col className="gutter-row" span={24}>
               <img src={imgslider} alt="Logo" border="0" className="logo" />
@@ -139,7 +141,7 @@ const Homepage = () => {
               </Row>
             </Col>
           </Row>
-            </div>
+            </div> */}
           </Carousel>
 
         </div>
