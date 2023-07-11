@@ -41,9 +41,18 @@ const Homepage = () => {
         </div>
 
         {/* Part 3 */}
-        <div className="Head-intro3">
-          
 
+        <Row className="top-head3" gutter={16}>
+                <Col className="gutter-row" span={8}>
+                  <h1 className="font-mei introhead3">Sarees</h1>
+                </Col>
+                <Col className=" gutter-row" span={16}>
+                  <p className="font-mar deschead3">A celebrated revisit to Shantanu & Nikhil’s iconic collections over the years and what the brand stands for. Power, Progressiveness and Pride now takes centre stage and finds its way into the luxurious world of Obeetee’s handcrafted carpets.</p>
+
+                </Col>
+        </Row>
+
+        <div className="Head-intro3">
           <Carousel autoplay>
             <div>
             <Row gutter={16}>

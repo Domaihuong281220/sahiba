@@ -125,11 +125,23 @@
     
 }
 
+.top-head3{
+    padding: 5rem 5rem 0rem 5rem !important;
+}
+
 .Head-intro2 a{
     font-family: 'Lexend Exa', sans-serif;
     text-decoration: underline;
     letter-spacing: 3px;
     font-size: 1.1rem;    
+}
+
+.introhead3{
+    font-size: 5rem;
+}
+
+.deschead3{
+    font-size: 1.5rem;
 }
 
 .Head-intro3{
@@ -138,6 +150,7 @@
     padding: 0;
     z-index: 1;
     padding: 10rem;
+    padding-top: 0;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -192,3 +205,5 @@
 
     justify-content: center !important;
 } */
+
+
