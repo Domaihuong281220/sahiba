@@ -8,16 +8,7 @@ import imgslider2 from "../../assets/image/Homepage/furniture.jpg";
 import { Carousel, Col, Row } from 'antd';
 import React from "react";
 
-const style: React.CSSProperties = { background: '#0092ff', padding: '8px 0' };
 
-
-const contentStyle: React.CSSProperties = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
 const Homepage = () => {
   return (
     <>
