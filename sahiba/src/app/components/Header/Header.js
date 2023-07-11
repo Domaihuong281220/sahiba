@@ -10,7 +10,6 @@ import {
   MenuList,
   MenuItem,
   Button,
-  Badge,
 } from "@material-tailwind/react";
 import Logo from "../../../assets/image/logo/Logo.png";
 import { Input } from "antd";
@@ -46,7 +45,7 @@ export default function Header() {
               Carpet
             </MenuItem>
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md">
-              Funiture
+              Furniture
             </MenuItem>
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md">
               Sarees

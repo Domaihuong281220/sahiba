@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 import CarouselBySize from "../../components/Carousel/CarouselBySize";
 import CarouselByColor from "../../components/Carousel/CarouselByColor";
-import Carousel from "../../components/Carousel/Carousel";
+import CarouselCarpet from "../../components/Carousel/CarouselCarpet";
 import CardProduct from "../../components/CardProduct/CardProduct";
 //shop by type
 import imageCard_1 from "../../../assets/image/shop-by-weaving-type/hand-tufted-min.webp";
@@ -254,9 +254,10 @@ const ProductCarpetPage = () => {
       ],
     },
   ]);
+
   return (
-    <div>
-      <Carousel autoSlide={true} />
+    <>
+      <CarouselCarpet autoSlide={true} />;
       <div className=" grid grid-cols-4 w-full h-48 ">
         <div className="flex flex-col items-center justify-center">
           <img className="object-fit w-24 h-24" src={imagePayment}></img>
@@ -287,7 +288,6 @@ const ProductCarpetPage = () => {
         </div>
       </div>
       {/* stop shop by weaving type */}
-
       {/* start shop by style */}
       <div className="w-full py-4 ">
         <p className=" text-3xl font-medium pb-10 font-mei">Shop By Style</p>
@@ -298,21 +298,18 @@ const ProductCarpetPage = () => {
         </div>
       </div>
       {/* end shop by style */}
-
       {/* start shop by size */}
       <div className="py-12 px-12 w-full h-[400px] ">
         <p className="font-mei text-3xl pb-4">Shop By Size</p>
         <CarouselBySize />
       </div>
       {/* end shop by size */}
-
       {/*  start shop by color */}
       <div className="py-12 px-12 w-full h-[300px] ">
         <p className="font-mei text-3xl pb-4">Shop By Color</p>
         <CarouselByColor />
       </div>
       {/*  end shop by color */}
-
       {/*  start shop canyan collection */}
       <div className=" h-auto w-full pb-5 ">
         <p className="text-3xl font-mei ">New Canyan Collection</p>
@@ -345,13 +342,11 @@ const ProductCarpetPage = () => {
         </div>
       </div>
       {/*  end shop canyan collection */}
-
       {/* Start promot */}
       <div className="w-auto h-auto py-6 mx-8 ">
         <img src={imagePromot} className="w-full h-full"></img>
       </div>
       {/* end promot */}
-
       {/* start shop milano collection */}
       <div className=" h-auto w-full pb-5">
         <p className="text-3xl font-mei ">New Milano Collection</p>
@@ -385,7 +380,6 @@ const ProductCarpetPage = () => {
         </div>
       </div>
       {/* end shop milano collection */}
-
       {/* start fillter product */}
       <div className="grid grid-cols-4 py-8">
         <div className="pl-8 w-full h-full font-mar">
@@ -408,7 +402,6 @@ const ProductCarpetPage = () => {
         </div>
       </div>
       {/* end filter product */}
-
       {/*  start who you are  */}
       <div className=" h-auto w-full pb-10 ">
         <p className="text-3xl font-mei ">Who We Are</p>
@@ -424,13 +417,12 @@ const ProductCarpetPage = () => {
           </p>
         </div>
         <div className="flex justify-center pt-3">
-          <video className="h-full w-10/12 rounded-lg" controls autoPlay>
+          <video className="h-[500px] w-10/12 rounded-lg" controls autoPlay>
             <source src={videowhoyouare} type="video/mp4" />
           </video>
         </div>
       </div>
       {/*  end who you are */}
-
       {/*  start who you are  */}
       <div className=" h-auto w-full pb-5 ">
         <p className="text-3xl font-mei ">Our Stores</p>
@@ -460,7 +452,7 @@ const ProductCarpetPage = () => {
         </div>
       </div>
       {/*  end who you are */}
-    </div>
+    </>
   );
 };
 
