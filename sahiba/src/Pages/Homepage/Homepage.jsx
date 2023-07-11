@@ -35,10 +35,10 @@ const Homepage = () => {
 
         <Row className="top-head3" gutter={16}>
                 <Col className="gutter-row" span={8}>
-                  <h1 className="font-mei introhead3">Sarees</h1>
+                  <h1 className="font-mei introhead3">Indian designs</h1>
                 </Col>
                 <Col className=" gutter-row" span={16}>
-                  <p className="font-mar deschead3">A celebrated revisit to Shantanu & Nikhil’s iconic collections over the years and what the brand stands for. Power, Progressiveness and Pride now takes centre stage and finds its way into the luxurious world of Obeetee’s handcrafted carpets.</p>
+                  <p className="font-mar deschead3">The first documented India-inspired Carpets.We turned to India’s best designers to create an indigenous Indian design language for carpets otherwise dominated by Persian and Chinese motifs.</p>
 
                 </Col>
         </Row>
@@ -119,32 +119,6 @@ const Homepage = () => {
           </Row>
             </div>
           </Carousel>
-          {/* <div>
-            <Row gutter={16}>
-            <Col className="gutter-row" span={24}>
-              <img src={imgslider1} alt="Logo" border="0" className="logo" />
-            </Col>
-            <Col className="row2 gutter-row" span={24}>
-              <Row className="row2-in" gutter={16}>
-                <Col className="gutter-row" span={8}>
-                  <h1 className="font-mei">Sarees</h1>
-                </Col>
-                <Col className=" col2-row2 gutter-row" span={16}>
-                  <p className="font-mar">A celebrated revisit to Shantanu & Nikhil’s iconic collections over the years and what the brand stands for. Power, Progressiveness and Pride now takes centre stage and finds its way into the luxurious world of Obeetee’s handcrafted carpets.</p>
-
-                </Col>
-                <Col className="gutter-row" span={8}>
-                  
-                </Col>
-                <Col className=" col2-row2 gutter-row" span={16}>
-                  <a className="font-mar" href="https://www.obeetee.com/" target="_blank" rel="noreferrer">SHOP NOW</a>
-
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-            </div> */}
-
         </div>
       </div>
     </>
