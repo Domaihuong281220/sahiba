@@ -34,7 +34,7 @@ const Homepage = () => {
         {/* Part 3 */}
 
         <Row className="top-head3" gutter={16}>
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row intro-head3" span={8}>
                   <h1 className="font-mei introhead3">Indian designs</h1>
                 </Col>
                 <Col className=" gutter-row" span={16}>
@@ -78,7 +78,7 @@ const Homepage = () => {
             <Col className="row2 gutter-row" span={24}>
               <Row className="row2-in" gutter={16}>
                 <Col className="gutter-row" span={8}>
-                  <h1 className="font-mei">Sarees</h1>
+                  <h1 className="font-mei">Furniture</h1>
                 </Col>
                 <Col className=" col2-row2 gutter-row" span={16}>
                   <p className="font-mar">A celebrated revisit to Shantanu & Nikhil’s iconic collections over the years and what the brand stands for. Power, Progressiveness and Pride now takes centre stage and finds its way into the luxurious world of Obeetee’s handcrafted carpets.</p>
@@ -87,7 +87,7 @@ const Homepage = () => {
                   
                 </Col>
                 <Col className=" col2-row2 gutter-row" span={16}>
-                  <a className="font-mar" href="https://www.obeetee.com/" target="_blank" rel="noreferrer">SHOP NOW</a>
+                  <a className="font-mar" href="/product-carpet" target="_blank" rel="noreferrer">SHOP NOW</a>
 
                 </Col>
               </Row>
@@ -102,7 +102,7 @@ const Homepage = () => {
             <Col className="row2 gutter-row" span={24}>
               <Row className="row2-in" gutter={16}>
                 <Col className="gutter-row" span={8}>
-                  <h1 className="font-mei">Sarees</h1>
+                  <h1 className="font-mei">Carpets</h1>
                 </Col>
                 <Col className=" col2-row2 gutter-row" span={16}>
                   <p className="font-mar">A celebrated revisit to Shantanu & Nikhil’s iconic collections over the years and what the brand stands for. Power, Progressiveness and Pride now takes centre stage and finds its way into the luxurious world of Obeetee’s handcrafted carpets.</p>
@@ -111,7 +111,7 @@ const Homepage = () => {
                   
                 </Col>
                 <Col className=" col2-row2 gutter-row" span={16}>
-                  <a className="font-mar" href="https://www.obeetee.com/" target="_blank" rel="noreferrer">SHOP NOW</a>
+                  <a className="font-mar" href="/product-carpet" target="_blank" rel="noreferrer">SHOP NOW</a>
 
                 </Col>
               </Row>
