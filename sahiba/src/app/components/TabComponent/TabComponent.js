@@ -3,15 +3,20 @@
 // /** @format */
 
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import CarouselProduct from "../Carousel/CarouselProduct";
+import HumanProduct from "../Carousel/HumanProduct";
+import BookendProduct from "../Carousel/BookendProduct";
+import VaseProduct from "../Carousel/VaseProduct";
+import StorageProduct from "../Carousel/StorageProduct";
+import CandleProduct from "../Carousel/CandleProduct";
+import GingerProduct from "../Carousel/GingerProduct";
 
 const TabComponent = () => {
   return (
-    <div className=" h-[400px] w-full px-2">
+    <div className=" h-auto w-full px-2">
       <Tabs>
-        <TabList className="flex justify-center items-center gap-x-3 py-3 overflow-x-scroll ">
-          <Tab className="w-auto h-auto  rounded-xl py-2 px-2 hover:bg-orange-200 active:bg-orange-200  focus:bg-orange-200">
-            TEMPLATE & GINGER
+        <TabList className="flex justify-center items-center gap-x-3 py-3 ">
+          <Tab className="w-auto h-auto  rounded-xl py-2 px-2 hover:bg-orange-200 active:bg-orange-200  focus:bg-orange-200 ">
+            TEMPLATE & GINGER JARS
           </Tab>
           <Tab className="w-auto h-auto  rounded-xl py-2 px-2 hover:bg-orange-200 active:bg-orange-200  focus:bg-orange-200">
             BOOKENDS
@@ -28,23 +33,26 @@ const TabComponent = () => {
           <Tab className="w-auto h-auto  rounded-xl py-2 px-2 hover:bg-orange-200 active:bg-orange-200  focus:bg-orange-200">
             DECORATIVE STORAGE
           </Tab>
-          <Tab className="w-auto h-auto  rounded-xl py-2 px-2 hover:bg-orange-200 active:bg-orange-200  focus:bg-orange-200">
-            RING DISH
-          </Tab>
-          <Tab className="w-auto h-auto  rounded-xl py-2 px-2 hover:bg-orange-200 active:bg-orange-200  focus:bg-orange-200">
-            HOME GARDEN
-          </Tab>
         </TabList>
 
         <TabPanels>
-          <TabPanel>
-            <CarouselProduct />
+          <TabPanel className="px-10 py-4">
+            <GingerProduct />{" "}
           </TabPanel>
-          <TabPanel>
-            <p>two!</p>
+          <TabPanel className="px-10 py-4">
+            <BookendProduct />
           </TabPanel>
-          <TabPanel>
-            <p>true!</p>
+          <TabPanel className="px-10 py-4">
+            <HumanProduct />
+          </TabPanel>
+          <TabPanel className="px-10 py-4">
+            <VaseProduct />
+          </TabPanel>
+          <TabPanel className="px-10 py-4">
+            <CandleProduct />
+          </TabPanel>
+          <TabPanel className="px-10 py-4">
+            <StorageProduct />
           </TabPanel>
         </TabPanels>
       </Tabs>

@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import CarouselBySize from "../../components/Carousel/CarouselBySize";
 import CarouselByColor from "../../components/Carousel/CarouselByColor";
 import CarouselCarpet from "../../components/Carousel/CarouselCarpet";
@@ -48,6 +48,8 @@ import Imagestore1 from "../../../assets/image/store/saraswati-global-jaipur.jpg
 import Imagestore2 from "../../../assets/image/store/saraswati-global-newdelhi.jpg";
 
 import AcconrdionComponent from "../../components/Acconrdion/AcconrdionComponent";
+
+export const Context = createContext();
 
 const ProductCarpetPage = () => {
   const cardDataShopByWeavingType = [
@@ -112,7 +114,7 @@ const ProductCarpetPage = () => {
     },
   ];
 
-  const CardProductColection = [
+  const [CardProductColection, setCardProductColection] = useState([
     {
       url: Imagecollection1,
       title: "Hand Tufted Wool & Vicose",
@@ -137,7 +139,7 @@ const ProductCarpetPage = () => {
       price: "1800$",
       description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
     },
-  ];
+  ]);
   const CardProductFilter = [
     {
       url: Imagecollection1,
@@ -257,115 +259,146 @@ const ProductCarpetPage = () => {
 
   return (
     <>
-      <CarouselCarpet autoSlide={true} />;
-      <div className=" grid grid-cols-4 w-full h-48 ">
-        <div className="flex flex-col items-center justify-center">
-          <img className="object-fit w-24 h-24" src={imagePayment}></img>
-          <p>Secure Payment</p>
+      <Context.Provider value={CardProductColection}>
+        <CarouselCarpet autoSlide={true} />;
+        <div className=" grid grid-cols-4 w-full h-48 ">
+          <div className="flex flex-col items-center justify-center">
+            <img className="object-fit w-24 h-24" src={imagePayment}></img>
+            <p>Secure Payment</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img className="object-fit w-24 h-24" src={imageHandmade}></img>
+            <p>100% Handmade</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img className="object-fit w-24 h-24" src={imageFreeShipping}></img>
+            <p>Free Shiping</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <img className="object-fit w-24 h-24" src={imageDesign}></img>
+            <p>Design</p>
+          </div>
         </div>
-        <div className="flex flex-col items-center justify-center">
-          <img className="object-fit w-24 h-24" src={imageHandmade}></img>
-          <p>100% Handmade</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <img className="object-fit w-24 h-24" src={imageFreeShipping}></img>
-          <p>Free Shiping</p>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <img className="object-fit w-24 h-24" src={imageDesign}></img>
-          <p>Design</p>
-        </div>
-      </div>
-      {/* start shop by weaving type */}
-      <div className="w-full py-4">
-        <p className=" text-3xl font-medium pb-10 font-mei">
-          Shop By Weaving Type
-        </p>
-        <div className="flex justify-center  ">
-          {cardDataShopByWeavingType.map(({ title, url }) => {
-            return <CardImage title={title} url={url} />;
-          })}
-        </div>
-      </div>
-      {/* stop shop by weaving type */}
-      {/* start shop by style */}
-      <div className="w-full py-4 ">
-        <p className=" text-3xl font-medium pb-10 font-mei">Shop By Style</p>
-        <div className="flex justify-center flex-wrap gap-x-3 gap-y-6  ">
-          {cardDataShopByStyle.map(({ title, url }) => {
-            return <CardImage title={title} url={url} />;
-          })}
-        </div>
-      </div>
-      {/* end shop by style */}
-      {/* start shop by size */}
-      <div className="py-12 px-12 w-full h-[400px] ">
-        <p className="font-mei text-3xl pb-4">Shop By Size</p>
-        <CarouselBySize />
-      </div>
-      {/* end shop by size */}
-      {/*  start shop by color */}
-      <div className="py-12 px-12 w-full h-[300px] ">
-        <p className="font-mei text-3xl pb-4">Shop By Color</p>
-        <CarouselByColor />
-      </div>
-      {/*  end shop by color */}
-      {/*  start shop canyan collection */}
-      <div className=" h-auto w-full pb-5 ">
-        <p className="text-3xl font-mei ">New Canyan Collection</p>
-        <div className="flex flex-col items-center justify-center pt-8">
-          <p className="text-xl font-mar px-8 font-mar">
-            The Canyan Rug is the perfect rug for any room! Its hand-tufted
-            construction offers a textured feel underfoot and a delightful
-            display of naïve designs. With a multi-level pile height, Canyan
-            offers a subtle three- dimensional effect and a high-quality dense
-            pile that is soft to the touch
+        {/* start shop by weaving type */}
+        <div className="w-full py-4">
+          <p className=" text-3xl font-medium pb-10 font-mei">
+            Shop By Weaving Type
           </p>
-          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
-            View Collection {">>"}
-          </p>
-        </div>
-        <div className="grid grid-cols-2 px-8 pt-6 ">
-          <img src={Imagecollection} className="h-full"></img>
-          <div className="  h-full w-full flex flex-wrap justify-end gap-x-10 gap-y-10 ">
-            {CardProductColection.map(({ url, title, price, description }) => {
-              return (
-                <CardProduct
-                  url={url}
-                  title={title}
-                  price={price}
-                  description={description}
-                />
-              );
+          <div className="flex justify-center  ">
+            {cardDataShopByWeavingType.map(({ title, url }) => {
+              return <CardImage title={title} url={url} />;
             })}
           </div>
         </div>
-      </div>
-      {/*  end shop canyan collection */}
-      {/* Start promot */}
-      <div className="w-auto h-auto py-6 mx-8 ">
-        <img src={imagePromot} className="w-full h-full"></img>
-      </div>
-      {/* end promot */}
-      {/* start shop milano collection */}
-      <div className=" h-auto w-full pb-5">
-        <p className="text-3xl font-mei ">New Milano Collection</p>
-        <div className="flex flex-col items-center justify-center pt-8">
-          <p className="text-xl font-mar px-8 font-mar">
-            The Canyan Rug is the perfect rug for any room! Its hand-tufted
-            construction offers a textured feel underfoot and a delightful
-            display of naïve designs. With a multi-level pile height, Canyan
-            offers a subtle three- dimensional effect and a high-quality dense
-            pile that is soft to the touch
-          </p>
-          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
-            View Collection {">>"}
-          </p>
+        {/* stop shop by weaving type */}
+        {/* start shop by style */}
+        <div className="w-full py-4 ">
+          <p className=" text-3xl font-medium pb-10 font-mei">Shop By Style</p>
+          <div className="flex justify-center flex-wrap gap-x-3 gap-y-6  ">
+            {cardDataShopByStyle.map(({ title, url }) => {
+              return <CardImage title={title} url={url} />;
+            })}
+          </div>
         </div>
+        {/* end shop by style */}
+        {/* start shop by size */}
+        <div className="py-12 px-12 w-full h-[400px] ">
+          <p className="font-mei text-3xl pb-4">Shop By Size</p>
+          <CarouselBySize />
+        </div>
+        {/* end shop by size */}
+        {/*  start shop by color */}
+        <div className="py-12 px-12 w-full h-[300px] ">
+          <p className="font-mei text-3xl pb-4">Shop By Color</p>
+          <CarouselByColor />
+        </div>
+        {/*  end shop by color */}
+        {/*  start shop canyan collection */}
+        <div className=" h-auto w-full pb-5 ">
+          <p className="text-3xl font-mei ">New Canyan Collection</p>
+          <div className="flex flex-col items-center justify-center pt-8">
+            <p className="text-xl font-mar px-8 font-mar">
+              The Canyan Rug is the perfect rug for any room! Its hand-tufted
+              construction offers a textured feel underfoot and a delightful
+              display of naïve designs. With a multi-level pile height, Canyan
+              offers a subtle three- dimensional effect and a high-quality dense
+              pile that is soft to the touch
+            </p>
+            <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+              View Collection {">>"}
+            </p>
+          </div>
+          <div className="grid grid-cols-2 px-8 pt-6 ">
+            <img src={Imagecollection} className="h-full"></img>
+            <div className="  h-full w-full flex flex-wrap justify-end gap-x-10 gap-y-10 ">
+              {CardProductColection.map(
+                ({ url, title, price, description }) => {
+                  return (
+                    <CardProduct
+                      url={url}
+                      title={title}
+                      price={price}
+                      description={description}
+                    />
+                  );
+                }
+              )}
+            </div>
+          </div>
+        </div>
+        {/*  end shop canyan collection */}
+        {/* Start promot */}
+        <div className="w-auto h-auto py-6 mx-8 ">
+          <img src={imagePromot} className="w-full h-full"></img>
+        </div>
+        {/* end promot */}
+        {/* start shop milano collection */}
+        <div className=" h-auto w-full pb-5">
+          <p className="text-3xl font-mei ">New Milano Collection</p>
+          <div className="flex flex-col items-center justify-center pt-8">
+            <p className="text-xl font-mar px-8 font-mar">
+              The Canyan Rug is the perfect rug for any room! Its hand-tufted
+              construction offers a textured feel underfoot and a delightful
+              display of naïve designs. With a multi-level pile height, Canyan
+              offers a subtle three- dimensional effect and a high-quality dense
+              pile that is soft to the touch
+            </p>
+            <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+              View Collection {">>"}
+            </p>
+          </div>
 
-        <div className="grid grid-cols-2 px-8 pt-6 ">
-          <div className="  h-full w-full flex flex-wrap justify-start gap-x-10 gap-y-10 ">
-            {CardProductColection.map(({ url, title, price, description }) => {
+          <div className="grid grid-cols-2 px-8 pt-6 ">
+            <div className="  h-full w-full flex flex-wrap justify-start gap-x-10 gap-y-10 ">
+              {CardProductColection.map(
+                ({ url, title, price, description }) => {
+                  return (
+                    <CardProduct
+                      url={url}
+                      title={title}
+                      price={price}
+                      description={description}
+                    />
+                  );
+                }
+              )}
+            </div>
+            <img src={Imagecollection} className="h-full"></img>
+          </div>
+        </div>
+        {/* end shop milano collection */}
+
+
+        {/* start fillter product */}
+        <div className="grid grid-cols-4 py-8">
+          <div className="pl-8 w-full h-full font-mar">
+            <p className="text-2xl font-mar">FILTERS</p>
+            {list.map((item, key) => {
+              return <AcconrdionComponent key={key} datas={item} />;
+            })}
+          </div>
+          <div className="h-full w-full flex flex-wrap justify-center gap-x-20 gap-y-10 col-span-3 ">
+            {CardProductFilter.map(({ url, title, price, description }) => {
               return (
                 <CardProduct
                   url={url}
@@ -376,81 +409,61 @@ const ProductCarpetPage = () => {
               );
             })}
           </div>
-          <img src={Imagecollection} className="h-full"></img>
         </div>
-      </div>
-      {/* end shop milano collection */}
-      {/* start fillter product */}
-      <div className="grid grid-cols-4 py-8">
-        <div className="pl-8 w-full h-full font-mar">
-          <p className="text-2xl font-mar">FILTERS</p>
-          {list.map((item, key) => {
-            return <AcconrdionComponent key={key} datas={item} />;
-          })}
-        </div>
-        <div className="h-full w-full flex flex-wrap justify-center gap-x-20 gap-y-10 col-span-3 ">
-          {CardProductFilter.map(({ url, title, price, description }) => {
-            return (
-              <CardProduct
-                url={url}
-                title={title}
-                price={price}
-                description={description}
-              />
-            );
-          })}
-        </div>
-      </div>
-      {/* end filter product */}
-      {/*  start who you are  */}
-      <div className=" h-auto w-full pb-10 ">
-        <p className="text-3xl font-mei ">Who We Are</p>
-        <div className="flex flex-col items-center justify-center pt-8">
-          <p className="text-xl font-mar px-8 font-mar">
-            With a strong legacy of intricate patterns, technological
-            innovations, and cultural heritage in rug making,Saraswatii Global
-            has taken the rug manufacturing industry to the next level of
-            artisanship.
-          </p>
-          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
-            Know More {">>"}
-          </p>
-        </div>
-        <div className="flex justify-center pt-3">
-          <video className="h-[500px] w-10/12 rounded-lg" controls autoPlay>
-            <source src={videowhoyouare} type="video/mp4" />
-          </video>
-        </div>
-      </div>
-      {/*  end who you are */}
-      {/*  start who you are  */}
-      <div className=" h-auto w-full pb-5 ">
-        <p className="text-3xl font-mei ">Our Stores</p>
-        <div className="flex flex-col items-center justify-center pt-8">
-          <p className="text-xl font-mar px-8 font-mar">
-            Explore the wide range of designer Rugs & Carpets at stores with
-            amazing deals. We're sure thatyou'll find something special.
-          </p>
-          <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
-            Know More {">>"}
-          </p>
-        </div>
-        <div className="flex justify-center py-10 gap-x-3 ">
-          <div className="relative">
-            <img className="" src={Imagestore1}></img>
-            <p className=" font-mar absolute text-white font-medium top-[225px] left-20 w-[300px]">
-              Jaipur 3 Ganesh Colony, Amer Road, Jaipur-302002, Rajasthan, INDIA
+        {/* end filter product */}
+        
+        {/*  start who you are  */}
+        <div className=" h-auto w-full pb-10 ">
+          <p className="text-3xl font-mei ">Who We Are</p>
+          <div className="flex flex-col items-center justify-center pt-8">
+            <p className="text-xl font-mar px-8 font-mar">
+              With a strong legacy of intricate patterns, technological
+              innovations, and cultural heritage in rug making,Saraswatii Global
+              has taken the rug manufacturing industry to the next level of
+              artisanship.
+            </p>
+            <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+              Know More {">>"}
             </p>
           </div>
-          <div className="relative">
-            <img className="" src={Imagestore2}></img>
-            <p className="font-mar absolute text-white font-medium top-[225px] left-20 w-[300px]">
-              New Delhi1st Floor, Khasra No.426, Opp. pillar no.132MG.Road ,
-              Ghitorni , Delhi 110030
-            </p>
+          <div className="flex justify-center pt-3">
+            <video className="h-[500px] w-10/12 rounded-lg" controls autoPlay>
+              <source src={videowhoyouare} type="video/mp4" />
+            </video>
           </div>
         </div>
-      </div>
+        {/*  end who you are */}
+        {/*  start who you are  */}
+        <div className=" h-auto w-full pb-5 ">
+          <p className="text-3xl font-mei ">Our Stores</p>
+          <div className="flex flex-col items-center justify-center pt-8">
+            <p className="text-xl font-mar px-8 font-mar">
+              Explore the wide range of designer Rugs & Carpets at stores with
+              amazing deals. We're sure thatyou'll find something special.
+            </p>
+            <p className="w-52 h-9 font-mar pt-3 underline underline-offset-8 hover:text-red-500 cursor-pointer">
+              Know More {">>"}
+            </p>
+          </div>
+          <div className="flex justify-center py-10 gap-x-3 ">
+            <div className="relative">
+              <img className="" src={Imagestore1}></img>
+              <p className=" font-mar absolute text-white font-medium top-[225px] left-20 w-[300px]">
+                Jaipur 3 Ganesh Colony, Amer Road, Jaipur-302002, Rajasthan,
+                INDIA
+              </p>
+            </div>
+            <div className="relative">
+              <img className="" src={Imagestore2}></img>
+              <p className="font-mar absolute text-white font-medium top-[225px] left-20 w-[300px]">
+                New Delhi1st Floor, Khasra No.426, Opp. pillar no.132MG.Road ,
+                Ghitorni , Delhi 110030
+              </p>
+            </div>
+          </div>
+        </div>
+      </Context.Provider>
+
       {/*  end who you are */}
     </>
   );
