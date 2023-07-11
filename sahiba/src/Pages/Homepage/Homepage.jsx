@@ -51,7 +51,7 @@ const Homepage = () => {
               <img src={imgslider1} alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
-              <Row gutter={16}>
+              <Row className="row2-in" gutter={16}>
                 <Col className="gutter-row" span={8}>
                   <h1 className="font-mei">Sarees</h1>
                 </Col>
@@ -76,7 +76,7 @@ const Homepage = () => {
               <img src={imgslider2} alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
-              <Row gutter={16}>
+              <Row className="row2-in" gutter={16}>
                 <Col className="gutter-row" span={8}>
                   <h1 className="font-mei">Sarees</h1>
                 </Col>
@@ -100,7 +100,7 @@ const Homepage = () => {
               <img src="https://images.unsplash.com/photo-1594040226829-7f251ab46d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
-              <Row gutter={16}>
+              <Row className="row2-in" gutter={16}>
                 <Col className="gutter-row" span={8}>
                   <h1 className="font-mei">Sarees</h1>
                 </Col>
@@ -118,18 +118,20 @@ const Homepage = () => {
             </Col>
           </Row>
             </div>
-            {/* <div>
+          </Carousel>
+          {/* <div>
             <Row gutter={16}>
             <Col className="gutter-row" span={24}>
-              <img src={imgslider} alt="Logo" border="0" className="logo" />
+              <img src={imgslider1} alt="Logo" border="0" className="logo" />
             </Col>
             <Col className="row2 gutter-row" span={24}>
-              <Row gutter={16}>
+              <Row className="row2-in" gutter={16}>
                 <Col className="gutter-row" span={8}>
                   <h1 className="font-mei">Sarees</h1>
                 </Col>
                 <Col className=" col2-row2 gutter-row" span={16}>
                   <p className="font-mar">A celebrated revisit to Shantanu & Nikhil’s iconic collections over the years and what the brand stands for. Power, Progressiveness and Pride now takes centre stage and finds its way into the luxurious world of Obeetee’s handcrafted carpets.</p>
+
                 </Col>
                 <Col className="gutter-row" span={8}>
                   
@@ -142,7 +144,6 @@ const Homepage = () => {
             </Col>
           </Row>
             </div> */}
-          </Carousel>
 
         </div>
       </div>
