@@ -24,7 +24,7 @@ export default function Header() {
         variant="small"
         className="p-1 font-normal text-black hover:bg-orange-100 py-3 rounded-xl"
       >
-        <a href="#" className="text-sm font-medium text-center px-6 font-mar">
+        <a href="/" className="text-sm font-medium text-center px-6 font-mar">
           HOME
         </a>
       </Typography>

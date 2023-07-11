@@ -120,6 +120,15 @@ const Homepage = () => {
             </div>
           </Carousel>
         </div>
+      {/* Part 4 */}
+      <Row className="" gutter={16}>
+                <Col className="gutter-row" span={24}>
+                  
+                </Col>
+                <Col className=" gutter-row" span={24}>
+                  
+                </Col>
+        </Row>
       </div>
     </>
   );
