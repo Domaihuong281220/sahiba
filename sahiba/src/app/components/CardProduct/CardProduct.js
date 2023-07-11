@@ -1,5 +1,7 @@
 /** @format */
 
+// /** @format */
+
 import {
   Card,
   CardHeader,
@@ -8,7 +10,8 @@ import {
   Button,
   CardFooter,
 } from "@material-tailwind/react";
-
+import { useContext } from "react";
+import { Context } from "../../pages/product-furniture-page/ProductFurniturePage";
 export default function CardProduct(props) {
   const { url, title, price, description } = props;
   return (
