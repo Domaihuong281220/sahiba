@@ -131,3 +131,53 @@
     letter-spacing: 3px;
     font-size: 1.1rem;    
 }
+
+.Head-intro3{
+    width: 100%;
+    height: 70rem ;
+    padding: 0;
+    z-index: 1;
+    padding: 10rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+.ant-col{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.css-dev-only-do-not-override-14wwjjs{
+    width: 90%;
+    padding-left: 3rem;
+}
+.Head-intro3 h1{
+    font-size: 5rem;
+}
+
+.row2{
+    height: 15rem !important;
+}
+
+.Head-intro3 p {
+    font-size: 1.2rem;
+}
+
+.Head-intro3 a{
+    text-decoration: underline;
+    letter-spacing: 1.5px;
+    font-size: 1rem; 
+    color: #621010;  
+    line-height: 3rem; 
+}
+
+/* .Slide, .slick-track{
+    width: 100%;
+    height: 500px;
+    display: flex !important;
+
+    justify-content: center !important;
+} */
