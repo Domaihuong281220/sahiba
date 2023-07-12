@@ -37,7 +37,7 @@ const TabComponent = () => {
 
         <TabPanels>
           <TabPanel className="px-10 py-4">
-            <GingerProduct />{" "}
+            <GingerProduct />
           </TabPanel>
           <TabPanel className="px-10 py-4">
             <BookendProduct />

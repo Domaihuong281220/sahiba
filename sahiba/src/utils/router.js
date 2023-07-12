@@ -12,11 +12,17 @@ const routes = [
     main: () => <ProductCarpetPage />,
   },
   {
+    path: "/furniture",
+    exact: true,
+    component: <ProductFurniturePage />,
+    main: () => <ProductFurniturePage />,
+  },
+  {
     path: "/",
     exact: true,
     component: <Homepage />,
     main: () => <Homepage />,
-  }
+  },
 ];
 
 export default routes;

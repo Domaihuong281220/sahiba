@@ -53,7 +53,7 @@ const StorageProduct = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 4.5,
     slidesToScroll: 1,
     autoplay: false,
     speed: 2000,

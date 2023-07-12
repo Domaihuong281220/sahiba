@@ -42,13 +42,13 @@ export default function Header() {
           </MenuHandler>
           <MenuList className="flex flex-col items-center bg-white z-10 font-mar ">
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md ">
-              <a href="/product-carpet">Carpet</a>
+              <a href="/carpetshop">Carpet</a>
             </MenuItem>
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md">
-            <a href="">Funiture</a>
+              <a href="/furniture">Furniture</a>
             </MenuItem>
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md">
-            <a href="">Sarees</a>
+              <a href="">Sarees</a>
             </MenuItem>
           </MenuList>
         </Menu>
