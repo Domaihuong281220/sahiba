@@ -176,13 +176,12 @@
         align-items: center !important;
         justify-content: center !important;
     }
-
-    .css-dev-only-do-not-override-14wwjjs {
-        width: 95%;
-        padding-left: 5rem;
+    
+    .css-dev-only-do-not-override-14wwjjs{
+        width: 90%;
+        padding-left: 3rem;
     }
-
-    .Head-intro3 h1 {
+    .Head-intro3 h1{
         font-size: 5rem;
     }
 
