@@ -106,10 +106,10 @@ export default function Header() {
           <img src={Logo} className="w-36 h-24"></img>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
-        <div className="w-80 h-10">
+        <div className="w-3/12 h-10">
           <Search placeholder="Search Product" allowClear size="large" />
         </div>
-        <div className="flex justify-between w-28">
+        <div className="flex justify-between w-40">
           <button>
             <Icon
               icon="octicon:person-16"
