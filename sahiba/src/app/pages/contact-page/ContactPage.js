@@ -182,11 +182,11 @@ const ContactPage = () => {
             </p>
           </div>
           <form className="w-full px-10 font-mar  ">
-            <div className="border rounded-lg ">
+            <div className="border rounded-lg p-3 ">
               <div className="flex flex-wrap -mx-3 mb-6 pb-10">
                 <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                   <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2"
                     htmlFor="grid-first-name"
                   >
                     First Name
@@ -200,7 +200,7 @@ const ContactPage = () => {
                 </div>
                 <div className="w-full md:w-1/2 px-3">
                   <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    className="block uppercase tracking-wide text-gray-700 text-lg  font-bold mb-2"
                     htmlFor="grid-last-name"
                   >
                     Last Name
@@ -216,7 +216,7 @@ const ContactPage = () => {
               <div className="flex flex-wrap -mx-3 mb-6 pb-10">
                 <div className="w-full px-3">
                   <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2"
                     htmlFor="grid-password"
                   >
                     E-mail
@@ -226,7 +226,7 @@ const ContactPage = () => {
                     id="email"
                     type="email"
                   />
-                  <p className="text-gray-600 text-xs italic">
+                  <p className="text-gray-600 text-lg  italic">
                     Some tips - as long as needed
                   </p>
                 </div>
@@ -234,7 +234,7 @@ const ContactPage = () => {
               <div className="flex flex-wrap -mx-3 mb-6 pb-10">
                 <div className="w-full px-3">
                   <label
-                    className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2"
                     htmlFor="grid-password"
                   >
                     Message
