@@ -12,13 +12,60 @@ import feedbackimg3 from "../../assets/image/Homepage/feedback3.png";
 import feedbackerimg1 from "../../assets/image/Homepage/feedbacker1.png";
 import feedbackerimg2 from "../../assets/image/Homepage/feedbacker2.png";
 import feedbackerimg3 from "../../assets/image/Homepage/feedbacker3.png";
+import blogimg1 from "../../assets/image/Homepage/blog1.jpg";
 
 import { Carousel, Col, Row } from 'antd';
 import {
-  InstagramOutlined
+  InstagramOutlined,
+  ArrowRightOutlined
 } from '@ant-design/icons';
 import React from "react";
 
+
+const blogs = [
+  {
+    id: 1,
+    img: blogimg1,
+    title: "The Bungalow",
+    desc: "A hundred - year legacy Intergrated into every product.",
+    link: "https://www.obeetee.com/"
+  },
+  {
+    id: 2,
+    img: blogimg1,
+    title: "The Bungalow",
+    desc: "A hundred - year legacy Intergrated into every product.",
+    link: "https://www.obeetee.com/"
+  },
+  {
+    id: 3,
+    img: blogimg1,
+    title: "The Bungalow",
+    desc: "A hundred - year legacy Intergrated into every product.",
+    link: "https://www.obeetee.com/"
+  },
+  {
+    id: 4,
+    img: blogimg1,
+    title: "The Bungalow",
+    desc: "A hundred - year legacy Intergrated into every product.",
+    link: "https://www.obeetee.com/"
+  },
+  {
+    id: 5,
+    img: blogimg1,
+    title: "The Bungalow",
+    desc: "A hundred - year legacy Intergrated into every product.",
+    link: "https://www.obeetee.com/"
+  },
+  {
+    id: 6,
+    img: blogimg1,
+    title: "The Bungalow",
+    desc: "A hundred - year legacy Intergrated into every product.",
+    link: "https://www.obeetee.com/"
+  }
+]
 
 const Homepage = () => {
   return (
@@ -161,43 +208,119 @@ const Homepage = () => {
           </Row>
         </div>
 
-      {/* Part 5 */}
-      <div className="Head-intro5">
-        <Row className="part5" gutter={16}>
-          <Col className="gutter-row part5-incol" span={24}>
-            <Row className="part5-inrow" gutter={16}>
-              <Col className="gutter-row" span={8}>
-                <div className="feedback-box">
-                  <img src={feedbackimg1} alt="Logo" border="0" className="feedbackimg1" />
-                  <img src={feedbackerimg1} alt="Logo" border="0" className="feedbackerimg1" />
-                  <InstagramOutlined className="IGicon" style={{ fontSize: '150%'}} />
-                  <p className="IGID">Danny021_1</p>
-                  <p className="IGcomment font-mar">"I love the quality of the carpet and the design is so unique. I am so happy with my purchase."</p>
-                </div>
-              </Col>
-              <Col className="gutter-row" span={8}>
-              <div className="feedback-box">
-              <img src={feedbackimg2} alt="Logo" border="0" className="feedbackimg1" />
-                  <img src={feedbackerimg2} alt="Logo" border="0" className="feedbackerimg1" />
-                  <InstagramOutlined className="IGicon" style={{ fontSize: '150%'}} />
-                  <p className="IGID">Danny021_1</p>
-                  <p className="IGcomment font-mar">"I love the quality of the carpet and the design is so unique. I am so happy with my purchase."</p>
-              </div>
-              </Col>
-              <Col className="gutter-row" span={8}>
-              <div className="feedback-box">
-              <img src={feedbackimg3} alt="Logo" border="0" className="feedbackimg1" />
-                  <img src={feedbackerimg3} alt="Logo" border="0" className="feedbackerimg1" />
-                  <InstagramOutlined className="IGicon" style={{ fontSize: '150%'}} />
-                  <p className="IGID">Danny021_1</p>
-                  <p className="IGcomment font-mar">"I love the quality of the carpet and the design is so unique. I am so happy with my purchase."</p>
-              </div>
-              </Col>
+        {/* Part 5 */}
+        <div className="Head-intro5">
+          <Row className="part5" gutter={16}>
+            <Col className="gutter-row part5-incol" span={24}>
+              <Row className="part5-inrow" gutter={16}>
+                <Col className="gutter-row" span={8}>
+                  <div className="feedback-box">
+                    <img src={feedbackimg1} alt="Logo" border="0" className="feedbackimg1" />
+                    <img src={feedbackerimg1} alt="Logo" border="0" className="feedbackerimg1" />
+                    <InstagramOutlined className="IGicon" style={{ fontSize: '150%' }} />
+                    <p className="IGID">Danny021_1</p>
+                    <p className="IGcomment font-mar">"I love the quality of the carpet and the design is so unique. I am so happy with my purchase."</p>
+                  </div>
+                </Col>
+                <Col className="gutter-row" span={8}>
+                  <div className="feedback-box">
+                    <img src={feedbackimg2} alt="Logo" border="0" className="feedbackimg1" />
+                    <img src={feedbackerimg2} alt="Logo" border="0" className="feedbackerimg1" />
+                    <InstagramOutlined className="IGicon" style={{ fontSize: '150%' }} />
+                    <p className="IGID">Danny021_1</p>
+                    <p className="IGcomment font-mar">"I love the quality of the carpet and the design is so unique. I am so happy with my purchase."</p>
+                  </div>
+                </Col>
+                <Col className="gutter-row" span={8}>
+                  <div className="feedback-box">
+                    <img src={feedbackimg3} alt="Logo" border="0" className="feedbackimg1" />
+                    <img src={feedbackerimg3} alt="Logo" border="0" className="feedbackerimg1" />
+                    <InstagramOutlined className="IGicon" style={{ fontSize: '150%' }} />
+                    <p className="IGID">Danny021_1</p>
+                    <p className="IGcomment font-mar">"I love the quality of the carpet and the design is so unique. I am so happy with my purchase."</p>
+                  </div>
+                </Col>
               </Row>
-          </Col>
+            </Col>
           </Row>
-      </div>
+        </div>
 
+
+        {/* Part 6 */}
+        <div className="Head-intro6">
+          <Row className="part6" gutter={16}>
+            <Col className="gutter-row part6-incol" span={24}>
+              <h1 className="">Testimonials</h1>
+            </Col>
+            <Col className="gutter-row part6-incol" span={24}>
+              <p className="font-mar part6-p1">Kind Words For Our Customers</p>
+            </Col>
+            <Col className="gutter-row part6-incol" span={24}>
+              <p className="font-mar part6-p2">When there are so many choices present no one stick to a product until it is exceptional. We know we have the best products but this is for you and because of you. Thanks for trusting us.</p>
+            </Col>
+          </Row>
+        </div>
+        {/* Part 7 */}
+        <div className="Head-intro7">
+          <h1 className="font-mar">If you have any question. Contact us</h1>
+          <div className="part7-in"></div>
+          <div className="part7-in2">FAQ</div>
+          <div className="part7-in3"><ArrowRightOutlined className="iconpart7" /></div>
+          <div className="part7-in4">Ask Expert</div>
+          <div className="part7-in5"><ArrowRightOutlined className="iconpart7" /></div>
+        </div>
+
+        {/* Part 8 */}
+        <div className="Head-intro8">
+          <h1 className="">Our Blog</h1>
+          <p className="font-mar">Read our blog to stay up to date on the latest décor trends, Rugs details & tips.</p>
+        </div>
+
+        {/* Part 9 */}
+        <div className="Head-intro9">
+          {/* <div className="blog">
+            <img src={blogimg1} alt="Logo" border="0" className="blogimg1" />
+            <p className="blogp1">How to choose the right rug for your home</p>
+          </div> */}
+        <Carousel autoplay>
+          
+          <div className="blogs">
+            <Row className="blogs-row" gutter={16}>
+          {blogs.map((item, index) => {
+            if (index<3) {
+              return (
+                <Col className=" gutter-row blog-in" span={8}>
+                <div className="blog">
+                  <img src={item.img} alt="Logo" border="0" className="blogimg1" />
+                  <p className="blogp1">{item.title}</p>
+                </div>
+                </Col>
+              )}
+            return (<></>)
+          }
+          )}
+          </Row>
+          </div>
+          <div className="blogs">
+            <Row className="blogs-row" gutter={16}>
+          {blogs.map((item, index) => {
+            if (index >= 3 && index < 6) {
+              return (
+                <Col className=" gutter-row blog-in" span={8}>
+                <div className="blog">
+                  <img src={item.img} alt="Logo" border="0" className="blogimg1" />
+                  <p className="blogp1">{item.title}</p>
+                </div>
+                </Col>
+              )}
+            return (<></>)
+          }
+          )}
+          </Row>
+          </div>
+        </Carousel>
+
+        </div>
       </div>
     </>
   );
