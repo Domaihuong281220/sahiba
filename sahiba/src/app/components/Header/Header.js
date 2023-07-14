@@ -73,16 +73,14 @@ export default function Header() {
           </MenuHandler>
           <MenuList className="flex flex-col items-center bg-white z-10 font-mar">
             <MenuItem className="px-4 py-2 hover:bg-zinc-200 rounded-md">
-              Our Story
+              <a href="/ourstory">Our Story </a>
             </MenuItem>
-            <MenuItem className="px-4 py-2 hover:bg-zinc-200  rounded-md">
-              Our Foundation
-            </MenuItem>
+
             <MenuItem className=" px-4 py-2 hover:bg-zinc-200 rounded-md">
-              Management
+              <a href="/management">Management</a>
             </MenuItem>
             <MenuItem className="px-4 py-2 hover:bg-zinc-200  rounded-md">
-              Media
+              <a href="/media"> Media </a>
             </MenuItem>
           </MenuList>
         </Menu>
@@ -92,7 +90,7 @@ export default function Header() {
         variant="small"
         className="p-1 font-mar text-black hover:bg-orange-100 py-3 rounded-xl"
       >
-        <a href="#" className="text-sm font-medium px-6">
+        <a href="/contact" className="text-sm font-medium px-6">
           CONTACT
         </a>
       </Typography>
@@ -102,7 +100,7 @@ export default function Header() {
   return (
     <Navbar className="mx-auto px-4 lg:px-8 w-full sticky top-0 z-10 rounded-none py-0">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <Typography as="a" href="#" className="mr-4 cursor-pointer font-medium">
+        <Typography as="a" href="/" className="mr-4 cursor-pointer font-medium">
           <img src={Logo} className="w-36 h-24"></img>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
