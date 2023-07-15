@@ -17,7 +17,7 @@ const { Search } = Input;
 
 export default function Header() {
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
       <Typography
         as="li"
         variant="small"
@@ -104,10 +104,16 @@ export default function Header() {
           <img src={Logo} className="w-36 h-24"></img>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
-        <div className="w-3/12 h-10">
-          <Search placeholder="Search Product" allowClear size="large" />
+        <div className=" lg:w-4/12 h-10 sm:w-full md:w-full xl:6/12 2xl:8/12">
+          <Search
+            placeholder="Search Product"
+            allowClear
+            size="large"
+            className="w-full"
+          />
         </div>
-        <div className="flex justify-between w-40">
+
+        <div className="flex justify-evenly w-40 ">
           <button>
             <Icon
               icon="octicon:person-16"

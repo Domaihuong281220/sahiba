@@ -5,7 +5,7 @@ import React from "react";
 const ManagementPage = () => {
   return (
     <>
-      <div className="grid grid-cols-5 py-10">
+      <div className="grid grid-cols-5 py-20">
         <div className="h-auto w-full flex justify-center ">
           <img
             src="https://d1aakab6fw0jox.cloudfront.net/assets/images/team/mk-choudhary.jpg"
@@ -38,7 +38,7 @@ const ManagementPage = () => {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-5 py-10">
+      <div className="grid grid-cols-5 py-20">
         <div className="h-auto w-full flex justify-center ">
           <img
             src="https://d1aakab6fw0jox.cloudfront.net/assets/images/team/raj-choudhary.jpg"
