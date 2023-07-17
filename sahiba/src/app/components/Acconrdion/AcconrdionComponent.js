@@ -9,6 +9,8 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { Input } from "antd";
+import { Icon } from "@iconify/react";
+
 const { Search } = Input;
 
 const AcconrdionComponent = (props) => {
@@ -35,10 +37,10 @@ const AcconrdionComponent = (props) => {
         </div>
 
         <div
-          className={`text-xl rotate-90 group-[.is-active]:rotate-[270deg] duration-500 w-[30px] h-[30px] bg-slate-300 rounded-lg`}
+          className={`text-xl rotate-270 group-[.is-active]:rotate-[90deg] duration-500 w-[30px] h-[30px] bg-slate-300 rounded-lg flex justify-center items-center`}
           onClick={handleTogleActive}
         >
-          {">"}
+          <Icon icon="ic:sharp-arrow-right" className="w-12 h-12"></Icon>
         </div>
       </div>
       <div
@@ -49,15 +51,20 @@ const AcconrdionComponent = (props) => {
             <div className="bg-white  w-full flex justify-start items-center border ">
               <List className="flex-col ">
                 <ListItem className="p-0">
-                  <label className="py-2 flex w-full cursor-pointer items-center">
+                  <label className="py-2 flex w-full cursor-pointer items-center ">
                     <ListItemPrefix className="mr-3">
-                      <Checkbox
+                      {/* <Checkbox
+                        size={24}
                         ripple={false}
                         className="hover:before:opacity-0"
                         containerProps={{
                           className: "p-0",
                         }}
-                      />
+                      /> */}
+                      <input
+                        className="w-4 h-4 hover:cursor-pointer "
+                        type="checkbox"
+                      ></input>
                     </ListItemPrefix>
                     <Typography color="blue-gray" className="font-mar">
                       {title}
