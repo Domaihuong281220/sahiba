@@ -7,6 +7,7 @@ import MediaPage from "../app/pages/media-page/MediaPage";
 import OurStoryPage from "../app/pages/ourStory-page/OurStoryPage";
 import ProductCarpetPage from "../app/pages/product-carpet-page/ProductCarpetPage";
 import ProductFurniturePage from "../app/pages/product-furniture-page/ProductFurniturePage";
+import  Sarees  from "../Pages/Sarees/Sarees";
 
 const routes = [
   {
@@ -51,6 +52,12 @@ const routes = [
     component: <Homepage />,
     main: () => <Homepage />,
   },
+  {
+  path: "/sarees",
+  exact: true,
+  component: <Sarees />,
+  main: () => <Sarees />,
+},
 ];
 
 export default routes;

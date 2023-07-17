@@ -206,7 +206,11 @@
         margin-left: -120px !important;
         width: 100% !important;
     }
+    :where(.css-dev-only-do-not-override-14wwjjs).ant-carousel .slick-list .slick-slide >div>div{
+        margin-right: -220px !important;
+    }
 
+    
     /* part 4 */
     .Head-intro4 {
         height: 247vh;
@@ -468,6 +472,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        margin-right: -130px !important;
     }
     .blog{
         width: 400px;
@@ -482,7 +487,7 @@
         padding: 0 10rem !important;
     }
     .blog-in{
-        padding: 0 0 !important ;
+        padding: 0 1rem !important ;
     }
 
     .blog img{
