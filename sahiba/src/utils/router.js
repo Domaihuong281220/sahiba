@@ -7,7 +7,7 @@ import MediaPage from "../app/pages/media-page/MediaPage";
 import OurStoryPage from "../app/pages/ourStory-page/OurStoryPage";
 import ProductCarpetPage from "../app/pages/product-carpet-page/ProductCarpetPage";
 import ProductFurniturePage from "../app/pages/product-furniture-page/ProductFurniturePage";
-import  Sarees  from "../Pages/Sarees/Sarees";
+import  Sarees  from "../app/pages/Sarees/Sarees";
 
 const routes = [
   {

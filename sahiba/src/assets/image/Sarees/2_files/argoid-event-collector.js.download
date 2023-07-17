@@ -1,0 +1,255 @@
+var ArgoidShopify = ArgoidShopify || {};
+ArgoidShopify.schema = ArgoidShopify.schema || {};
+ArgoidShopify.helpers = ArgoidShopify.helpers || {};
+ArgoidShopify.processing = ArgoidShopify.processing || {};
+ArgoidShopify.Constants = {
+  SCRIPT_VERSION: "2.0.0",
+  EVENT_SERVER_BASE_URL: "https://1.app.argoid.com/events",
+  LOG_LEVEL: ["INFO", "ERROR", "DEBUG"],
+  LOG_ENABLED: true,
+  SESSION_ID_KEY: "argoidSessionId",
+  SESSION_TIMEOUT_KEY: "argoidSessionTimeout",
+  CUSTMER_ID_PREFIX: "gid://shopify/Customer/",
+};
+
+var argoidDataLayer = argoidDataLayer || [];
+argoidDataLayer.push = function () {
+  Array.prototype.push.apply(this, arguments);
+  ArgoidShopify.processing.processDataLayer();
+};
+
+var argoidEventScript = true;
+var argoidLastProcessedIndex = -1;
+
+ArgoidShopify.schema.Event = function Event() {
+  // properties
+  this.sessionId;
+  this.userIds;
+  this.appId;
+  this.appSource;
+  this.eventType;
+  this.eventTimestamp;
+  this.eventAttributes;
+  this.clientAttributes;
+  this.deviceAttributes;
+  this.additionalMetadata;
+
+  // methods
+  this.initialize = (eventData) => {
+    let GaCustomerId = ArgoidShopify.helpers.getUniqueCustomerId();
+
+    let customerId = ArgoidShopify.getObjectByPath(
+      ["userIds", "registeredUserId"],
+      eventData
+    );
+
+    if(customerId && customerId.indexOf(ArgoidShopify.Constants.CUSTMER_ID_PREFIX) == -1){
+      customerId = `${ArgoidShopify.Constants.CUSTMER_ID_PREFIX}${customerId}`;
+    }
+
+    this.userIds = {
+      anonymousId: GaCustomerId,
+      registeredUserId: customerId,
+    };
+
+    this.appId = ArgoidShopify.getObjectByPath(["appId"], eventData);
+    this.appSource = ArgoidShopify.getObjectByPath(["appSource"], eventData);
+    this.sessionId = ArgoidShopify.helpers.getArgoidSessionId();
+    this.eventType = ArgoidShopify.getObjectByPath(["eventType"], eventData);
+    this.eventTimestamp = "" + ArgoidShopify.getObjectByPath(
+      ["eventTimestamp"],
+      eventData
+    );
+    this.eventAttributes = ArgoidShopify.getObjectByPath(
+      ["eventAttributes"],
+      eventData
+    );
+
+    this.clientAttributes = ArgoidShopify.getObjectByPath(
+      ["clientAttributes"],
+      eventData
+    );
+    this.deviceAttributes = ArgoidShopify.helpers.getDeviceDetails();
+    this.additionalMetadata = { status: "SUCCESS" };
+  };
+};
+
+ArgoidShopify.getObjectByPath = (p, o) =>
+  p.reduce((xs, x) => (xs && xs[x] ? xs[x] : null), o);
+
+ArgoidShopify.logger = (type, message, e = null) => {
+  if (
+    ArgoidShopify.Constants.LOG_ENABLED &&
+    ArgoidShopify.Constants.LOG_LEVEL.includes(type)
+  ) {
+    if (type === "ERROR") {
+      let logMessage =
+        "ARGOID|ERROR| " + message + "| theme : " + Shopify.theme.name;
+      console.error(logMessage, e);
+    } else {
+      let logMessage =
+        "ARGOID|" + type + "| " + message + " |  theme : " + Shopify.theme.name;
+      console.log(logMessage);
+    }
+  }
+};
+
+ArgoidShopify.sendEventToServer = (eventAttributes, sid = null) => {
+  let url = `${ArgoidShopify.Constants.EVENT_SERVER_BASE_URL}/${sid}`;
+  ArgoidShopify.helpers.sendEvent(url, eventAttributes).then((res) => {
+    let logMessage = "Server Response : " + res;
+    ArgoidShopify.logger("DEBUG", logMessage);
+  });
+};
+
+ArgoidShopify.helpers.sendEvent = (url, event) => {
+  return fetch(url, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(event),
+  });
+};
+
+ArgoidShopify.helpers.getUniqueCustomerId = () => {
+  let customerId = "";
+  try {
+    // customerId = ShopifyAnalytics.lib.user().traits().uniqToken;
+    //     getting GA cookie
+    var name = "_ga" + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        customerId = c.substring(name.length, c.length);
+      }
+    }
+
+    if(customerId && customerId.indexOf(".") == 3){
+      customerId = customerId.substring(6);
+    }
+  } catch (error) {
+    let logMessage = "unable to get Shopify Analytics uniqToken";
+    ArgoidShopify.logger("ERROR", logMessage, error);
+  }
+
+  return customerId;
+};
+
+ArgoidShopify.helpers.getArgoidRecoDetails = () => {
+  let argoidRecoSourceRbn = localStorage.getItem(
+    ArgoidShopify.Constants.RECO_RIBBON_TRACKING_KEY
+  );
+  if (argoidRecoSourceRbn) {
+    localStorage.removeItem(ArgoidShopify.Constants.RECO_RIBBON_TRACKING_KEY);
+  } else {
+    argoidRecoSourceRbn = "OTHER";
+  }
+  return argoidRecoSourceRbn;
+};
+
+ArgoidShopify.helpers.getArgoidSessionId = () => {
+  let sessionTimeOutMilliSecondsThreshold = 30 * 60 * 1000; // 30 minutes is GA default timeout
+  let currentEpochMilliSeconds = new Date().valueOf();
+  let prevSessionTimeout = parseInt(
+    localStorage.getItem(ArgoidShopify.Constants.SESSION_TIMEOUT_KEY)
+  );
+  let currentSessionTimeout =
+    currentEpochMilliSeconds + sessionTimeOutMilliSecondsThreshold;
+
+  let argoidSessionId = localStorage.getItem(
+    ArgoidShopify.Constants.SESSION_ID_KEY
+  );
+  let argoidSessionIdValue;
+  if (
+    argoidSessionId === null ||
+    isNaN(prevSessionTimeout) ||
+    currentEpochMilliSeconds > prevSessionTimeout
+  ) {
+    localStorage.setItem(
+      ArgoidShopify.Constants.SESSION_ID_KEY,
+      currentEpochMilliSeconds
+    );
+    localStorage.setItem(
+      ArgoidShopify.Constants.SESSION_TIMEOUT_KEY,
+      currentSessionTimeout
+    );
+    argoidSessionIdValue = String(currentEpochMilliSeconds);
+  } else {
+    localStorage.setItem(
+      ArgoidShopify.Constants.SESSION_TIMEOUT_KEY,
+      currentSessionTimeout
+    );
+    argoidSessionIdValue = argoidSessionId;
+  }
+  return argoidSessionIdValue;
+};
+
+ArgoidShopify.helpers.getDeviceDetails = () => {
+  let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  let osName = navigator?.platform;
+  let osVersion = navigator?.appVersion;
+  let networkType = navigator?.connection?.effectiveType;
+  let pixelRatio = devicePixelRatio;
+  let connectionSpeed = navigator?.connection?.effectiveType;
+  let language = navigator?.language;
+  let height = screen?.height;
+  let width = screen?.width;
+  let userAgent = navigator?.userAgent;
+  let location = localStorage.getItem("location");
+  let lat = "";
+  let long = "";
+  if (location) {
+    [lat, long] = location.split(",");
+  }
+  let ip = localStorage.getItem("ip") || "";
+
+  let deviceInfo = {
+    timeZone: timeZone,
+    osName: osName,
+    osVersion: osVersion,
+    networkType: networkType,
+    pixelRatio: pixelRatio + "",
+    connectionSpeed: connectionSpeed,
+    language: language,
+    height: height + "",
+    width: width + "",
+    deviceId: "1355435835494",
+    browserUserAgent: userAgent,
+    latitude: lat,
+    longitude: long,
+    deviceIP: ip
+  };
+
+  return deviceInfo;
+};
+
+ArgoidShopify.processing.handleEvent = (argoidDlEvent) => {
+  let event = new ArgoidShopify.schema.Event();
+  let argoidEventData = ArgoidShopify.getObjectByPath(
+    ["eventMetadata"],
+    argoidDlEvent
+  );
+  let argoidStoreId = ArgoidShopify.getObjectByPath(["storeId"], argoidDlEvent);
+
+  event.initialize(argoidEventData);
+  ArgoidShopify.sendEventToServer(event, argoidStoreId);
+};
+
+ArgoidShopify.processing.processDataLayer = () => {
+  argoidDataLayer.forEach((element, index) => {
+    console.log("DEBUG", element, index);
+    if (argoidLastProcessedIndex + 1 == index) {
+      ArgoidShopify.processing.handleEvent(element);
+      argoidLastProcessedIndex = index;
+    }
+  });
+};
+
+// main function
+ArgoidShopify.processing.processDataLayer();
