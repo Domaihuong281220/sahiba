@@ -12,3 +12,62 @@
     }
 
 } */
+
+@media only screen and (min-width: 1500px) {
+    .collection{
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin-top: 50px !important;
+        justify-content: center !important;
+    }
+    
+    .slider-in{
+        margin-left: 7rem !important;
+        padding: 0 !important;
+        width: 80% !important;
+        padding-bottom: 3rem !important;
+    }
+
+    .tittle-wrap{
+        width: fit-content !important;
+        height: 4rem !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px solid #3D1F03;
+        border-bottom: 2px solid #3D1F03;
+        margin-left: 23rem;
+        margin-top: 5rem;
+    }
+    .tittle-collection{
+        color: #3D1F03;
+        font-size: 3rem;
+    }
+
+    .collection-name{
+        margin-left: -3rem !important;
+        font-size: 2.2rem !important;
+    }
+
+    .shopnow{
+        text-decoration: underline !important;
+        
+    }
+
+    .tittle-saree{
+        color: #3D1F03;
+        font-size: 3rem;
+        padding: 2rem 0;
+    }
+    .saree-desc{
+        font-size: 1.1rem;
+        line-height: 30px;
+        letter-spacing: 2px;
+        color: #3D1F03;
+        padding: 0 20rem 5rem 20rem;
+    }
+
+}
