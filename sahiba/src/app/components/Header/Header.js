@@ -11,10 +11,10 @@ import {
   MenuItem,
   Button,
 } from "@material-tailwind/react";
-import Logo from "../../../assets/image/logo/Logo.png";
-import { Input } from "antd";
-const { Search } = Input;
 
+import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
+import Logo from "../../../assets/image/logo/Logo.png";
+import Headroom from "react-headroom";
 export default function Header() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
@@ -98,53 +98,76 @@ export default function Header() {
   );
 
   return (
-    <Navbar className="mx-auto px-4 lg:px-8 w-full sticky top-0 z-10 rounded-none py-0">
-      <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
-        <Typography as="a" href="/" className="mr-4 cursor-pointer font-medium">
-          <img src={Logo} className="w-36 h-24"></img>
-        </Typography>
-        <div className="hidden lg:block">{navList}</div>
-        <div className=" lg:w-4/12 h-10 sm:w-full md:w-full xl:6/12 2xl:8/12">
-          <Search
+    <Headroom className="z-10">
+      <Navbar className="mx-auto px-4 lg:px-8 w-full sticky top-0 z-10 rounded-none py-0">
+        <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
+          <Typography
+            as="a"
+            href="/"
+            className="mr-4 cursor-pointer font-medium"
+          >
+            <img src={Logo} className="w-36 h-24"></img>
+          </Typography>
+          <div className="hidden lg:block">{navList}</div>
+          <div className=" lg:w-3/12 h-10 sm:w-10/12 md:w-full xl:w-3/12 2xl:w-4/12">
+            {/* <Search
             placeholder="Search Product"
             allowClear
             size="large"
-            className="w-full"
-          />
+           styles={{}}
+          /> */}
+            <InputGroup className="flex  items-center w-full">
+              <Input
+                type="text"
+                placeholder="Search Product"
+                className="text-black w-full h-10 border-b-2 border-black border-solid p-2"
+              />
+              {/* <InputRightElement className="rounded-lg w-1/12">
+              <Button className="text-black bg-slate-500 h-10 ">
+                <Icon icon="material-symbols:search" fontSize={24}></Icon>
+              </Button>
+            </InputRightElement> */}
+              <InputRightElement>
+                <Button className="text-black  h-10 flex justify-center items-center">
+                  <Icon icon="material-symbols:search" fontSize={24}></Icon>
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </div>
+
+          <div className="flex justify-evenly w-40 ">
+            <button>
+              <Icon
+                icon="octicon:person-16"
+                width={24}
+                height={24}
+                color="black"
+              />
+            </button>
+
+            <button>
+              <Icon
+                icon="mdi:heart-outline"
+                width={24}
+                height={24}
+                color="black"
+              />
+            </button>
+
+            <button className=" relative">
+              <Icon
+                icon="mdi:cart-outline"
+                width={24}
+                height={24}
+                color="black"
+              />
+              <p className="bg-red-600 absolute h-3 w-3 text-[8px] top-[-4px] right-[-2px] rounded-full text-center">
+                1
+              </p>
+            </button>
+          </div>
         </div>
-
-        <div className="flex justify-evenly w-40 ">
-          <button>
-            <Icon
-              icon="octicon:person-16"
-              width={24}
-              height={24}
-              color="black"
-            />
-          </button>
-
-          <button>
-            <Icon
-              icon="mdi:heart-outline"
-              width={24}
-              height={24}
-              color="black"
-            />
-          </button>
-
-          <button className=" relative">
-            <Icon
-              icon="mdi:cart-outline"
-              width={24}
-              height={24}
-              color="black"
-            />
-            <p className="bg-red-600 absolute h-3 w-3 text-[8px] top-[-4px] right-[-2px] rounded-full text-center">
-              1
-            </p>
-          </button>
-        </div>
-      </div>
-    </Navbar>
+      </Navbar>
+    </Headroom>
   );
 }

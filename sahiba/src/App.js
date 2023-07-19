@@ -67,7 +67,7 @@ function App() {
       <div className=" h-auto w-full">
         <p className="text-3xl ">New Canyan Collection</p>
       </div>
-
+          
       <Footer /> */}
       <Router>
         <Routes>
