@@ -62,6 +62,14 @@
         font-size: 3rem;
         padding: 2rem 0;
     }
+    .latestandline{
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+    }
     .saree-desc{
         font-size: 1.1rem;
         line-height: 30px;
@@ -69,5 +77,48 @@
         color: #3D1F03;
         padding: 0 20rem 5rem 20rem;
     }
+    .line1{
+        width: 100px;
+        height: 2px;
+        background-color: #3D1F03;
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+    }
+    .line2{
+        width: 100px;
+        height: 2px;
+        background-color: #3D1F03;
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+    }
+    .Latest{
+        margin-left: 100px !important;
+        padding: 0 !important;
+        z-index: 1;
+    }
 
+    .latest-desc{
+        font-size: 1.5rem;
+        line-height: 30px;
+        letter-spacing: 12px;
+        padding-bottom: 3rem;
+        margin-top: -2rem !important;
+        color: #3D1F03;
+       
+    }
+
+    .latest-row1{
+        padding-bottom: 1rem !important;
+    }
+
+    .latest-ladgeimg{
+        width: 100% !important;
+        height: 515px !important;
+    }
 }

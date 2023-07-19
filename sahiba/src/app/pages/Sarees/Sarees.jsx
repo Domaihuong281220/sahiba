@@ -11,6 +11,13 @@ import imageFreeShipping from "../../../assets/image/payments/shipping-min.webp"
 import imageDesign from "../../../assets/image/payments/1000+design-min.webp";
 import collection1 from "../../../assets/image/Sarees/Category1.png";
 import sareeimg1 from "../../../assets/image/Sarees/saree1.jpg";
+import sareeimg2 from "../../../assets/image/Sarees/saree2.jpg";
+import latestimg1 from "../../../assets/image/Sarees/latest1.png";
+import latestimg2 from "../../../assets/image/Sarees/latest2.png";
+import latestimg3 from "../../../assets/image/Sarees/latest3.png";
+import latestimg4 from "../../../assets/image/Sarees/latest4.png";
+
+
 import { Carousel, Col, Row } from "antd";
 
 const collection = [
@@ -141,11 +148,31 @@ const Sarees = () => {
         </div>
       </Carousel>
       <h1 className="font-mar text-center  tittle-saree mt-10">Saree</h1>
-      <p className="font-mar text-center text-sm saree-desc">The sari or saree has seen a renewed interest in Indian fashion in recent years. Many of our favourite designers like Anamika Khanna, Tarun Tahiliani have experimented with draped sarees and dhoti sarees. There has been an amazing interest in labels like Raw Mango and Anavila that are entirely focused on the sari and are reinventing the handloom sari in beautiful new ways. Here, we present our curation of embroidered and handwoven saris, belted saris, great drapes and smart, unusual blouses.</p>
+            <p className="font-mar text-center text-sm saree-desc">The sari or saree has seen a renewed interest in Indian fashion in recent years. Many of our favourite designers like Anamika Khanna, Tarun Tahiliani have experimented with draped sarees and dhoti sarees. There has been an amazing interest in labels like Raw Mango and Anavila that are entirely focused on the sari and are reinventing the handloom sari in beautiful new ways. Here, we present our curation of embroidered and handwoven saris, belted saris, great drapes and smart, unusual blouses.</p>
       
-       
+      <img className="w-full h-2/6" src={sareeimg2} alt="Sarees" />
+      <div className="latestandline">
+        <h1 className="font-mei text-center  tittle-saree mt-10">The lastest</h1>
+        <div className="line1"></div>
+        <div className="line2"></div>
+      </div>
+      <p className="font-mar text-center text-sm latest-desc">Our freshest arrivals</p>
+      <Row gutter={16} className="Latest">
+        <Col span={8} className="latest-row1">
+          <img className="w-full h-auto" src={latestimg1} alt="Latest" />
+        </Col>
+        <Col span={16} className="latest-row1">
+          <img className="w-full h-auto latest-ladgeimg" src={latestimg2} alt="Latest" />
+        </Col>
+        <Col span={16}>
+          <img className="latest-ladgeimg w-full h-auto" src={latestimg3} alt="Latest" />
+        </Col>
+        <Col span={8}>
+          <img className="w-full h-auto" src={latestimg4} alt="Latest" />
+        </Col>
+      </Row>
 
-
+            
 
 
     </>
