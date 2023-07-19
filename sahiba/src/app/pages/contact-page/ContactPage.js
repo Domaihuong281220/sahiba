@@ -177,7 +177,7 @@ const ContactPage = () => {
         <div className="w-full  h-auto py-20 ">
           <div className="flex flex-col py-5">
             <p className="text-3xl font-mei">Got Any Questions?</p>
-            <p className="font-mar text-lg pb-10">
+            <p className="font-mar text-lg pb-10 ">
               Use the form below to get in touch with our team
             </p>
           </div>
