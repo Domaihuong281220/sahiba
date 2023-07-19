@@ -48,7 +48,7 @@ export default function Header() {
               <a href="/furniture">Furniture</a>
             </MenuItem>
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md">
-              <a href="">Sarees</a>
+              <a href="/sarees">Sarees</a>
             </MenuItem>
           </MenuList>
         </Menu>
