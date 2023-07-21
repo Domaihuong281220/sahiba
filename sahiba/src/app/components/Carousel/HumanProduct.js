@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 import React from "react";
 import CardProduct from "../CardProduct/CardProduct";
-import { HumanContext } from "../../pages/product-furniture-page/ProductFurniturePage";
+import { HumanContext } from "../../pages/productFurniturePage/ProductFurniturePage";
 import { useContext } from "react";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -49,7 +49,7 @@ function SamplePrevArrow(props) {
 }
 
 const HumanProduct = () => {
-  const DataProductHuman= useContext(HumanContext);
+  const DataProductHuman = useContext(HumanContext);
   const settings = {
     dots: false,
     infinite: true,

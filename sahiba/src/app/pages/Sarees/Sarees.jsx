@@ -496,7 +496,7 @@ const Sarees = () => {
         </div>
       </div>
 
-      <img className="" src={imageBanner}></img>
+      <img className="w-full" src={imageBanner}></img>
     </>
   );
 };

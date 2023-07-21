@@ -10,14 +10,24 @@ import {
   Button,
   CardFooter,
 } from "@material-tailwind/react";
-import { useContext } from "react";
-import { Context } from "../../pages/product-furniture-page/ProductFurniturePage";
+import { Icon } from "@iconify/react";
+
 export default function CardProduct(props) {
   const { url, title, price, description } = props;
   return (
     <Card className="w-64">
-      <CardHeader shadow={false} floated={false} className="h-72">
-        <img src={url} className="w-full h-full object-cover" />
+      <CardHeader shadow={false} floated={false} className="h-72 relative">
+        <a className="" href="/productdetail">
+          <img src={url} className="w-full h-full object-cover" />
+        </a>
+        <button className="absolute top-0 right-0 p-3">
+          <Icon
+            icon="mdi:heart-outline"
+            width={32}
+            height={32}
+            className="text-white font-bold"
+          ></Icon>
+        </button>
       </CardHeader>
       <CardBody>
         <div className="flex items-center justify-between mb-2">

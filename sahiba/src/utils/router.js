@@ -1,15 +1,22 @@
 /** @format */
 
 import { Homepage } from "../Pages";
-import ContactPage from "../app/pages/contact-page/ContactPage";
-import ManagementPage from "../app/pages/management-page/ManagementPage";
-import MediaPage from "../app/pages/media-page/MediaPage";
-import OurStoryPage from "../app/pages/ourStory-page/OurStoryPage";
-import ProductCarpetPage from "../app/pages/product-carpet-page/ProductCarpetPage";
-import ProductFurniturePage from "../app/pages/product-furniture-page/ProductFurniturePage";
-import  Sarees  from "../app/pages/Sarees/Sarees";
+import ContactPage from "../app/pages/contactPage/ContactPage";
+import ManagementPage from "../app/pages/managementPage/ManagementPage";
+import MediaPage from "../app/pages/mediaPage/MediaPage";
+import OurStoryPage from "../app/pages/ourStoryPage/OurStoryPage";
+import ProductCarpetPage from "../app/pages/productCarpetPage/ProductCarpetPage";
+import ProductFurniturePage from "../app/pages/productFurniturePage/ProductFurniturePage";
+import Sarees from "../app/pages/Sarees/Sarees";
+import ProductDetailPage from "../app/pages/productDetailPage/ProductDetailPage";
 
 const routes = [
+  {
+    path: "/productdetail",
+    exact: true,
+    component: <ProductDetailPage />,
+    main: () => <ProductDetailPage />,
+  },
   {
     path: "/contact",
     exact: true,
@@ -53,11 +60,11 @@ const routes = [
     main: () => <Homepage />,
   },
   {
-  path: "/sarees",
-  exact: true,
-  component: <Sarees />,
-  main: () => <Sarees />,
-},
+    path: "/sarees",
+    exact: true,
+    component: <Sarees />,
+    main: () => <Sarees />,
+  },
 ];
 
 export default routes;

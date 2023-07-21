@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 import React from "react";
 import CardProduct from "../CardProduct/CardProduct";
-import { StorageContext } from "../../pages/product-furniture-page/ProductFurniturePage";
+import { StorageContext } from "../../pages/productFurniturePage/ProductFurniturePage";
 import { useContext } from "react";
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
