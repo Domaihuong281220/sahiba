@@ -10,7 +10,7 @@ const CheckoutCardItem = () => {
         className="h-[100px] w-[100px]"
       ></img>
 
-      <div className="flex flex-col items-start px-2 ">
+      <div className="flex flex-col items-start px-2 w-full">
         <p className="text-lg">W-V-LUXOR-CD-V-120-EBONY</p>
         <div className="flex gap-x-2">
           <p className="text-sm">distributed by </p>

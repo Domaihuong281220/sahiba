@@ -6,23 +6,22 @@ import CheckoutCartProduct from "./CheckoutCartProduct";
 import { Divider } from "antd";
 import { Icon } from "@iconify/react";
 import CheckoutMethodPayCart from "./CheckoutMethodPayCart";
+import { cartData } from "../CartPage/_data.js";
 const CheckoutPage = () => {
   return (
-    <div className="w-[80%] m-auto flex py-4 font-mar gap-x-2">
+    <div className="w-[80%] m-auto flex py-8 font-mar gap-x-2">
       <div className="w-8/12 rounded-lg">
         <CheckoutAdress />
-        <Divider></Divider>
-        <div className="overflow-y-scroll h-[600px]">
-          <CheckoutCartProduct></CheckoutCartProduct>
-          <Divider></Divider>
-          <CheckoutCartProduct></CheckoutCartProduct>
-          <Divider></Divider>
-          <CheckoutCartProduct></CheckoutCartProduct>
-          <Divider></Divider>
-          <CheckoutCartProduct></CheckoutCartProduct>
-          <Divider></Divider>
-          <CheckoutCartProduct></CheckoutCartProduct>
-          <Divider></Divider>
+        <Divider style={{ marginLeft: "0px" }}></Divider>
+        <div className="overflow-y-scroll h-[600px] ">
+          {cartData.map((item, index) => {
+            return (
+              <>
+                <CheckoutCartProduct></CheckoutCartProduct>
+                <Divider style={{ marginLeft: "0px" }}></Divider>
+              </>
+            );
+          })}
         </div>
       </div>
 
@@ -38,13 +37,17 @@ const CheckoutPage = () => {
         <div className="flex flex-col items-start px-4 pt-4">
           <p className="pb-2">DISCOUNT CODE</p>
           <div className="flex gap-x-1 w-full">
-            <input type="text" className="rounded-lg w-full px-2"></input>
+            <input
+              type="text"
+              className="rounded-lg w-full px-2"
+              placeholder="Enter discount code"
+            ></input>
             <button className=" rounded-lg h-auto w-auto p-2 bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l text-white font-thin">
               APPLY
             </button>
           </div>
         </div>
-        <Divider></Divider>
+        <Divider style={{ marginLeft: "0px" }}></Divider>
         <div className="flex justify-between px-4 pt-4">
           <p className="">Invoice contact information</p>
           <button className="w-auto h-auto p-1 ">
@@ -62,7 +65,7 @@ const CheckoutPage = () => {
           <p className="">{"Shipping fee"} </p>
           <p className=""> {"$3"}</p>
         </div>
-        <Divider></Divider>
+        <Divider style={{ marginLeft: "0px" }}></Divider>
         <div className=" flex justify-between px-4 pb-4">
           <p className="">Total</p>
           <p className="">{"$1003"}</p>
