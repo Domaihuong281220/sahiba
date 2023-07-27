@@ -9,6 +9,8 @@ import ProductCarpetPage from "../app/pages/productCarpetPage/ProductCarpetPage"
 import ProductFurniturePage from "../app/pages/productFurniturePage/ProductFurniturePage";
 import Sarees from "../app/pages/Sarees/Sarees";
 import ProductDetailPage from "../app/pages/productDetailPage/ProductDetailPage";
+import { CartPage } from "../app/pages/CartPage/CartPage";
+import CheckoutPage from "../app/pages/CheckoutPage/CheckoutPage";
 
 const routes = [
   {
@@ -17,6 +19,19 @@ const routes = [
     component: <ProductDetailPage />,
     main: () => <ProductDetailPage />,
   },
+  {
+    path: "/cart",
+    exact: true,
+    component: <CartPage />,
+    main: () => <CartPage />,
+  },
+  {
+    path: "/checkout",
+    exact: true,
+    component: <CheckoutPage />,
+    main: () => <CheckoutPage />,
+  },
+
   {
     path: "/contact",
     exact: true,

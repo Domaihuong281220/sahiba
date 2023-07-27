@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DefaultLayout from "./app/Layouts/DefaultLayout";
 import { useStore } from "./store";
+import { CartPage } from "./app/pages/CartPage/CartPage";
 function App() {
   const [state, dispatch] = useStore();
 
@@ -75,6 +76,7 @@ function App() {
         </Routes>
       </Router>
       {/* <ProductCarpetPage /> */}
+      {/* <CartPage /> */}
     </div>
   );
 }

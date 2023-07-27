@@ -2,7 +2,7 @@
 
 import {
   Checkbox,
-  List,
+  ,
   ListItem,
   ListItemPrefix,
   Typography,
