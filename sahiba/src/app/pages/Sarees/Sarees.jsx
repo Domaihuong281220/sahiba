@@ -329,10 +329,10 @@ const Sarees = () => {
                       <Col span={24}>
                         <img src={item.image} alt="collection1" />
                       </Col>
-                      <Col span={16} className="font-mei collection-name">
+                      <Col span={24} className="font-mei collection-name">
                         {item.title}
                       </Col>
-                      <Col span={8}>{item.link}</Col>
+                      {/* <Col span={8}>{item.link}</Col> */}
                     </Row>
                   </Col>
                 );
@@ -351,10 +351,10 @@ const Sarees = () => {
                       <Col span={24}>
                         <img src={item.image} alt="collection1" />
                       </Col>
-                      <Col span={16} className="font-mei collection-name">
+                      <Col span={24} className="font-mei collection-name">
                         {item.title}
                       </Col>
-                      <Col span={8}>{item.link}</Col>
+                      {/* <Col span={8}>{item.link}</Col> */}
                     </Row>
                   </Col>
                 );
