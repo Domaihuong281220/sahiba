@@ -2,8 +2,8 @@
 
 import { Routes, Route } from "react-router-dom";
 import routes from "../../utils/router.js";
-import Header from "../components/Header/Header.js";
-import Footer from "../components/Footer/Footer.js";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 
 const DefaultLayout = () => {
   //Routes

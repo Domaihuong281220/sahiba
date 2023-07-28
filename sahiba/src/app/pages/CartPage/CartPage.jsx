@@ -34,12 +34,12 @@ export const CartPage = () => (
 
       <Flex direction="column" align="center" flex="1">
         <CartOrderSummary />
-        <HStack mt="6" fontWeight="semibold">
+        <div className="flex justify-center items-center gap-x-3">
           <p className="">or</p>
-          <a className="" href="#">
+          <a className="hover:text-blue-600" href="/">
             Continue shopping
           </a>
-        </HStack>
+        </div>
       </Flex>
     </Stack>
   </div>

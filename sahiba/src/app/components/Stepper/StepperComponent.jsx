@@ -50,7 +50,7 @@ const StepperComponent = () => {
 
   return (
     <>
-      <Steps current={current} items={items} />
+      <Steps current={current} items={items}  className=""/>
       <div className="w-full h-auto flex flex-col justify-center items-center py-4 gap-y-2">
         <img src={steps[current].url}></img>
         <p className="font-mar text-xl">{steps[current].description}</p>

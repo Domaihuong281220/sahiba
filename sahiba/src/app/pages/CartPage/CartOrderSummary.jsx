@@ -20,20 +20,20 @@ const OrderSummaryItem = (props) => {
 
 export const CartOrderSummary = () => {
   return (
-    <Stack className="w-10/12 rounded-lg border-2  space-x-1">
-      <Heading size="md">Order Summary</Heading>
+    <div className="w-10/12 rounded-lg border-2 h-auto ">
+      <div className="text-xl pt-4">Order Summary</div>
 
       <div className="flex flex-col">
         <OrderSummaryItem label="Subtotal" value={formatPrice(359.91)} />
         <OrderSummaryItem label="Shipping + Tax">
-          <Link href="#" textDecor="underline">
+          <a href="#" className="underline hover:text-blue-500">
             Calculate shipping
-          </Link>
+          </a>
         </OrderSummaryItem>
         <OrderSummaryItem label="Coupon Code">
-          <Link href="#" textDecor="underline">
+          <a href="#" className="underline hover:text-blue-500">
             Add coupon code
-          </Link>
+          </a>
         </OrderSummaryItem>
 
         <div className=" flex justify-around">
@@ -41,16 +41,15 @@ export const CartOrderSummary = () => {
           <p className="text-lg"> {formatPrice(359.91)}</p>
         </div>
       </div>
-
-      <button className=" h-auto p-4 bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l  rounded-lg flex justify-center items-center gap-x-4">
+      <div className="w-full h-auto p-4  bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l  rounded-lg flex justify-center items-center hover: cursor-pointer">
         <a
           className="flex justify-center items-center gap-x-4"
           href="/checkout"
         >
-          <p className="text-lg">Checkout</p>
-          <FaArrowRight></FaArrowRight>
+          <p className="text-lg text-white font-bold">Checkout</p>
+          <FaArrowRight className="text-white font-bold"></FaArrowRight>
         </a>
-      </button>
-    </Stack>
+      </div>
+    </div>
   );
 };

@@ -1,13 +1,24 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import CheckoutAdress from "./CheckoutAdress";
 import CheckoutCartProduct from "./CheckoutCartProduct";
-import { Divider } from "antd";
+import { Drawer, Divider } from "antd";
 import { Icon } from "@iconify/react";
 import CheckoutMethodPayCart from "./CheckoutMethodPayCart";
 import { cartData } from "../CartPage/_data.js";
 const CheckoutPage = () => {
+  const [openAddress, setOpenAddress] = useState(false);
+  const showDrawer = () => {
+    setOpenAddress(true);
+  };
+  const onChange = (e) => {
+    setPlacement(e.target.value);
+  };
+  const onClose = () => {
+    setOpenAddress(false);
+  };
+  const [placement, setPlacement] = useState("right");
   return (
     <div className="w-[80%] m-auto flex py-8 font-mar gap-x-2">
       <div className="w-8/12 rounded-lg">
@@ -28,10 +39,94 @@ const CheckoutPage = () => {
       <div className="w-4/12 bg-blue-100 rounded-lg">
         <div className="flex justify-between px-2 pb-4 pt-4">
           <p className="">Choose payment method</p>
-          <div className="text-blue-500 flex items-center justify-between  hover:text-blue-700 cursor-pointer">
+          <div
+            onClick={showDrawer}
+            className="text-blue-500 flex items-center justify-between  hover:text-blue-700 cursor-pointer"
+          >
             <p className=""> See All</p>
             <Icon icon="ep:arrow-right" width={20} height={20}></Icon>
           </div>
+          <Drawer
+            title="Select a payment method"
+            placement={placement}
+            width={500}
+            onClose={onClose}
+            open={openAddress}
+          >
+            <div className="">
+              <p className="text-lg">Recommended payment method</p>
+            </div>
+            <div className=" flex justify-between items-center border-2 border-blue-400 rounded-lg p-2 ">
+              <div className="flex justify-start items-center gap-x-4">
+                <button>
+                  <Icon
+                    icon="ic:baseline-payment"
+                    width={36}
+                    height={36}
+                    className="text-blue-500"
+                  ></Icon>
+                </button>
+                <div className="flex flex-col">
+                  <p className="font-bold">Payment on delivery</p>
+                  <p className="">Payment on delivery</p>
+                </div>
+              </div>
+              <Icon icon="ep:arrow-right" width={24} height={24}></Icon>
+            </div>
+            <Divider></Divider>
+
+            <div className=" flex justify-between items-center border-2 border-blue-400 rounded-lg p-2 ">
+              <div className="flex justify-start items-center gap-x-4">
+                <button>
+                  <Icon
+                    icon="arcticons:momo"
+                    width={36}
+                    height={36}
+                    className="text-white bg-pink-500 rounded"
+                  ></Icon>
+                </button>
+                <div className="flex flex-col">
+                  <p className="text-gray-400">******5162</p>
+                  <p className="text-gray-400">Click for full infomation</p>
+                </div>
+              </div>
+              <input type="radio"></input>
+            </div>
+            <Divider></Divider>
+
+            <div className=" flex justify-between items-center border-2 border-blue-400 rounded-lg p-2 ">
+              <div className="flex justify-start items-center gap-x-4">
+                <button>
+                  <Icon
+                    icon="arcticons:zalopay"
+                    width={36}
+                    height={36}
+                    className="text-white bg-gradient-to-r from-green-800 to-blue-800  rounded"
+                  ></Icon>
+                </button>
+                <div className="flex flex-col">
+                  <p className="text-gray-400">******5162</p>
+                  <p className="text-gray-400">Click for full infomation</p>
+                </div>
+              </div>
+              <input type="radio"></input>
+            </div>
+            <Divider></Divider>
+            <div className="flex gap-x-3">
+              <button
+                onClick={onClose}
+                className="bg-gradient-to-r from-black to-gray-500 h-auto  p-2 rounded text-white w-full"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={onClose}
+                className=" bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l w-full p-2 rounded text-white"
+              >
+                OK
+              </button>
+            </div>
+          </Drawer>
         </div>
         <CheckoutMethodPayCart />
         <div className="flex flex-col items-start px-4 pt-4">
