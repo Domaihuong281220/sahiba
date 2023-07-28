@@ -387,8 +387,6 @@ const ProductCarpetPage = () => {
           </div>
         </div>
         {/* end shop milano collection */}
-
-
         {/* start fillter product */}
         <div className="grid grid-cols-4 py-8">
           <div className="pl-8 w-full h-full font-mar">
@@ -411,7 +409,6 @@ const ProductCarpetPage = () => {
           </div>
         </div>
         {/* end filter product */}
-        
         {/*  start who you are  */}
         <div className=" h-auto w-full pb-10 ">
           <p className="text-3xl font-mei ">Who We Are</p>
