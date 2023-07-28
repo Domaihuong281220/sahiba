@@ -60,7 +60,7 @@ const CarouselFurniture = ({ autoSlide = false, autoSlideInterval = 3000 }) => {
             Inspired by tradition. Infused with modernity
           </Typography>
           <div className="flex justify-center ">
-            <Button className="text-white bg-black h-[50] w-[100] rounded-lg">
+            <Button className="text-white bg-gradient-to-t from-black to-orange-500  hover:bg-gradient-to-l h-[50] w-[100] rounded-lg">
               SHOP NOW
             </Button>
           </div>

@@ -62,7 +62,7 @@ const CarouselCarpet = ({ autoSlide = false, autoSlideInterval = 3000 }) => {
             spaces
           </Typography>
           <div className="flex justify-center ">
-            <Button className="text-white bg-black h-[50] w-[100] rounded-lg">
+            <Button className="text-white  h-[50] w-[100] rounded-lg bg-gradient-to-t from-black to-orange-500  hover:bg-gradient-to-l">
               SHOP NOW
             </Button>
           </div>
