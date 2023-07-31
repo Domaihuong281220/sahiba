@@ -12,7 +12,7 @@ const ModalDeleteProductCart = ({ visible, onclose }) => {
       <div className="bg-white p-4 rounded w-auto h-auto ">
         <div className=" flex justify-between items-center ">
           <p className="font-mar text-lg">Remove from cart </p>
-          <button className="w-auto h-auto" onClick={handleOnClose}>
+          <button className="w-auto h-auto" onClick={()=>handleOnClose()}>
             <Icon icon="carbon:close-filled"></Icon>
           </button>
         </div>
@@ -22,10 +22,16 @@ const ModalDeleteProductCart = ({ visible, onclose }) => {
         </p>
 
         <div className="flex justify-center gap-x-4 pt-6">
-          <button className="bg-gray-500 py-2 px-4 font-mar font-bold rounded-lg">
+          <button
+            className="bg-gray-500 py-2 px-4 font-mar font-bold rounded-lg"
+            onClick={onclose}
+          >
             Cancel
           </button>
-          <button className="bg-blue-300 py-2 px-4 text-white font-mar font-bold rounded-lg">
+          <button
+            className="bg-blue-300 py-2 px-4 text-white font-mar font-bold rounded-lg"
+            onClick={onclose}
+          >
             OK
           </button>
         </div>

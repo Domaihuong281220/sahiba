@@ -151,7 +151,9 @@ const ProductDetailPage = () => {
               </button>
               <button className=" bg-green-200 h-auto  w-[300px] flex justify-center items-center rounded-xl hover:bg-green-300 gap-x-2">
                 <Icon icon="bxs:cart-add"></Icon>
-                <p className=""> Buy Now</p>
+                <a className="" href="/cart">
+                  <p className=""> Buy Now</p>
+                </a>
               </button>
             </div>
 
@@ -212,7 +214,7 @@ const ProductDetailPage = () => {
             </TabPanel>
             <TabPanel className="px-10 py-4 ">
               <div className=" flex flex-col items-start">
-                <li>
+                <li> 
                   Free Shipping is available in india, Shipping charges for
                   international Delivery will be charged at Checkout.
                 </li>

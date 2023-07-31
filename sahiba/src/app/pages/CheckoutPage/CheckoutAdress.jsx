@@ -2,8 +2,13 @@
 
 import React, { useState } from "react";
 import { Drawer, Divider } from "antd";
+import ModalAddnewAddress from "./ModalAddnewAddress";
 
 const CheckoutAdress = () => {
+  const [showMyModal, setShowModal] = useState(false);
+  const handleOnclose = () => {
+    setShowModal(false);
+  };
   const [openAddress, setOpenAddress] = useState(false);
   const showDrawer = () => {
     setOpenAddress(true);
@@ -20,7 +25,7 @@ const CheckoutAdress = () => {
     <div className="w-auto h-auto bg-gray-50 font-mar ">
       <div className="flex items-center justify-between bg-gray-100 py-2 px-4">
         <p className="">Delivery address</p>
-        <button className="w-auto h-auto p-1 " onClick={showDrawer}>
+        <button className="w-auto h-auto p-1 " onClick={() => showDrawer()}>
           <p className="text-blue-400 hover:text-blue-700">Edit</p>
         </button>
 
@@ -28,13 +33,20 @@ const CheckoutAdress = () => {
           title="Eidt Adress Delivery"
           placement={placement}
           width={500}
-          onClose={onClose}
+          onClose={() => onClose()}
           open={openAddress}
           extra={
             <div className="w-full h-full border-2 border-blue-400  hover:bg-blue-400 p-1 rounded-lg hover: cursor-pointer">
-              <button className="text-blue-300 hover:text-white ">
+              <button
+                className="text-black "
+                onClick={() => setShowModal(true)}
+              >
                 Add new address
               </button>
+              <ModalAddnewAddress
+                onclose={() => handleOnclose()}
+                visible={showMyModal}
+              />
             </div>
           }
         >
@@ -200,13 +212,13 @@ const CheckoutAdress = () => {
           <Divider></Divider>
           <div className="flex gap-x-3">
             <button
-              onClick={onClose}
+              onClick={() => onClose()}
               className="bg-gradient-to-r from-black to-gray-500 h-auto  p-2 rounded text-white w-full"
             >
               Cancel
             </button>
             <button
-              onClick={onClose}
+              onClick={()=> onClose()}
               className=" bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l w-full p-2 rounded text-white"
             >
               OK

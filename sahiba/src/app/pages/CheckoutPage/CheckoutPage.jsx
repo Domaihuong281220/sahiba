@@ -8,16 +8,29 @@ import { Icon } from "@iconify/react";
 import CheckoutMethodPayCart from "./CheckoutMethodPayCart";
 import { cartData } from "../CartPage/_data.js";
 const CheckoutPage = () => {
-  const [openAddress, setOpenAddress] = useState(false);
-  const showDrawer = () => {
-    setOpenAddress(true);
+  // Drawer Invoice
+  const [openInvoice, setOpenInvoice] = useState(false);
+  const showDrawerInvoice = () => {
+    setOpenInvoice(true);
   };
+  const onCloseModalInvoice = () => {
+    setOpenInvoice(false);
+    console.log(7772);
+  };
+  // Modal Payment.
+
+  const [openModalPayment, setOpenModalPayment] = useState(false);
+  const showPaymentModal = () => {
+    setOpenModalPayment(true);
+  };
+  const onCloseModalPayment = () => {
+    setOpenModalPayment(false);
+  };
+
   const onChange = (e) => {
     setPlacement(e.target.value);
   };
-  const onClose = () => {
-    setOpenAddress(false);
-  };
+
   const [placement, setPlacement] = useState("right");
   return (
     <div className="w-[80%] m-auto flex py-8 font-mar gap-x-2">
@@ -40,7 +53,7 @@ const CheckoutPage = () => {
         <div className="flex justify-between px-2 pb-4 pt-4">
           <p className="">Choose payment method</p>
           <div
-            onClick={showDrawer}
+            onClick={() => showPaymentModal()}
             className="text-blue-500 flex items-center justify-between  hover:text-blue-700 cursor-pointer"
           >
             <p className=""> See All</p>
@@ -50,8 +63,8 @@ const CheckoutPage = () => {
             title="Select a payment method"
             placement={placement}
             width={500}
-            onClose={onClose}
-            open={openAddress}
+            onClose={onCloseModalPayment}
+            open={openModalPayment}
           >
             <div className="">
               <p className="text-lg">Recommended payment method</p>
@@ -114,13 +127,13 @@ const CheckoutPage = () => {
             <Divider></Divider>
             <div className="flex gap-x-3">
               <button
-                onClick={onClose}
+                onClick={() => onCloseModalPayment()}
                 className="bg-gradient-to-r from-black to-gray-500 h-auto  p-2 rounded text-white w-full"
               >
                 Cancel
               </button>
               <button
-                onClick={onClose}
+                onClick={() => onCloseModalPayment()}
                 className=" bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l w-full p-2 rounded text-white"
               >
                 OK
@@ -145,10 +158,64 @@ const CheckoutPage = () => {
         <Divider style={{ marginLeft: "0px" }}></Divider>
         <div className="flex justify-between px-4 pt-4">
           <p className="">Invoice contact information</p>
-          <button className="w-auto h-auto p-1 ">
+          <button
+            className="w-auto h-auto p-1 "
+            onClick={() => showDrawerInvoice()}
+          >
             <p className="text-blue-400 hover:text-blue-700">Edit</p>
           </button>
         </div>
+        <Drawer
+          title="Invoice contact information"
+          placement={placement}
+          width={500}
+          onClose={onCloseModalInvoice}
+          open={openInvoice}
+        >
+          <div className="flex flex-col py-2">
+            <p className="text-lg py-2">Email</p>
+            <input
+              type="text"
+              placeholder="Enter Email"
+              className="border-2 border-gray-200 w-full h-auto p-2 rounded-lg "
+            ></input>
+            <p className="text-xs text-gray-400 pb-2">
+              Please enter your email to update the delivery status
+            </p>
+          </div>
+          <div className="py-2">
+            <div className=" flex justify-between items-center pb-2">
+              <p className="text-lg">Payment address</p>
+            </div>
+            <textarea
+              className="w-full h-[100px] border-2 border-gray-200 p-2 rounded-lg"
+              placeholder="plese fill payment address"
+            ></textarea>
+          </div>
+
+          <div className="py-2">
+            <p className="w-full text-lg">Tax code</p>
+            <input
+              type="text"
+              className="w-full border-2 border-gray-200 h-auto p-2 rounded-lg"
+              placeholder="Please enter tax code "
+            ></input>
+          </div>
+          <div className="flex gap-x-2 ">
+            <button
+              className="w-full h-auto py-2 bg-gray-400 text-white font-bold rounded-lg"
+              onClick={() => onCloseModalInvoice()}
+            >
+              Cancel
+            </button>
+            <button
+              className=" rounded-lg w-full h-auto py-2 bg-gradient-to-r from-orange-300 to-red-300 hover:bg-gradient-to-l text-white"
+              onClick={() => onCloseModalInvoice()}
+            >
+              Save
+            </button>
+          </div>
+        </Drawer>
         <div className="flex justify-start px-4 pb-4">
           <p className="">Order information</p>
         </div>
