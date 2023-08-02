@@ -64,7 +64,7 @@ const UserAdd = () => {
             <p className="text-lg">Address</p>
             <Input className="w-full h-auto" placeholder="Address" />
           </div>
-          <div className="flex ">
+          <div className="flex justify-start gap-x-4 ">
             <p className="text-lg">Role</p>
             <Radio.Group onChange={onChange} value={value} className="">
               <Radio value={1}>Admin</Radio>
