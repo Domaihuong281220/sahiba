@@ -35,10 +35,10 @@ export default function Header() {
           }}
         >
           <MenuHandler>
-            <Button className="text-sm font-medium text-black flex items-center justify-start hover:bg-orange-100 py-3 rounded-xl">
+            <button className="text-sm font-medium text-black flex items-center justify-start hover:bg-orange-100 py-3 rounded-xl px-6">
               SHOP
               <Icon icon="gridicons:dropdown" width={24} height={24} />
-            </Button>
+            </button>
           </MenuHandler>
           <MenuList className="flex flex-col items-center bg-white z-10 font-mar ">
             <MenuItem className="hover:bg-zinc-200 px-6 py-2 rounded-md lg- ">
@@ -66,10 +66,10 @@ export default function Header() {
           }}
         >
           <MenuHandler>
-            <Button className="text-sm font-medium text-black flex items-center justify-start hover:bg-orange-100 py-3 rounded-xl">
+            <button className="text-sm font-medium text-black flex items-center justify-start hover:bg-orange-100 py-3 rounded-xl px-6">
               ABOUT US
               <Icon icon="gridicons:dropdown" width={24} height={24} />
-            </Button>
+            </button>
           </MenuHandler>
           <MenuList className="flex flex-col items-center bg-white z-10 font-mar">
             <MenuItem className="px-4 py-2 hover:bg-zinc-200 rounded-md">
@@ -118,9 +118,9 @@ export default function Header() {
               />
 
               <InputRightElement>
-                <Button className="text-black  h-10 flex justify-center items-center">
+                <button className="text-black  h-10 flex justify-center items-center">
                   <Icon icon="material-symbols:search" fontSize={24}></Icon>
-                </Button>
+                </button>
               </InputRightElement>
             </InputGroup>
           </div>

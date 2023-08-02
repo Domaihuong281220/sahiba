@@ -1,11 +1,13 @@
 /** @format */
 
 import { Routes, Route } from "react-router-dom";
-import routes from "../utils/router";
-import Header from "../app/user/components/Header/Header";
-import Footer from "../app/user/components/Footer/Footer";
 
-const DefaultLayout = () => {
+import PrivateLayout from "../PrivateLayout/PrivateLayout";
+import PublicLayout from "../PublicLayout/PublicLayout";
+import PublicRoute from "../../utils/PublicRoute";
+import PrivateRoute from "../../utils/PrivateRoute";
+
+const DefaultLayout = (props) => {
   //Routes
   const showContentMenu = (routes) => {
     var result = null;
@@ -26,9 +28,16 @@ const DefaultLayout = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header />
       <Routes>{showContentMenu(routes)}</Routes>
-      <Footer />
+      <Footer /> */}
+      <Routes>
+        <Route element={<PublicLayout />}>{showContentMenu(PublicRoute)}</Route>
+
+        <Route element={<PrivateLayout />}>
+          {showContentMenu(PrivateRoute)}
+        </Route>
+      </Routes>
     </>
   );
 };

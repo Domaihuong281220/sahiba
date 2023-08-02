@@ -19,6 +19,7 @@ const routes = [
     component: <ProductDetailPage />,
     main: () => <ProductDetailPage />,
   },
+
   {
     path: "/cart",
     exact: true,
