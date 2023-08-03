@@ -32,6 +32,8 @@ const ProductManage = () => {
       key: "subtitle",
     },
     { title: "Price", dataIndex: "price", key: "price" },
+    { title: "Quatity", dataIndex: "quatity", key: "quatity" },
+
     {
       title: "Rating",
       dataIndex: "rating",
@@ -60,6 +62,12 @@ const ProductManage = () => {
       key: "action",
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
+          <a className="" href="/productmanage/viewproduct">
+            <button className="w-auto h-auto p-2 bg-violet-400 hover:bg-violet-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg">
+              <Icon icon="carbon:view-filled" height={24} width={24}></Icon>
+              <p className="">View</p>
+            </button>
+          </a>
           <a className="" href="/productmanage/editproduct">
             <button className="w-auto h-auto p-2 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg">
               <Icon
@@ -88,6 +96,7 @@ const ProductManage = () => {
       title: `Carpet Sahiba ${i}`,
       subtitle: `Ticking 3D woven floor mats with sharp bottom weaving (3D layers technology) help the space have more depth, creating a visual effect that captures the whole view. Besides, the durability of floor mats is up to 7-8 years of use, 2 times more than soft fur carpets`,
       price: `$1000`,
+      quatity: "100",
       categories: "Carpet",
     });
   }

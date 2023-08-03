@@ -79,12 +79,6 @@ export function SidebarAd() {
                 <p className=""> User Add</p>
               </div>
             </a>
-            <a className="" href="/useredit">
-              <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
-                <Icon icon="prime:user-edit" width={20} height={20}></Icon>
-                <p className="">User Edit</p>
-              </div>
-            </a>
           </AccordionBody>
         </Accordion>
 
@@ -112,14 +106,16 @@ export function SidebarAd() {
               </div>
             </a>
 
-            <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
-              <Icon
-                icon="icon-park-outline:ad-product"
-                width={20}
-                height={20}
-              ></Icon>
-              <p className="">Product Grid</p>
-            </div>
+            <a className="" href="/categoriesmanage">
+              <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
+                <Icon
+                  icon="icon-park-outline:ad-product"
+                  width={20}
+                  height={20}
+                ></Icon>
+                <p className="">Categories Manage</p>
+              </div>
+            </a>
           </AccordionBody>
         </Accordion>
 
@@ -138,12 +134,15 @@ export function SidebarAd() {
             />
           </ListItemSuffix>
         </ListItem>
-        <ListItem className="text-lg">
-          <ListItemPrefix>
-            <UserCircleIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Profile
-        </ListItem>
+        <a className="" href="/profile">
+          <ListItem className="text-lg">
+            <ListItemPrefix>
+              <UserCircleIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Profile
+          </ListItem>
+        </a>
+
         <ListItem className="text-lg">
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />

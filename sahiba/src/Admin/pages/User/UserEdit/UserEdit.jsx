@@ -1,8 +1,10 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
+import DatePicker from "react-datepicker";
+
 import {
   Tabs,
   TabList,
@@ -13,6 +15,8 @@ import {
 } from "@chakra-ui/react";
 
 const UserEdit = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
@@ -63,19 +67,40 @@ const UserEdit = () => {
 
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Full Name</p>
-                <Input className="w-full h-auto" placeholder="Full Name" />
+                <Input
+                  className="w-full h-auto"
+                  placeholder="Full Name"
+                  defaultValue={"Nguyen Van Tay"}
+                />
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Email</p>
                 <Input
                   className="w-full h-auto"
-                  placeholder="taynv@1cinnovation.com"
-                  disabled
+                  placeholder="Email"
+                  defaultValue={"taynv@1cinnovation.com"}
                 />
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Phone Number</p>
-                <Input className="w-full h-auto" placeholder="Phone Number" />
+                <Input
+                  className="w-full h-auto"
+                  placeholder="Phone Number"
+                  defaultValue={"0375875162"}
+                />
+              </div>
+              <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+                <p className="text-lg">Date of birth</p>
+                {/* <Input className="w-full h-auto" placeholder="Date of birth" /> */}
+                <DatePicker
+                  selected={startDate}
+                  showMonthDropdown={true}
+                  showYearDropdown={true}
+                  showPopperArrow={true}
+                  onChange={(date) => setStartDate(date)}
+                  show
+                  className="w-full h-full border-2 border-black py-2 rounded-lg px-2"
+                />
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Role</p>

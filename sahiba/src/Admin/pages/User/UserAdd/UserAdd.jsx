@@ -4,6 +4,10 @@ import React, { useState } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import { Radio } from "antd";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+// format Date
 
 const UserAdd = () => {
   const [value, setValue] = useState(1);
@@ -11,6 +15,8 @@ const UserAdd = () => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
+  const [startDate, setStartDate] = useState(new Date());
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
@@ -58,13 +64,22 @@ const UserAdd = () => {
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Date of birth</p>
-            <Input className="w-full h-auto" placeholder="Date of birth" />
+            {/* <Input className="w-full h-auto" placeholder="Date of birth" /> */}
+            <DatePicker
+              selected={startDate}
+              showMonthDropdown={true}
+              showYearDropdown={true}
+              showPopperArrow={true}
+              onChange={(date) => setStartDate(date)}
+              show
+              className="w-full h-full border-2 border-black py-2 rounded-lg px-2"
+            />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Address</p>
             <Input className="w-full h-auto" placeholder="Address" />
           </div>
-          <div className="flex justify-start gap-x-4 ">
+          <div className="flex justify-start gap-x-4 items-center">
             <p className="text-lg">Role</p>
             <Radio.Group onChange={onChange} value={value} className="">
               <Radio value={1}>Admin</Radio>
@@ -89,9 +104,11 @@ const UserAdd = () => {
             <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
               <p className="">Reset</p>
             </button>
-            <button className="w-auto h-auto py-2 px-4 bg-red-50 border-2 border-red-300 rounded-lg hover:bg-red-200 hover:shadow-lg">
-              <p className="">Cancel</p>
-            </button>
+            <a className="" href="/userlist">
+              <button className="w-auto h-auto py-2 px-4 bg-red-50 border-2 border-red-300 rounded-lg hover:bg-red-200 hover:shadow-lg">
+                <p className="">Cancel</p>
+              </button>
+            </a>
           </div>
         </div>
       </div>
