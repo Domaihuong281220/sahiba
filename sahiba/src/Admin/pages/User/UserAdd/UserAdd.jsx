@@ -16,18 +16,18 @@ const UserAdd = () => {
   const onChange = (e) => {
     setrole(e.target.value);
   };
-  const [formData, setFormData] = useState({
-    id: "",
-    name: "",
-    phone: "",
-    email: "",
-    dateofbirth: "",
-    address: "",
-    avatar:
-      "https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-1/350279337_252231724154593_7305889329858622849_n.jpg?stp=c0.0.385.385a_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=XHuDlqy2pVsAX_SschY&_nc_ht=scontent.fsgn5-11.fna&oh=00_AfANT7pAN4KRtzPzEmE_XreMWeDqqASSQUOl5u0VHjxgGg&oe=64D309A3",
-    password: "",
-    role: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   id: "",
+  //   name: "",
+  //   phone: "",
+  //   email: "",
+  //   dateofbirth: "",
+  //   address: "",
+  //   avatar:
+  //     "https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-1/350279337_252231724154593_7305889329858622849_n.jpg?stp=c0.0.385.385a_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=XHuDlqy2pVsAX_SschY&_nc_ht=scontent.fsgn5-11.fna&oh=00_AfANT7pAN4KRtzPzEmE_XreMWeDqqASSQUOl5u0VHjxgGg&oe=64D309A3",
+  //   password: "",
+  //   role: "",
+  // });
 
   // set state for variable
 
@@ -36,19 +36,19 @@ const UserAdd = () => {
   // declare navigate
   const navigate = useNavigate();
 
-  const handleGetAPI = () => {
-    axios
-      .post("http://103.157.218.126:8000/admin/adduser", formData)
-      .then((res) => {
-        console.log(res.data);
-        <Alert
-          message="Success Tips"
-          description="Detailed description and advice about successful copywriting."
-          type="success"
-          showIcon
-        />;
-      });
-  };
+  // const handleGetAPI = () => {
+  //   axios
+  //     .post("http://103.157.218.126:8000/admin/adduser", formData)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       <Alert
+  //         message="Success Tips"
+  //         description="Detailed description and advice about successful copywriting."
+  //         type="success"
+  //         showIcon
+  //       />;
+  //     });
+  // };
 
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
@@ -97,7 +97,7 @@ const UserAdd = () => {
               className="w-full h-auto"
               placeholder="Enter ID User only number"
               type="number"
-              onChange={(e) => setFormData({ id: e.target.value })}
+              // onChange={(e) => setFormData({ id: e.target.value })}
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -105,9 +105,9 @@ const UserAdd = () => {
             <Input
               className="w-full h-auto"
               placeholder="Full Name"
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setFormData({ ...formData, name: e.target.value })
+              // }
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -115,9 +115,9 @@ const UserAdd = () => {
             <Input
               className="w-full h-auto"
               placeholder="Phone Number"
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setFormData({ ...formData, phone: e.target.value })
+              // }
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -125,9 +125,9 @@ const UserAdd = () => {
             <Input
               className="w-full h-auto"
               placeholder="Email"
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setFormData({ ...formData, email: e.target.value })
+              // }
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -143,9 +143,9 @@ const UserAdd = () => {
             <Input
               className="w-full h-auto"
               placeholder="Address"
-              onChange={(e) =>
-                setFormData({ ...formData, address: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setFormData({ ...formData, address: e.target.value })
+              // }
             />
           </div>
           <div className="flex justify-start gap-x-4 items-center">
@@ -167,16 +167,16 @@ const UserAdd = () => {
             <Input
               className="w-full h-auto"
               placeholder="Password"
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
+              // onChange={(e) =>
+              //   setFormData({ ...formData, password: e.target.value })
+              // }
             />
           </div>
           <div className="flex justify-center items-center gap-x-4">
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
               // onClick={() => navigate(-1)}
-              onClick={() => handleGetAPI()}
+              // onClick={() => handleGetAPI()}
             >
               <p className="">Save</p>
             </button>
