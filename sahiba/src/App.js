@@ -10,7 +10,7 @@ import { useStore } from "./store";
 
 function App() {
   const [state, dispatch] = useStore();
-
+  const a = 1;
   return (
     <div className="App">
       <Router>
