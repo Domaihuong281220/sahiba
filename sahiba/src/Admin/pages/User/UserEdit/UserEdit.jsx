@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import DatePicker from "react-datepicker";
-
+import { useNavigate } from "react-router-dom";
 import {
   Tabs,
   TabList,
@@ -16,36 +16,45 @@ import {
 
 const UserEdit = () => {
   const [startDate, setStartDate] = useState(new Date());
-
+  const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
-      <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
+      {/* Start Breadcrumbs */}
+      <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1 flex justify-between">
         <Breadcrumbs
           separator={
             <Icon icon="ep:arrow-right-bold" className="text-blue-500"></Icon>
           }
         >
-          <a
-            href="/dashboard"
+          <div
             className="hover:font-bold hover:text-blue-400 flex  items-center gap-x-2"
+            onClick={() => {
+              navigate("/dashboard");
+            }}
           >
             <Icon icon="wpf:administrator" width={24} height={24}></Icon>
-
             <p className="">Admin</p>
-          </a>
-          <a href="#" className="hover:font-bold hover:text-blue-400">
-            Users
-          </a>
-          <a href="/useredit" className="font-bold text-blue-400">
-            UserEdit
-          </a>
+          </div>
+          <div className="hover:font-bold hover:text-blue-400">Users</div>
+          <div className="font-bold text-blue-400">UserEdit</div>
         </Breadcrumbs>
       </div>
+      {/* End Breadcrumbs  */}
 
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
-        <div className="flex p-2">
+        <div className="flex p-2 justify-between">
           <p className="text-2xl">USER EDIT</p>
+          <button
+            className="w-auto h-auto"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            <Icon icon="tabler:arrow-back" width={24} height={24}></Icon>
+          </button>
         </div>
+
+        {/* Start Tabs User Edit */}
         <Tabs>
           <TabList className="flex justify-center items-center gap-x-3 py-3 ">
             <Tab className="w-[12%] h-auto  rounded-xl py-2 px-2 flex flex-col  justify-center items-center bg-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300">
@@ -166,6 +175,8 @@ const UserEdit = () => {
             </TabPanel>
           </TabPanels>
         </Tabs>
+
+        {/* End Tabs User Edit */}
       </div>
     </div>
   );

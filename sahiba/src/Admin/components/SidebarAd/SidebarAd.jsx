@@ -23,10 +23,14 @@ import {
 } from "@heroicons/react/24/solid";
 import { Icon } from "@iconify/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 export function SidebarAd() {
+  // Navigate
+
+  const navigate = useNavigate();
+
   const [openEcommerce, setOpenEcommerce] = useState(false);
   const [openUser, setOpenUsers] = useState(false);
-
   const handleOpenEcommerce = () => setOpenEcommerce((cur) => !cur);
   const handleOpenUsers = () => setOpenUsers((cur) => !cur);
 
@@ -67,18 +71,21 @@ export function SidebarAd() {
             </ListItem>
           </AccordionHeader>
           <AccordionBody>
-            <a className="" href="/userlist">
-              <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
-                <Icon icon="ph:user-list" width={20} height={20}></Icon>
-                <p className=""> User List</p>
-              </div>
-            </a>
-            <a className="" href="/useradd">
-              <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
-                <Icon icon="mdi:user-add-outline" width={20} height={20}></Icon>
-                <p className=""> User Add</p>
-              </div>
-            </a>
+            <div
+              className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer"
+              onClick={() => navigate("/userlist")}
+            >
+              <Icon icon="ph:user-list" width={20} height={20}></Icon>
+              <p className=""> User List</p>
+            </div>
+
+            <div
+              className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer"
+              onClick={() => navigate("/useradd")}
+            >
+              <Icon icon="mdi:user-add-outline" width={20} height={20}></Icon>
+              <p className=""> User Add</p>
+            </div>
           </AccordionBody>
         </Accordion>
 
@@ -99,49 +106,36 @@ export function SidebarAd() {
             </ListItem>
           </AccordionHeader>
           <AccordionBody>
-            <a className="" href="/productmanage">
-              <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
-                <Icon icon="gridicons:product" width={20} height={20}></Icon>
-                <p className="">Product Manage</p>
-              </div>
-            </a>
+            <div
+              className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer"
+              onClick={() => navigate("/productmanage")}
+            >
+              <Icon icon="gridicons:product" width={20} height={20}></Icon>
+              <p className="">Product Manage</p>
+            </div>
 
-            <a className="" href="/categoriesmanage">
-              <div className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer">
-                <Icon
-                  icon="icon-park-outline:ad-product"
-                  width={20}
-                  height={20}
-                ></Icon>
-                <p className="">Categories Manage</p>
-              </div>
-            </a>
+            <div
+              className=" flex items-center justify-start pl-10 gap-x-2 hover:bg-gray-100 py-2 rounded-lg cursor-pointer"
+              onClick={() => navigate("/categoriesmanage")}
+            >
+              <Icon
+                icon="icon-park-outline:ad-product"
+                width={20}
+                height={20}
+              ></Icon>
+              <p className="">Categories Manage</p>
+            </div>
           </AccordionBody>
         </Accordion>
 
-        <ListItem className="text-lg">
-          <ListItemPrefix>
-            <InboxIcon className="h-5 w-5" />
-          </ListItemPrefix>
-          Inbox
-          <ListItemSuffix>
-            <Chip
-              value="14"
-              size="sm"
-              variant="ghost"
-              color="blue-gray"
-              className="rounded-full "
-            />
-          </ListItemSuffix>
-        </ListItem>
-        <a className="" href="/profile">
+        <div className="" onClick={() => navigate("/profile")}>
           <ListItem className="text-lg">
             <ListItemPrefix>
               <UserCircleIcon className="h-5 w-5" />
             </ListItemPrefix>
             Profile
           </ListItem>
-        </a>
+        </div>
 
         <ListItem className="text-lg">
           <ListItemPrefix>

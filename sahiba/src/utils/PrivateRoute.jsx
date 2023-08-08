@@ -2,6 +2,8 @@
 
 import DashBoard from "../Admin/pages/Dashboard/Dashboard";
 import CategoriesEdit from "../Admin/pages/Ecommerce/CategoriesEdit/CategoriesEdit";
+import CategoriesAdd from "../Admin/pages/Ecommerce/CategoriesAdd/CategoriesAdd";
+
 import CategoriesManage from "../Admin/pages/Ecommerce/CategoriesManage/CategoriesManage";
 import ProductAdd from "../Admin/pages/Ecommerce/ProductAdd/ProductAdd";
 import ProductEdit from "../Admin/pages/Ecommerce/ProductEdit/ProductEdit";
@@ -86,6 +88,14 @@ const routes = [
     component: <CategoriesEdit />,
     main: () => <CategoriesEdit />,
   },
+  {
+    path: "/categoriesmanage/categoriesadd",
+    exact: true,
+    component: <CategoriesAdd/>,
+    main: () => <CategoriesAdd />,
+  },
+
+  
 
   // Profile
   {

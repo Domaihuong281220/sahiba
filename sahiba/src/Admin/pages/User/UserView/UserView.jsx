@@ -12,7 +12,10 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { Divider, Table } from "antd";
+import { useNavigate } from "react-router-dom";
 const UserView = () => {
+  const navigate = useNavigate();
+  // Declare label for variable
   const columns = [
     { title: "ID", dataIndex: "id", key: "id" },
 
@@ -45,6 +48,8 @@ const UserView = () => {
       ),
     },
   ];
+
+  // Create Mock data
   const data = [];
   for (let i = 0; i < 46; i++) {
     data.push({
@@ -56,8 +61,10 @@ const UserView = () => {
       status: ["paid"],
     });
   }
+
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {/* Start Breacrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
           separator={
@@ -83,11 +90,22 @@ const UserView = () => {
           </a>
         </Breadcrumbs>
       </div>
+      {/* End Breadcrums */}
 
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg px-2 pt-2 pb-4">
-        <div className="flex p-2">
+        <div className="flex p-2 justify-between">
           <p className="text-2xl">USER VIEW</p>
+          <button
+            className="w-auto h-auto"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            <Icon icon="tabler:arrow-back" width={24} height={24}></Icon>
+          </button>
         </div>
+
+        {/* Start Tabs User View */}
 
         <Tabs>
           <TabList className="flex justify-start items-center gap-x-3 p-3 ">
@@ -215,11 +233,7 @@ const UserView = () => {
             <TabPanel></TabPanel>
           </TabPanels>
         </Tabs>
-        <a className="" href="/userlist">
-          <button className="w-auto h-auto p-2 bg-blue-400 rounded-lg">
-            <p className=""> back</p>
-          </button>
-        </a>
+        {/* End Tabs User View */}
       </div>
     </div>
   );

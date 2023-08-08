@@ -179,7 +179,7 @@
     
     .css-dev-only-do-not-override-14wwjjs{
         width: 90%;
-        padding-left: 3rem;
+        /* padding-left: 3rem; */
     }
     .Head-intro3 h1{
         font-size: 5rem;
@@ -693,8 +693,8 @@
 
     .css-dev-only-do-not-override-14wwjjs {
         width: 100%;
-        padding-left: 3rem;
-        margin-left: -20px;
+        /* padding-left: 3rem;
+        margin-left: -20px; */
     }
 
     .Head-intro3 h1 {
@@ -1203,8 +1203,8 @@
 
     .css-dev-only-do-not-override-14wwjjs {
         width: 100%;
-        padding-left: 3rem;
-        margin-left: -20px;
+        /* padding-left: 3rem;
+        margin-left: -20px; */
     }
 
     .Head-intro3 h1 {
@@ -1531,6 +1531,6 @@
 @media only screen and (min-width: 1920px){
     .css-dev-only-do-not-override-14wwjjs{
         width: 100%;
-        padding-left: 3rem;
+        /* padding-left: 3rem; */
     }
 }

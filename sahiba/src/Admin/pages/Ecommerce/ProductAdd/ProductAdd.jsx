@@ -3,44 +3,43 @@
 import React, { useState } from "react";
 import { Breadcrumbs, Input, Textarea } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-
 import { Select } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 const ProductAdd = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState(1);
   const onChange = (e) => {
-    console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {/* Start Breadcrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
           separator={
             <Icon icon="ep:arrow-right-bold" className="text-blue-500"></Icon>
           }
         >
-          <a
-            href="/dashboard"
-            className="hover:font-bold hover:text-blue-400 flex  items-center gap-x-2"
-          >
+          <div className="hover:font-bold hover:text-blue-400 flex  items-center gap-x-2">
             <Icon icon="wpf:administrator" width={24} height={24}></Icon>
-
             <p className="">Admin</p>
-          </a>
-          <a href="#" className="hover:font-bold hover:text-blue-400">
-            E-commerce
-          </a>
-          <a
-            href="/productmanage"
+          </div>
+          <div className="hover:font-bold hover:text-blue-400">E-commerce</div>
+          <div
             className="hover:font-bold hover:text-blue-400"
+            onClick={() => {
+              navigate("/productmanage");
+            }}
           >
             ProductManage
-          </a>
-          <a href="/createproduct" className="font-bold text-blue-400">
-            CreateProduct
-          </a>
+          </div>
+          <div className="font-bold text-blue-400">CreateProduct</div>
         </Breadcrumbs>
       </div>
+      {/* End Breadcrumbs */}
+
+      {/* Start Form Create Product */}
 
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2">
@@ -91,11 +90,14 @@ const ProductAdd = () => {
             <p className="">jpg , png , jpeg</p>
           </div>
           <div className="flex justify-center items-center gap-x-4">
-            <a className="" href="/productmanage">
-              <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
-                <p className="">Back</p>
-              </button>
-            </a>
+            <button
+              className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg"
+              onClick={() => {
+                navigate("/productmanage");
+              }}
+            >
+              <p className="">Back</p>
+            </button>
 
             <button className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg ">
               <p className="">Save</p>
@@ -103,6 +105,8 @@ const ProductAdd = () => {
           </div>
         </div>
       </div>
+
+      {/* End Form Create Product  */}
     </div>
   );
 };

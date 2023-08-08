@@ -4,10 +4,12 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Breadcrumbs } from "@material-tailwind/react";
 import { Divider } from "antd";
+import {useNavigate} from "react-router-dom";
 const ProductView = () => {
+  const navigate = useNavigate(); 
   return (
     <div className=" w-full h-full bg-gray-100 flex flex-col gap-y-5">
-      <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
+      <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1 flex justify-between">
         <Breadcrumbs
           separator={
             <Icon icon="ep:arrow-right-bold" className="text-blue-500"></Icon>
@@ -31,6 +33,9 @@ const ProductView = () => {
             ProductView
           </a>
         </Breadcrumbs>
+        <button className="" onClick={()=>{navigate(-1)}}>
+         <Icon icon ="tabler:arrow-back" width ={24} height={24}></Icon>
+        </button>
       </div>
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1 flex ">
         <div className="w-full h-auto flex justify-center items-center  border-2 border-gray-200 shadow-2xl m-8 rounded-xl">
@@ -82,12 +87,11 @@ const ProductView = () => {
           </div>
           <Divider></Divider>
         </div>
+       
       </div>
-      <a className="" href="/userlist">
-        <button className="w-auto h-auto p-2 bg-blue-400 rounded-lg">
-          <p className=""> back</p>
-        </button>
-      </a>
+     
+       
+      
     </div>
   );
 };

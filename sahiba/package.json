@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@trendyol-js/react-carousel": "^3.0.2",
     "antd": "^5.6.4",
+    "axios": "^1.4.0",
     "dayjs": "^1.11.9",
     "framer-motion": "^10.12.18",
     "google-map-react": "^2.2.1",
@@ -35,6 +36,7 @@
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
+    "typescript": "^5.1.6",
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.19"
   },

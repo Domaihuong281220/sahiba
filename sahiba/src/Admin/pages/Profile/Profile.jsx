@@ -3,10 +3,12 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
-
+import { useNavigate } from "react-router-dom";
 const Profile = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {/* Start Breadcrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
           separator={
@@ -27,6 +29,9 @@ const Profile = () => {
           </a>
         </Breadcrumbs>
       </div>
+      {/* End Breadcrumbs */}
+
+      {/* Start banner Profile */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg ">
         <div className="w-full h-auto rounded-lg  flex flex-col justify-center items-center">
           <img
@@ -69,6 +74,9 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      {/* End banner Profile */}
+
+      {/* Start Profile  */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg flex py-4 ">
         <div className="w-full px-4">
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -112,13 +120,14 @@ const Profile = () => {
         </div>
       </div>
       <div className=" flex justify-center gap-x-6">
-        <button className="w-auto h-auto p-2 bg-blue-600 border-2 border-gray-200 shadow-2xl rounded-xl ">
+        <button className="w-auto h-auto p-2 bg-blue-600 border-2 border-gray-200 shadow-2xl rounded-xl " onClick={()=>{navigate("dashboard")}}>
           <p className="text-white"> Save Changes</p>
         </button>
-        <button className="w-auto h-auto p-2 bg-white border-2 border-blue-300 shadow-2xl rounded-xl">
+        <button className="w-auto h-auto p-2 bg-white border-2 border-blue-300 shadow-2xl rounded-xl" onClick={()=>{navigate("/dashboard")}}>
           <p className="text-blue-600"> Cancel</p>
         </button>
       </div>
+      {/* End Profile */}
     </div>
   );
 };

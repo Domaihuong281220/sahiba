@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import { Select } from "@chakra-ui/react";
-
+ 
 const ModalAddnewAddress = ({ visible, onclose }) => {
   const [provinceData, setProvinceData] = useState([]);
   const [districtData, setDistrictData] = useState([]);
