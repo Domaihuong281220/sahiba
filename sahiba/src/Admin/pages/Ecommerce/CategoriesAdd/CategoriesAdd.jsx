@@ -4,12 +4,38 @@ import React, { useState } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { message } from "antd";
 
 const CategoriesAdd = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    id: "",
+    name: "",
+    title: "",
+  });
 
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleGetAPI = async () => {
+    await axios
+      .post("http://103.157.218.126:8000/admin/addcategory", formData)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          console.log(res.status);
+          setTimeout(() => {
+            messageApi.success("create category success");
+          }, 2000);
+          navigate("/categoriesmanage");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {contextHolder}
       {/* Start breadcrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
@@ -51,12 +77,21 @@ const CategoriesAdd = () => {
             <Input
               type="text"
               className="w-full h-auto"
-              placeholder="Name Product"
+              placeholder="Name Categories"
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Title</p>
-            <Input className="w-full h-auto" placeholder="Title" />
+            <Input
+              className="w-full h-auto"
+              placeholder="Title"
+              onChange={(e) =>
+                setFormData({ ...formData, title: e.target.value })
+              }
+            />
           </div>
 
           <div className="flex justify-center items-center gap-x-4">
@@ -68,8 +103,10 @@ const CategoriesAdd = () => {
             >
               <p className="">Back</p>
             </button>
-
-            <button className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg ">
+            <button
+              className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
+              onClick={() => handleGetAPI()}
+            >
               <p className="">Save</p>
             </button>
           </div>
