@@ -4,13 +4,11 @@
 import React, { useState, useRef } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-import { Radio } from "antd";
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Alert, message } from "antd";
-import configAxios from "../../../../../src/config/configAxios.ts";
 const UserAdd = () => {
   const inputRef = useRef(null);
   const [role, setrole] = useState(1);
