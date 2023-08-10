@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Breadcrumbs } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-import { Table } from "antd";
+import { Table, message } from "antd";
 import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -12,8 +12,13 @@ const ProductManage = () => {
   const navigate = useNavigate();
   // Declare label for variable
   const columns = [
-    { title: "ID", dataIndex: "id", key: "id" },
-    { title: "Name Product", dataIndex: "nameproduct", key: "nameproduct" },
+    { title: "ID", dataIndex: "id", key: "id", fixed: "left" },
+    {
+      title: "Name Product",
+      dataIndex: "nameproduct",
+      key: "nameproduct",
+      fixed: "left",
+    },
     {
       title: "Image",
       dataIndex: "image",
@@ -63,6 +68,8 @@ const ProductManage = () => {
     {
       title: "Action",
       key: "action",
+      fixed: "right",
+      width: 300,
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
           <button
@@ -89,7 +96,10 @@ const ProductManage = () => {
             <p className="">Edit</p>
           </button>
 
-          <button className="w-auto h-auto p-2 bg-red-400 hover:bg-red-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg">
+          <button
+            className="w-auto h-auto p-2 bg-red-400 hover:bg-red-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg"
+            onClick={() => handledeleteProduct(record.id)}
+          >
             <Icon icon="material-symbols:delete" height={24} width={24}></Icon>
             <p className="">Delete</p>
           </button>
@@ -99,16 +109,32 @@ const ProductManage = () => {
   ];
   const data = [];
   const [productData, setproductData] = useState([]);
-  useEffect(() => {
+
+  const handlegetProduct = () => {
     axios
       .get("http://103.157.218.126:8000/public/getallproduct")
       .then((res) => {
         setproductData(res.data);
       });
+  };
+  const handledeleteProduct = async (id) => {
+    await axios
+      .delete(`http://103.157.218.126:8000/admin/deleteproduct/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          messageApi.success("delete product success");
+          handlegetProduct();
+        }
+      });
+  };
+  const [messageApi, contextHolder] = message.useMessage();
+
+  useEffect(() => {
+    handlegetProduct();
   }, []);
   for (let i = 0; i < productData.length; i++) {
     data.push({
-      key: productData[i].id,
+      key: i,
       id: productData[i].id,
       nameproduct: productData[i].name,
       image: productData[i].image,
@@ -132,6 +158,7 @@ const ProductManage = () => {
 
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {contextHolder}
       {/* Start Breadcrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
@@ -205,7 +232,6 @@ const ProductManage = () => {
                 width: "100%",
                 margin: "0",
                 padding: "0",
-                overflow: "hidden",
               }}
             />
           </div>

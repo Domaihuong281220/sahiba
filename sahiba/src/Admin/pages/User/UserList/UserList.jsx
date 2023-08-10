@@ -2,33 +2,57 @@
 import React, { useState, useEffect } from "react";
 import { Breadcrumbs } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-import { Table } from "antd";
+import { Table, message } from "antd";
 import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const UserList = () => {
   // Declare label for table
   const columns = [
-    { title: "Name", dataIndex: "name", key: "name" },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      width: 100,
+      fixed: "left",
+    },
     {
       title: "Avatar",
       dataIndex: "avatar",
       key: "avatar",
+      width: 100,
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
           <img src={record.avatar} className="w-10 h-10 rounded-full"></img>
         </div>
       ),
     },
-    { title: "Phone Number", dataIndex: "phonenumber", key: "phonenumber" },
+    {
+      title: "Phone Number",
+      dataIndex: "phonenumber",
+      key: "phonenumber",
+      // width: 100,
+    },
     { title: "Address", dataIndex: "address", key: "address" },
-    { title: "Email", dataIndex: "email", key: "email" },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+      // width: 200
+    },
     { title: "Role", dataIndex: "role", key: "role" },
-    { title: "Date Of Birth", dataIndex: "dateofbirth", key: "dateofbirth" },
+    {
+      title: "Date Of Birth",
+      dataIndex: "dateofbirth",
+      key: "dateofbirth",
+      // width: 100,
+    },
     {
       title: "Status",
       key: "status",
       dataIndex: "status",
+      // width: 100,
+
       render: (status) => (
         <>
           {status.map((item) => {
@@ -51,6 +75,8 @@ const UserList = () => {
     {
       title: "Action",
       key: "action",
+      fixed: "right",
+      with: 200,
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
           <button
@@ -67,7 +93,11 @@ const UserList = () => {
             <Icon icon="fa-solid:user-edit" height={24} width={24}></Icon>
             <p className="">Edit</p>
           </button>
-          <button className="w-auto h-auto p-2 bg-red-400 hover:bg-red-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg">
+
+          <button
+            className="w-auto h-auto p-2 bg-red-400 hover:bg-red-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg"
+            onClick={() => handleDeleteuser(record.id)}
+          >
             <Icon icon="material-symbols:delete" height={24} width={24}></Icon>
             <p className="">Delete</p>
           </button>
@@ -82,20 +112,19 @@ const UserList = () => {
   for (let i = 0; i < userData.length; i++) {
     data.push({
       key: i,
+      id: userData[i].id,
       name: userData[i].name,
       avatar: userData[i].avatar,
       phonenumber: userData[i].phone,
       address: userData[i].address,
       email: userData[i].email,
       role: userData[i].role,
-      dateofbirth: "30/02/1999",
+      dateofbirth: "20/12/2000",
       status: ["Online"],
     });
   }
-
   // set state
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-
   // event select row
   const onSelectChange = (newSelectedRowKeys) => {
     setSelectedRowKeys(newSelectedRowKeys);
@@ -104,18 +133,37 @@ const UserList = () => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+  const [messageApi, contextHolder] = message.useMessage();
 
+  const handleDeleteuser = async (id) => {
+    await axios
+      .delete(`http://103.157.218.126:8000/admin/deleteuser/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          messageApi.success("delete user success");
+          handleGetUserList();
+        }
+      });
+  };
+
+  const handleGetUserList = async () => {
+    await axios
+      .get("http://103.157.218.126:8000/admin/getalluser")
+      .then((res) => {
+        setuserData(res.data);
+      });
+  };
   // navigate
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://103.157.218.126:8000/admin/getalluser").then((res) => {
-      setuserData(res.data);
-    });
+    handleGetUserList();
   }, []);
 
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {contextHolder}
+
       {/* Start Breadcrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
@@ -196,7 +244,6 @@ const UserList = () => {
                   width: "100%",
                   margin: "0",
                   padding: "0",
-                  overflow: "hidden",
                 }}
                 scroll={{
                   x: "max-content",

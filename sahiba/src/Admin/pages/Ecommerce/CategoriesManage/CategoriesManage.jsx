@@ -3,21 +3,21 @@
 import React, { useState, useEffect } from "react";
 import { Breadcrumbs } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-import { Table } from "antd";
+import { Table, message } from "antd";
 import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const CategoriesManage = () => {
   const navigate = useNavigate();
-
   // Declare label for vairiable
   const columns = [
-    { title: "ID", dataIndex: "id", key: "id" },
+    { title: "ID", dataIndex: "id", key: "id", fixed: "left" },
     {
       title: "Name Categories",
       dataIndex: "namecategories",
       key: "namecategories",
+      fixed: "left",
     },
 
     { title: "Title", dataIndex: "title", key: "title" },
@@ -25,6 +25,7 @@ const CategoriesManage = () => {
     {
       title: "Action",
       key: "action",
+      fixed: "right",
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
           <button
@@ -41,7 +42,10 @@ const CategoriesManage = () => {
             <p className="">Edit</p>
           </button>
 
-          <button className="w-auto h-auto p-2 bg-red-400 hover:bg-red-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg">
+          <button
+            className="w-auto h-auto p-2 bg-red-400 hover:bg-red-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg"
+            onClick={() => handleAPIDeleteCategory(record.id)}
+          >
             <Icon icon="material-symbols:delete" height={24} width={24}></Icon>
             <p className="">Delete</p>
           </button>
@@ -57,15 +61,31 @@ const CategoriesManage = () => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
-  // Call API data
-  const data = [];
-  const [categoryData, setcategoryData] = useState([]);
-  useEffect(() => {
-    axios
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleAPIDeleteCategory = async (id) => {
+    await axios
+      .delete(`http://103.157.218.126:8000/admin/deletecategory/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          messageApi.success("delete category success");
+          handlergetCategoryList();
+        }
+      });
+  };
+  const handlergetCategoryList = async () => {
+    await axios
       .get("http://103.157.218.126:8000/public/getallcategory")
       .then((res) => {
         setcategoryData(res.data);
       });
+  };
+
+  // Call API data
+  const data = [];
+  const [categoryData, setcategoryData] = useState([]);
+  useEffect(() => {
+    handlergetCategoryList();
   }, []);
   for (let i = 0; i < categoryData.length; i++) {
     data.push({
@@ -78,6 +98,7 @@ const CategoriesManage = () => {
 
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
+      {contextHolder}
       {/* Start Breadcrumbs */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
@@ -141,7 +162,12 @@ const CategoriesManage = () => {
                 <p className="">Add New Categories</p>
               </button>
 
-              <button className="w-auto h-auto p-2 rounded-lg border-2 border-red-300 hover:border-red-500  flex items-center gap-x-2 hover:shadow-lg">
+              <button
+                className="w-auto h-auto p-2 rounded-lg border-2 border-red-300 hover:border-red-500  flex items-center gap-x-2 hover:shadow-lg"
+                onClick={() => {
+                  handleAPIDeleteCategory();
+                }}
+              >
                 <Icon icon="wpf:delete" width={24} height={24}></Icon>
                 <p className="">Delete Categories</p>
               </button>
