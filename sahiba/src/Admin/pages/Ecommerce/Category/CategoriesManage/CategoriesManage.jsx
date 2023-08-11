@@ -10,14 +10,75 @@ import axios from "axios";
 
 const CategoriesManage = () => {
   const navigate = useNavigate();
+  // Call API data
+  const data = [];
+  const [categoryData, setcategoryData] = useState([]);
+  useEffect(() => {
+    handlergetCategoryList();
+  }, []);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const onSelectChange = (newSelectedRowKeys) => {
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleAPIDeleteCategory = async (id) => {
+    await axios
+      .delete(`http://103.157.218.126:8000/admin/deletecategory/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          messageApi.success("delete category success");
+          handlergetCategoryList();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handlergetCategoryList = async () => {
+    await axios
+      .get("http://103.157.218.126:8000/public/getallcategory")
+      .then((res) => {
+        setcategoryData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleEditCategory = async (record) => {
+    await navigate("/categoriesmanage/categoriesedit", {
+      state: record,
+    });
+  };
   // Declare label for vairiable
   const columns = [
-    { title: "ID", dataIndex: "id", key: "id", fixed: "left" },
+    {
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
+      fixed: "left",
+      sorter: (a, b) => a.id - b.id,
+      // sortDirections: ["descend"],
+    },
     {
       title: "Name Categories",
       dataIndex: "namecategories",
       key: "namecategories",
       fixed: "left",
+      // filters: [
+      //   {
+      //     text: "Liem",
+      //     value: "Liem",
+      //   },
+      // ],
+      // filterMode: "tree",
+      // filterSearch: true,
+      // onFilter: (value, record) => record.name.includes(value),
+      // onFilter: (name, record) => record.name.indexOf(name) === 0,
     },
 
     { title: "Title", dataIndex: "title", key: "title" },
@@ -30,9 +91,7 @@ const CategoriesManage = () => {
         <div className="flex items-center justify-center gap-x-2">
           <button
             className="w-auto h-auto p-2 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg"
-            onClick={() => {
-              navigate("/categoriesmanage/categoriesedit");
-            }}
+            onClick={() => handleEditCategory(record)}
           >
             <Icon
               icon="material-symbols:box-edit-sharp"
@@ -53,40 +112,6 @@ const CategoriesManage = () => {
       ),
     },
   ];
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const onSelectChange = (newSelectedRowKeys) => {
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const handleAPIDeleteCategory = async (id) => {
-    await axios
-      .delete(`http://103.157.218.126:8000/admin/deletecategory/${id}`)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          messageApi.success("delete category success");
-          handlergetCategoryList();
-        }
-      });
-  };
-  const handlergetCategoryList = async () => {
-    await axios
-      .get("http://103.157.218.126:8000/public/getallcategory")
-      .then((res) => {
-        setcategoryData(res.data);
-      });
-  };
-
-  // Call API data
-  const data = [];
-  const [categoryData, setcategoryData] = useState([]);
-  useEffect(() => {
-    handlergetCategoryList();
-  }, []);
   for (let i = 0; i < categoryData.length; i++) {
     data.push({
       id: categoryData[i].id,
@@ -94,8 +119,6 @@ const CategoriesManage = () => {
       title: categoryData[i].title,
     });
   }
-  // set state for variable
-
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
       {contextHolder}

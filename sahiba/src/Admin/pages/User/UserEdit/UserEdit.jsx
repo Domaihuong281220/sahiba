@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import DatePicker from "react-datepicker";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+
 import {
   Tabs,
   TabList,
@@ -15,8 +17,35 @@ import {
 } from "@chakra-ui/react";
 
 const UserEdit = () => {
-  const [startDate, setStartDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
+
+  const location = useLocation();
+  let userDetail = location.state;
+
+  const [formData, setFormData] = useState({
+    name: userDetail.name,
+    address: userDetail.address,
+    avatar: userDetail.avatar,
+    dateofbirth: userDetail.dateofbirth,
+    email: userDetail.email,
+    phone: userDetail.phone,
+    role: userDetail.role,
+  });
+  const ApiEditUser = async (id) => {
+    await axios
+      .put(`http://103.157.218.126:8000/admin/updateuser/${id}`, formData)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          console.log("edit success");
+          navigate("/userlist");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
       {/* Start Breadcrumbs */}
@@ -79,7 +108,10 @@ const UserEdit = () => {
                 <Input
                   className="w-full h-auto"
                   placeholder="Full Name"
-                  defaultValue={"Nguyen Van Tay"}
+                  defaultValue={userDetail.name}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                  }}
                 />
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -87,7 +119,10 @@ const UserEdit = () => {
                 <Input
                   className="w-full h-auto"
                   placeholder="Email"
-                  defaultValue={"taynv@1cinnovation.com"}
+                  defaultValue={userDetail.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                 />
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -95,37 +130,47 @@ const UserEdit = () => {
                 <Input
                   className="w-full h-auto"
                   placeholder="Phone Number"
-                  defaultValue={"0375875162"}
+                  defaultValue={userDetail.phone}
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value });
+                  }}
                 />
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Date of birth</p>
-                {/* <Input className="w-full h-auto" placeholder="Date of birth" /> */}
-                <DatePicker
-                  selected={startDate}
-                  showMonthDropdown={true}
-                  showYearDropdown={true}
-                  showPopperArrow={true}
-                  onChange={(date) => setStartDate(date)}
-                  show
+
+                <input
+                  type="date"
                   className="w-full h-full border-2 border-black py-2 rounded-lg px-2"
-                />
+                  defaultValue={userDetail.dateofbirth}
+                  // onChange={(e) =>
+                  //   setFormData({ ...formData, dateofbirth: e.target.value })
+                  // }
+                ></input>
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Role</p>
                 <Select
                   icon={false}
-                  placeholder="Please select role"
                   className="border-[3px] border-black w-full h-auto px-2 py-2"
+                  defaultValue={userDetail.role}
+                  onChange={(e) => {
+                    setFormData({ ...formData, role: e.target.value });
+                    console.log(formData);
+                  }}
                 >
-                  <option className="">Admin</option>
-                  <option className="">User</option>
+                  <option className="" value="admin">
+                    admin
+                  </option>
+                  <option className="" value="user">
+                    user
+                  </option>
                 </Select>
               </div>
               <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
                 <p className="text-lg">Avatar</p>
                 <button className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg">
-                  <p className="">Upload an image</p>
+                  <img src={userDetail.avatar} className="w-20 h-20"></img>
                 </button>
                 <p className="">jpg , png , jpeg</p>
               </div>
@@ -133,7 +178,10 @@ const UserEdit = () => {
                 <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
                   <p className="">Reset</p>
                 </button>
-                <button className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg">
+                <button
+                  className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg"
+                  onClick={() => ApiEditUser(userDetail.id)}
+                >
                   <p className="">Save</p>
                 </button>
               </div>

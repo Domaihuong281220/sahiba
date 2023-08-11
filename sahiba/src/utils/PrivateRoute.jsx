@@ -1,14 +1,14 @@
 /** @format */
 
 import DashBoard from "../Admin/pages/Dashboard/Dashboard";
-import CategoriesEdit from "../Admin/pages/Ecommerce/CategoriesEdit/CategoriesEdit";
-import CategoriesAdd from "../Admin/pages/Ecommerce/CategoriesAdd/CategoriesAdd";
+import CategoriesEdit from "../Admin/pages/Ecommerce/Category/CategoriesEdit/CategoriesEdit";
+import CategoriesAdd from "../Admin/pages/Ecommerce/Category/CategoriesAdd/CategoriesAdd";
 
-import CategoriesManage from "../Admin/pages/Ecommerce/CategoriesManage/CategoriesManage";
-import ProductAdd from "../Admin/pages/Ecommerce/ProductAdd/ProductAdd";
-import ProductEdit from "../Admin/pages/Ecommerce/ProductEdit/ProductEdit";
-import ProductManage from "../Admin/pages/Ecommerce/ProductManage/ProductManage";
-import ProductView from "../Admin/pages/Ecommerce/ProductView/ProductView";
+import CategoriesManage from "../Admin/pages/Ecommerce/Category/CategoriesManage/CategoriesManage";
+import ProductAdd from "../Admin/pages/Ecommerce/Product/ProductAdd/ProductAdd";
+import ProductEdit from "../Admin/pages/Ecommerce/Product/ProductEdit/ProductEdit";
+import ProductManage from "../Admin/pages/Ecommerce/Product/ProductManage/ProductManage";
+import ProductView from "../Admin/pages/Ecommerce/Product/ProductView/ProductView";
 import Profile from "../Admin/pages/Profile/Profile";
 import UserAdd from "../Admin/pages/User/UserAdd/UserAdd";
 import UserEdit from "../Admin/pages/User/UserEdit/UserEdit";
@@ -91,11 +91,9 @@ const routes = [
   {
     path: "/categoriesmanage/categoriesadd",
     exact: true,
-    component: <CategoriesAdd/>,
+    component: <CategoriesAdd />,
     main: () => <CategoriesAdd />,
   },
-
-  
 
   // Profile
   {

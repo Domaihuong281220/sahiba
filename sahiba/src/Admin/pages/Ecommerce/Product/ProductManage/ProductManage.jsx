@@ -7,16 +7,84 @@ import { Table, message } from "antd";
 import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 const ProductManage = () => {
   const navigate = useNavigate();
+  const [productData, setproductData] = useState([]);
+  const data = [];
+
+  for (let i = 0; i < productData.length; i++) {
+    data.push({
+      key: i,
+      id: productData[i].id,
+      nameproduct: productData[i].name,
+      image: productData[i].image,
+      description: productData[i].description,
+      price: productData[i].price,
+      quatity: "100",
+      categories: productData[i].categoryId,
+    });
+  }
+
+  // Set state for variable
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const onSelectChange = (newSelectedRowKeys) => {
+    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const handlegetProduct = async () => {
+    await axios
+      .get("http://103.157.218.126:8000/public/getallproduct")
+      .then((res) => {
+        setproductData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handledeleteProduct = async (id) => {
+    await axios
+      .delete(`http://103.157.218.126:8000/admin/deleteproduct/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          messageApi.success("delete product success");
+          handlegetProduct();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleEditProduct = (record) => {
+    navigate("/productmanage/editproduct", {
+      state: record,
+    });
+  };
+
+  
+  const [messageApi, contextHolder] = message.useMessage();
+
+  useEffect(() => {
+    handlegetProduct();
+  }, []);
   // Declare label for variable
   const columns = [
-    { title: "ID", dataIndex: "id", key: "id", fixed: "left" },
+    {
+      title: "STT",
+      dataIndex: "key",
+      key: "key",
+      fixed: "left",
+      sorter: (a, b) => a.key - b.key,
+    },
     {
       title: "Name Product",
       dataIndex: "nameproduct",
       key: "nameproduct",
+
       fixed: "left",
     },
     {
@@ -40,12 +108,23 @@ const ProductManage = () => {
       dataIndex: "description",
       key: "description",
     },
-    { title: "Price", dataIndex: "price", key: "price" },
-    { title: "Quatity", dataIndex: "quatity", key: "quatity" },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+      sorter: (a, b) => a.price - b.price,
+    },
+    {
+      title: "Quatity",
+      dataIndex: "quatity",
+      key: "quatity",
+    },
+
     {
       title: "Rating",
       dataIndex: "rating",
       key: "rating",
+      sorter: (a, b) => a.rating - b.rating,
 
       render: (_, record) => (
         <div className="flex items-center justify-center gap-x-2">
@@ -84,9 +163,7 @@ const ProductManage = () => {
 
           <button
             className="w-auto h-auto p-2 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg"
-            onClick={() => {
-              navigate("/productmanage/editproduct");
-            }}
+            onClick={() => handleEditProduct(record)}
           >
             <Icon
               icon="material-symbols:box-edit-sharp"
@@ -107,54 +184,6 @@ const ProductManage = () => {
       ),
     },
   ];
-  const data = [];
-  const [productData, setproductData] = useState([]);
-
-  const handlegetProduct = () => {
-    axios
-      .get("http://103.157.218.126:8000/public/getallproduct")
-      .then((res) => {
-        setproductData(res.data);
-      });
-  };
-  const handledeleteProduct = async (id) => {
-    await axios
-      .delete(`http://103.157.218.126:8000/admin/deleteproduct/${id}`)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          messageApi.success("delete product success");
-          handlegetProduct();
-        }
-      });
-  };
-  const [messageApi, contextHolder] = message.useMessage();
-
-  useEffect(() => {
-    handlegetProduct();
-  }, []);
-  for (let i = 0; i < productData.length; i++) {
-    data.push({
-      key: i,
-      id: productData[i].id,
-      nameproduct: productData[i].name,
-      image: productData[i].image,
-      description: productData[i].description,
-      price: productData[i].price,
-      quatity: "100",
-      categories: productData[i].categoryId,
-    });
-  }
-
-  // Set state for variable
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
 
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
@@ -182,9 +211,9 @@ const ProductManage = () => {
         </div>
         {/* Start Table Product Manage */}
         <div className="">
-          <div className="flex items-center justify-between px-4 py-4">
-            <div className=" lg:w-3/12 h-10 sm:w-10/12 md:w-full xl:w-3/12 2xl:w-4/12">
-              <InputGroup className="flex  items-center w-full">
+          <div className="flex items-center justify-between gap-x-10 px-4 py-4 ">
+            <div className="  flex gap-x-4 w-6/12 justify-center items-center">
+              <InputGroup className="flex items-center w-full">
                 <Input
                   type="text"
                   placeholder="Search Product"
@@ -198,6 +227,7 @@ const ProductManage = () => {
                 </InputRightElement>
               </InputGroup>
             </div>
+
             <div className="flex items-center gap-x-3">
               <button
                 className="w-auto h-auto p-2 rounded-lg border-2 border-green-300 hover:border-green-500 flex items-center gap-x-2 hover:shadow-lg"
@@ -219,7 +249,7 @@ const ProductManage = () => {
               </button>
             </div>
           </div>
-          <div className="=w-[100%]">
+          <div className="w-[100%]">
             <Table
               rowSelection={rowSelection}
               columns={columns}

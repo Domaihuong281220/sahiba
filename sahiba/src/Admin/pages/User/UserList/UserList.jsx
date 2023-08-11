@@ -7,14 +7,58 @@ import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const UserList = () => {
+  // set state
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  // event select row
+  const onSelectChange = (newSelectedRowKeys) => {
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleDeleteuser = async (id) => {
+    await axios
+      .delete(`http://103.157.218.126:8000/admin/deleteuser/${id}`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          messageApi.success("delete user success");
+          handleGetUserList();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleGetUserList = async () => {
+    await axios
+      .get("http://103.157.218.126:8000/admin/getalluser")
+      .then((res) => {
+        setuserData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleEditProduct = (record) => {
+    navigate("/useredit", {
+      state: record,
+    });
+  };
+  // navigate
+  const navigate = useNavigate();
   // Declare label for table
   const columns = [
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
-      width: 100,
       fixed: "left",
+      sorter: (a, b) => a.name.length - b.name.length,
+      // sortDirections: ["ascend"],
     },
     {
       title: "Avatar",
@@ -29,8 +73,8 @@ const UserList = () => {
     },
     {
       title: "Phone Number",
-      dataIndex: "phonenumber",
-      key: "phonenumber",
+      dataIndex: "phone",
+      key: "phone",
       // width: 100,
     },
     { title: "Address", dataIndex: "address", key: "address" },
@@ -88,7 +132,7 @@ const UserList = () => {
           </button>
           <button
             className="w-auto h-auto p-2 bg-blue-400 hover:bg-blue-500 rounded-lg flex items-center justify-center gap-x-2 hover:shadow-lg"
-            onClick={() => navigate("/useredit")}
+            onClick={() => handleEditProduct(record)}
           >
             <Icon icon="fa-solid:user-edit" height={24} width={24}></Icon>
             <p className="">Edit</p>
@@ -115,7 +159,7 @@ const UserList = () => {
       id: userData[i].id,
       name: userData[i].name,
       avatar: userData[i].avatar,
-      phonenumber: userData[i].phone,
+      phone: userData[i].phone,
       address: userData[i].address,
       email: userData[i].email,
       role: userData[i].role,
@@ -123,39 +167,6 @@ const UserList = () => {
       status: ["Online"],
     });
   }
-  // set state
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-  // event select row
-  const onSelectChange = (newSelectedRowKeys) => {
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
-  const rowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const handleDeleteuser = async (id) => {
-    await axios
-      .delete(`http://103.157.218.126:8000/admin/deleteuser/${id}`)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          messageApi.success("delete user success");
-          handleGetUserList();
-        }
-      });
-  };
-
-  const handleGetUserList = async () => {
-    await axios
-      .get("http://103.157.218.126:8000/admin/getalluser")
-      .then((res) => {
-        setuserData(res.data);
-      });
-  };
-  // navigate
-  const navigate = useNavigate();
-
   useEffect(() => {
     handleGetUserList();
   }, []);
@@ -223,18 +234,7 @@ const UserList = () => {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            {/* <div>
-              <Table
-                rowSelection={rowSelection}
-                columns={columns}
-                dataSource={data}
-                pagination={{ pageSize: 5, position: ["bottomCenter"] }}
-                scroll={{
-                  x: [true, "max-content"],
-                }}
-              />
-            </div> */}
-            <div className="w-[100%]">
+            <div className="w-[95%]">
               <Table
                 rowSelection={rowSelection}
                 columns={columns}
