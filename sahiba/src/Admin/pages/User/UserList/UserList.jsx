@@ -6,6 +6,7 @@ import { Table, message } from "antd";
 import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 const UserList = () => {
   // set state
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -91,31 +92,31 @@ const UserList = () => {
       key: "dateofbirth",
       // width: 100,
     },
-    {
-      title: "Status",
-      key: "status",
-      dataIndex: "status",
-      // width: 100,
+    // {
+    //   title: "Status",
+    //   key: "status",
+    //   dataIndex: "status",
+    //   // width: 100,
 
-      render: (status) => (
-        <>
-          {status.map((item) => {
-            if (item === "Online") {
-              return (
-                <div className="bg-green-300 w-auto h-auto rounded-xl flex justify-center items-center px-2 border-2 border-green-300 shadow-2xl">
-                  <p className="">Online</p>
-                </div>
-              );
-            }
-            return (
-              <div className="bg-orange-100 w-auto h-auto">
-                <p className="">Offline</p>
-              </div>
-            );
-          })}
-        </>
-      ),
-    },
+    //   render: (status) => (
+    //     <>
+    //       {status.map((item) => {
+    //         if (item === "Online") {
+    //           return (
+    //             <div className="bg-green-300 w-auto h-auto rounded-xl flex justify-center items-center px-2 border-2 border-green-300 shadow-2xl">
+    //               <p className="">Online</p>
+    //             </div>
+    //           );
+    //         }
+    //         return (
+    //           <div className="bg-orange-100 w-auto h-auto">
+    //             <p className="">Offline</p>
+    //           </div>
+    //         );
+    //       })}
+    //     </>
+    //   ),
+    // },
     {
       title: "Action",
       key: "action",
@@ -164,7 +165,7 @@ const UserList = () => {
       email: userData[i].email,
       role: userData[i].role,
       dateofbirth: "20/12/2000",
-      status: ["Online"],
+      // status: ["Online"],
     });
   }
   useEffect(() => {

@@ -15,6 +15,8 @@ import {
   TabPanel,
   Select,
 } from "@chakra-ui/react";
+import { isValidInputsUser } from "../../../../helpers/validInputs";
+import { toast } from "react-toastify";
 
 const UserEdit = () => {
   // const [startDate, setStartDate] = useState(new Date());
@@ -33,17 +35,21 @@ const UserEdit = () => {
     role: userDetail.role,
   });
   const ApiEditUser = async (id) => {
-    await axios
-      .put(`http://103.157.218.126:8000/admin/updateuser/${id}`, formData)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          console.log("edit success");
-          navigate("/userlist");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let check = isValidInputsUser(formData, toast);
+    if (check) {
+      await axios
+        .put(`http://103.157.218.126:8000/admin/updateuser/${id}`, formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            console.log("edit success");
+            navigate("/userlist");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    return;
   };
 
   return (
@@ -174,6 +180,7 @@ const UserEdit = () => {
                 </button>
                 <p className="">jpg , png , jpeg</p>
               </div>
+
               <div className="flex justify-between items-center">
                 <button className="w-auto h-auto py-2 px-4 bg-slate-50 border-2 border-blue-300 rounded-lg hover:bg-slate-200 hover:shadow-lg">
                   <p className="">Reset</p>

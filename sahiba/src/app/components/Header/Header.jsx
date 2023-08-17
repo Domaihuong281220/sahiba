@@ -15,6 +15,7 @@ import {
 import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import Logo from "../../../assets/image/logo/Logo.png";
 import Headroom from "react-headroom";
+import { useNavigate } from "react-router";
 export default function Header() {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-4">
@@ -96,7 +97,11 @@ export default function Header() {
       </Typography>
     </ul>
   );
+  const navigate = useNavigate();
 
+  const handleLoginPage = () => {
+    navigate("/login");
+  };
   return (
     <Headroom style={{ zIndex: "10" }}>
       <Navbar className="mx-auto px-4 lg:px-8 w-full sticky top-0  rounded-none py-0 ">
@@ -126,7 +131,7 @@ export default function Header() {
           </div>
 
           <div className="flex justify-evenly w-40 ">
-            <button>
+            <button onClick={() => handleLoginPage()}>
               <Icon
                 icon="octicon:person-16"
                 width={24}

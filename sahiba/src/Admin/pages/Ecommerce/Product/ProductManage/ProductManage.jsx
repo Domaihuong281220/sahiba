@@ -8,6 +8,7 @@ import { InputGroup, Input, InputRightElement } from "@chakra-ui/react";
 import axios from "axios";
 
 import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 const ProductManage = () => {
   const navigate = useNavigate();
   const [productData, setproductData] = useState([]);
@@ -51,7 +52,7 @@ const ProductManage = () => {
       .delete(`http://103.157.218.126:8000/admin/deleteproduct/${id}`)
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
-          messageApi.success("delete product success");
+          toast.success("delete product success");
           handlegetProduct();
         }
       })
@@ -65,7 +66,6 @@ const ProductManage = () => {
     });
   };
 
-  
   const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {

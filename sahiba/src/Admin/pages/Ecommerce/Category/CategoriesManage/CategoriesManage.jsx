@@ -24,6 +24,7 @@ const CategoriesManage = () => {
     selectedRowKeys,
     onChange: onSelectChange,
   };
+  
   const [messageApi, contextHolder] = message.useMessage();
 
   const handleAPIDeleteCategory = async (id) => {

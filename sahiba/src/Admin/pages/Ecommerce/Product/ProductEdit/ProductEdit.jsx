@@ -7,6 +7,8 @@ import { Icon } from "@iconify/react";
 import { Select } from "@chakra-ui/react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { isValidInputProduct } from "../../../../../helpers/validInputs";
 const ProductEdit = () => {
   const navigate = useNavigate();
 
@@ -20,17 +22,21 @@ const ProductEdit = () => {
     categoryId: productDetail.categoryId,
   });
   const ApiEditProduct = async (id) => {
-    await axios
-      .put(`http://103.157.218.126:8000/admin/updateproduct/${id}`, formData)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          console.log("edit success");
-          navigate("/productmanage");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    let check = isValidInputProduct();
+    if (check === true) {
+      await axios
+        .put(`http://103.157.218.126:8000/admin/updateproduct/${id}`, formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            toast.success("edit product success");
+            navigate("/productmanage");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    return;
   };
 
   return (
@@ -78,10 +84,10 @@ const ProductEdit = () => {
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Subtitle</p>
+            <p className="text-lg">Description</p>
             <textarea
               className="w-full h-[100px] border-2 border-black p-2"
-              placeholder="Subtitle"
+              placeholder="Description"
               defaultValue={productDetail.description}
               onChange={(e) =>
                 setFormData({ ...formData, description: e.target.value })

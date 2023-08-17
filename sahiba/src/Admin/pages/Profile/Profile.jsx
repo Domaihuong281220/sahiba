@@ -86,6 +86,7 @@ const Profile = () => {
               className="w-full h-auto"
               placeholder="Full Name"
               defaultValue={"Luu Lac Ling"}
+              disabled
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -95,6 +96,7 @@ const Profile = () => {
               className="w-full h-auto"
               placeholder="Phone Number"
               defaultValue={"0375875162"}
+              disabled
             />
           </div>
         </div>
@@ -105,7 +107,8 @@ const Profile = () => {
               type="text"
               className="w-full h-auto"
               placeholder="Email"
-              defaultValue={"taynv@1cinnovation.com"}
+              defaultValue={"admin@gmail.com"}
+              disabled
             />
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
@@ -115,15 +118,26 @@ const Profile = () => {
               className="w-full h-auto"
               placeholder="Email"
               defaultValue={"Ho Chi Minh"}
+              disabled
             />
           </div>
         </div>
       </div>
       <div className=" flex justify-center gap-x-6">
-        <button className="w-auto h-auto p-2 bg-blue-600 border-2 border-gray-200 shadow-2xl rounded-xl " onClick={()=>{navigate("dashboard")}}>
+        <button
+          className="w-auto h-auto p-2 bg-blue-600 border-2 border-gray-200 shadow-2xl rounded-xl "
+          // onClick={() => {
+          //   navigate("dashboard");
+          // }}
+        >
           <p className="text-white"> Save Changes</p>
         </button>
-        <button className="w-auto h-auto p-2 bg-white border-2 border-blue-300 shadow-2xl rounded-xl" onClick={()=>{navigate("/dashboard")}}>
+        <button
+          className="w-auto h-auto p-2 bg-white border-2 border-blue-300 shadow-2xl rounded-xl"
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
           <p className="text-blue-600"> Cancel</p>
         </button>
       </div>

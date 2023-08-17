@@ -3,17 +3,17 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import { Divider } from "antd";
-import GoogleMapReact from "google-map-react";
+// import GoogleMapReact from "google-map-react";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 const ContactPage = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 11,
-  };
+  // const defaultProps = {
+  //   center: {
+  //     lat: 10.99835602,
+  //     lng: 77.01502627,
+  //   },
+  //   zoom: 11,
+  // };
   return (
     <>
       <div className="grid grid-cols-3 font-mar py-5">
@@ -261,7 +261,7 @@ const ContactPage = () => {
         </div>
         {/* end contact bottom right */}
       </div>
-      <div className="w-full h-[400px]">
+      {/* <div className="w-full h-[400px]">
         <GoogleMapReact
           bootstrapURLKeys={{ key: "" }}
           defaultCenter={defaultProps.center}
@@ -269,7 +269,7 @@ const ContactPage = () => {
         >
           <AnyReactComponent lat={59.955413} lng={30.337844} text="My Marker" />
         </GoogleMapReact>
-      </div>
+      </div> */}
     </>
   );
 };

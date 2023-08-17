@@ -6,6 +6,8 @@ import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { message } from "antd";
+import { toast } from "react-toastify";
+import { isValidInputCategory } from "../../../../../helpers/validInputs";
 
 const CategoriesAdd = () => {
   const navigate = useNavigate();
@@ -17,21 +19,23 @@ const CategoriesAdd = () => {
 
   const [messageApi, contextHolder] = message.useMessage();
 
-  const handleGetAPI = async () => {
-    await axios
-      .post("http://103.157.218.126:8000/admin/addcategory", formData)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          console.log(res.status);
-          setTimeout(() => {
-            messageApi.success("create category success");
-          }, 2000);
-          navigate("/categoriesmanage");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const handleAddcategoryAPI = async () => {
+    // validation  input categories
+    let check = isValidInputCategory(formData, toast);
+    if (check === true) {
+      await axios
+        .post("http://103.157.218.126:8000/admin/addcategory", formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            toast.success("add categories success");
+            navigate("/categoriesmanage");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    return;
   };
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
@@ -105,7 +109,7 @@ const CategoriesAdd = () => {
             </button>
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
-              onClick={() => handleGetAPI()}
+              onClick={() => handleAddcategoryAPI()}
             >
               <p className="">Save</p>
             </button>

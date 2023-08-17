@@ -1,20 +1,19 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Breadcrumbs, Input, Textarea } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 import { Select } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { message } from "antd";
+import { toast } from "react-toastify";
+import { isValidInputProduct } from "../../../../../helpers/validInputs";
 const ProductAdd = () => {
   const navigate = useNavigate();
   const [value, setValue] = useState(1);
 
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
-
+  const [imageproduct, setimageproduct] = useState("");
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -24,23 +23,53 @@ const ProductAdd = () => {
     categoryId: 1,
   });
 
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      image: imageproduct,
+    });
+  }, [imageproduct]);
+
   const [messageApi, contextHolder] = message.useMessage();
 
-  const handleGetAPI = async () => {
-    await axios
-      .post("http://103.157.218.126:8000/admin/addproduct", formData)
+  const [file, setFile] = useState();
+
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const handleUpload = () => {
+    const dataimage = new FormData();
+    dataimage.append("profile-pic", file);
+    axios
+      .post("http://103.157.218.126:8000/upload", dataimage)
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
-          console.log(res.data);
-          setTimeout(() => {
-            messageApi.success("create product success");
-          }, 2000);
-          navigate("/productmanage");
+          {
+            setimageproduct(
+              `http://103.157.218.126:8000/images/${res.data.image}`
+            );
+          }
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
+  };
+
+  const handleaddAPI = async () => {
+    let check = isValidInputProduct(formData, toast);
+    if (check === true) {
+      await axios
+        .post("http://103.157.218.126:8000/admin/addproduct", formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            toast.success("create product success");
+            navigate("/productmanage");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    return;
   };
 
   return (
@@ -126,10 +155,30 @@ const ProductAdd = () => {
           </div>
 
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            <p className="text-lg">Image Product</p>
-            <button className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg">
-              <p className="">Upload an image</p>
-            </button>
+            <div className="flex justify-between">
+              <input type="file" onChange={handleFile} className="p-3  " />
+
+              <button
+                className="h-auto w-auto p-2 bg-blue-400 rounded-lg"
+                onClick={handleUpload}
+              >
+                Upload
+              </button>
+            </div>
+            <div className="">
+              {imageproduct ? (
+                <img
+                  src={imageproduct}
+                  className="object-cover w-32 h-32 rounded-lg"
+                />
+              ) : (
+                <img
+                  src="https://t3.ftcdn.net/jpg/02/18/21/86/360_F_218218632_jF6XAkcrlBjv1mAg9Ow0UBMLBaJrhygH.jpg"
+                  className="object-cover w-32 h-32 rounded-lg"
+                />
+              )}
+            </div>
+
             <p className="">jpg , png , jpeg</p>
           </div>
           <div className="flex justify-center items-center gap-x-4">
@@ -144,7 +193,7 @@ const ProductAdd = () => {
 
             <button
               className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg "
-              onClick={() => handleGetAPI()}
+              onClick={() => handleaddAPI()}
             >
               <p className="">Save</p>
             </button>

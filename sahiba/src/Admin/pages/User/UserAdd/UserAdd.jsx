@@ -1,33 +1,23 @@
 /** @format */
 // @ts-expect-error
 
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Breadcrumbs, Input } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
-
+import { toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Radio, message, Form, Upload } from "antd";
+import { Radio, message } from "antd";
+import { isValidInputsUser } from "../../../../helpers/validInputs";
 const UserAdd = () => {
-  const normFile = (e) => {
-    if (Array.isArray(e)) {
-      console.log(e);
-      return e;
-    }
-    return e?.fileList;
-  };
-  const inputRef = useRef(null);
   const [imageAvatar, setimageAvatar] = useState("");
-  const handleImageClick = () => {
-    inputRef.current.click();
-  };
-  const handleImageonChange = (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    setimageAvatar(e.target.files[0]);
-  };
-
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      avatar: imageAvatar,
+    });
+  }, [imageAvatar]);
   const RoleOption = ["Admin", "User"];
   const options = [
     {
@@ -40,8 +30,6 @@ const UserAdd = () => {
     },
   ];
 
-  const [messageApi, contextHolder] = message.useMessage();
-
   const [formData, setFormData] = useState({
     id: "",
     name: "",
@@ -49,38 +37,59 @@ const UserAdd = () => {
     email: "",
     dateofbirth: "",
     address: "",
-    avatar:
-      "https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-1/350279337_252231724154593_7305889329858622849_n.jpg?stp=c0.0.385.385a_dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=7206a8&_nc_ohc=XHuDlqy2pVsAX_SschY&_nc_ht=scontent.fsgn5-11.fna&oh=00_AfANT7pAN4KRtzPzEmE_XreMWeDqqASSQUOl5u0VHjxgGg&oe=64D309A3",
+    avatar: "",
     password: "",
     role: "Admin",
   });
 
   // set state for variable
-
-  const [startDate, setStartDate] = useState(new Date());
+  const [file, setFile] = useState();
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const handleUpload = () => {
+    const dataimage = new FormData();
+    dataimage.append("profile-pic", file);
+    axios
+      .post("http://103.157.218.126:8000/upload", dataimage)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          {
+            setimageAvatar(
+              `http://103.157.218.126:8000/images/${res.data.image}`
+            );
+          }
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   // declare navigate
   const navigate = useNavigate();
 
   const handleGetAPI = async () => {
-    await axios
-      .post("http://103.157.218.126:8000/admin/adduser", formData)
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          setTimeout(() => {
-            messageApi.success("create user success");
-          }, 2000);
-          navigate("/userlist");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // validation  input user
+
+    let check = isValidInputsUser(formData, toast);
+    if (check === true) {
+      await axios
+        .post("http://103.157.218.126:8000/admin/adduser", formData)
+        .then((res) => {
+          if (res.status === 200 || res.status === 201) {
+            toast.success("create new user success");
+            navigate("/userlist");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    return;
   };
 
   return (
     <div className="w-full h-full bg-gray-100 flex flex-col gap-y-5">
-      {contextHolder}
+      {/* {contextHolder} */}
       {/* Start Breadcrums */}
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <Breadcrumbs
@@ -104,6 +113,7 @@ const UserAdd = () => {
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1">
         <div className="flex p-2 justify-between">
           <p className="text-2xl">USER ADD</p>
+
           <button
             className="w-auto h-auto"
             onClick={() => {
@@ -119,10 +129,10 @@ const UserAdd = () => {
             <p className="text-3xl">Add User</p>
           </div>
 
-          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
+          <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6 relative">
             <p className="text-lg">Full Name</p>
-            <Input
-              className="w-full h-auto"
+            <input
+              className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
               placeholder="Full Name"
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
@@ -131,8 +141,8 @@ const UserAdd = () => {
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Phone Number</p>
-            <Input
-              className="w-full h-auto"
+            <input
+              className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
               placeholder="Phone Number"
               onChange={(e) =>
                 setFormData({ ...formData, phone: e.target.value })
@@ -141,8 +151,8 @@ const UserAdd = () => {
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Email</p>
-            <Input
-              className="w-full h-auto"
+            <input
+              className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
               placeholder="Email"
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -154,7 +164,7 @@ const UserAdd = () => {
 
             <input
               type="date"
-              className="w-full h-full border-2 border-black py-2 rounded-lg px-2"
+              className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -165,8 +175,8 @@ const UserAdd = () => {
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Address</p>
-            <Input
-              className="w-full h-auto"
+            <input
+              className="w-full h-auto border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
               placeholder="Address"
               onChange={(e) =>
                 setFormData({ ...formData, address: e.target.value })
@@ -184,47 +194,36 @@ const UserAdd = () => {
             ></Radio.Group>
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
-            {/* <p className="text-lg">Avatar</p>
-            <div
-              className="w-auto h-auto py-2 px-4 bg-blue-300 border-2 border-blue-300 rounded-lg hover:bg-blue-500 hover:shadow-lg"
-              onClick={handleImageClick}
-            >
+            <div className="flex justify-between">
+              <input type="file" onChange={handleFile} className="p-3  " />
+
+              <button
+                className="h-auto w-auto p-2 bg-blue-400 rounded-lg"
+                onClick={handleUpload}
+              >
+                Upload
+              </button>
+            </div>
+            <div className="">
               {imageAvatar ? (
-                <img src={URL.createObjectURL(imageAvatar)} />
+                <img
+                  src={imageAvatar}
+                  className="object-cover w-20 h-20 rounded-full"
+                />
               ) : (
-                <img src="https://t3.ftcdn.net/jpg/02/18/21/86/360_F_218218632_jF6XAkcrlBjv1mAg9Ow0UBMLBaJrhygH.jpg" />
+                <img
+                  src="https://t3.ftcdn.net/jpg/02/18/21/86/360_F_218218632_jF6XAkcrlBjv1mAg9Ow0UBMLBaJrhygH.jpg"
+                  className="object-cover w-20 h-20 rounded-full"
+                />
               )}
-              <input
-                type="file"
-                ref={inputRef}
-                className="hidden"
-                onChange={handleImageonChange}
-              ></input>
-            </div> */}
-            <Form.Item
-              label="Upload"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-            >
-              <Upload action="/upload.do" listType="picture-card">
-                <div>
-                  <div
-                    style={{
-                      marginTop: 8,
-                    }}
-                  >
-                    Upload
-                  </div>
-                </div>
-              </Upload>
-            </Form.Item>
+            </div>
 
             <p className="">jpg , png , jpeg</p>
           </div>
           <div className="w-full h-auto flex flex-col justify-start items-start gap-y-2 pb-6">
             <p className="text-lg">Password</p>
-            <Input
-              className="w-full h-auto"
+            <input
+              className="w-full h-auto  border-b-2 border-gray-300 p-2 outline-none focus:border-blue-400 focus:ease-out duration-200"
               placeholder="Password"
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
