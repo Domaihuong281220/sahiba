@@ -4,9 +4,9 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Breadcrumbs } from "@material-tailwind/react";
 import { Divider } from "antd";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const ProductView = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   return (
     <div className=" w-full h-full bg-gray-100 flex flex-col gap-y-5">
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1 flex justify-between">
@@ -33,8 +33,13 @@ const ProductView = () => {
             ProductView
           </a>
         </Breadcrumbs>
-        <button className="" onClick={()=>{navigate(-1)}}>
-         <Icon icon ="tabler:arrow-back" width ={24} height={24}></Icon>
+        <button
+          className=""
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <Icon icon="tabler:arrow-back" width={24} height={24}></Icon>
         </button>
       </div>
       <div className="w-[90%] mx-auto h-auto bg-white shadow-xl rounded-lg p-1 flex ">
@@ -46,7 +51,7 @@ const ProductView = () => {
         </div>
         <div className="w-full h-auto border-2 border-gray-200 shadow-2xl m-8 rounded-xl">
           <div className="flex justify-start p-2">
-            <p className="text-lg font-bold">Carpet Sahiba</p>
+            <p className="text-lg font-bold">Carpet Cashmere house</p>
           </div>
           <div className="flex justify-start px-2">
             <p className="text-gray-500 ">Categories : {"Carpet"}</p>
@@ -87,11 +92,7 @@ const ProductView = () => {
           </div>
           <Divider></Divider>
         </div>
-       
       </div>
-     
-       
-      
     </div>
   );
 };

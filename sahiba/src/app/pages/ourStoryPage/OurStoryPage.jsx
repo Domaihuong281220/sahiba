@@ -7,7 +7,7 @@ const OurStoryPage = () => {
   return (
     <div className="font-mar py-8">
       <div className="w-full h-auto flex flex-col items-center gap-y-2 pb-20">
-        <p className=" text-3xl ">STORY BEHIND SAHIBA GLOBAL</p>
+        <p className=" text-3xl ">STORY BEHIND Cashmere house GLOBAL</p>
         <p className="w-8/12 text-lg">
           Saraswati Global has taken the rug manufacturing industry to the next
           level of artisanship. Over the course of time, SGPL had successfully

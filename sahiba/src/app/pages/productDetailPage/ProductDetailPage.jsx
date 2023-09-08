@@ -190,7 +190,7 @@ const ProductDetailPage = () => {
               Care and Repair
             </Tab>
             <Tab className="w-full h-auto  py-2 px-2 hover:border-b-4 hover:border-orange-300  focus:border-orange-300  focus:border-b-4 text-xl">
-              Why Sahiba ?
+              Why Cashmere house ?
             </Tab>
           </TabList>
 
@@ -214,7 +214,7 @@ const ProductDetailPage = () => {
             </TabPanel>
             <TabPanel className="px-10 py-4 ">
               <div className=" flex flex-col items-start">
-                <li> 
+                <li>
                   Free Shipping is available in india, Shipping charges for
                   international Delivery will be charged at Checkout.
                 </li>

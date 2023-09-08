@@ -44,6 +44,8 @@ const UserList = () => {
         console.log(err);
       });
   };
+
+
   const handleEditProduct = (record) => {
     navigate("/useredit", {
       state: record,
@@ -168,6 +170,8 @@ const UserList = () => {
       // status: ["Online"],
     });
   }
+
+  
   useEffect(() => {
     handleGetUserList();
   }, []);

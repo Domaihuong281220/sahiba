@@ -228,6 +228,7 @@ const UserEdit = () => {
                 </button>
               </div>
             </TabPanel>
+            
           </TabPanels>
         </Tabs>
 

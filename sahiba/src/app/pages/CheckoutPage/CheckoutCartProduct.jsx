@@ -17,7 +17,7 @@ const CheckoutCartProduct = () => {
         <p className="">Package 1 of 3</p>
         <div className="flex gap-x-1 ">
           <p className="">Delivered by</p>
-          <p className="font-bold">Sahiba</p>
+          <p className="font-bold">Cashmere house</p>
         </div>
       </div>
       <div className="flex justify-start pl-2">

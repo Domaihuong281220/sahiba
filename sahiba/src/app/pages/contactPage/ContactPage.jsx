@@ -32,7 +32,7 @@ const ContactPage = () => {
           </div>
           <div className="flex gap-x-2">
             <Icon icon="ep:message" width={24} height={24} color="black" />
-            <p className="">info@sahiba.com</p>
+            <p className="">info@Cashmere house.com</p>
           </div>
           <div className="flex gap-x-2">
             <Icon icon="ph:phone" width={24} height={24} color="black" />
@@ -62,7 +62,7 @@ const ContactPage = () => {
           </div>
           <div className="flex gap-x-2">
             <Icon icon="ep:message" width={24} height={24} color="black" />
-            <p className="">info@sahiba.com</p>
+            <p className="">info@Cashmere house.com</p>
           </div>
           <div className="flex gap-x-2">
             <Icon icon="ph:phone" width={24} height={24} color="black" />
@@ -92,7 +92,7 @@ const ContactPage = () => {
           </div>
           <div className="flex gap-x-2">
             <Icon icon="ep:message" width={24} height={24} color="black" />
-            <p className="">info@sahiba.com</p>
+            <p className="">info@Cashmere house.com</p>
           </div>
           <div className="flex gap-x-2">
             <Icon icon="ph:phone" width={24} height={24} color="black" />

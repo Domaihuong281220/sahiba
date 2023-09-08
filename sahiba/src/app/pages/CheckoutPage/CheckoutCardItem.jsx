@@ -14,7 +14,7 @@ const CheckoutCardItem = () => {
         <p className="text-lg">W-V-LUXOR-CD-V-120-EBONY</p>
         <div className="flex gap-x-2">
           <p className="text-sm">distributed by </p>
-          <p className="text-sm font-bold">Sahiba</p>
+          <p className="text-sm font-bold">Cashmere house</p>
         </div>
       </div>
     </div>

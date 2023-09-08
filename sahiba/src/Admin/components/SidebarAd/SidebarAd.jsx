@@ -40,7 +40,7 @@ export function SidebarAd() {
         <div className=" w-full h-auto  flex justify-between ">
           <div className="flex items-center gap-x-5 ">
             <div className="">
-              <p className="text-2xl">Sahiba Admin</p>
+              <p className="text-2xl">Cashmere house Admin</p>
             </div>
             <button className="w-auto h-auto p-2 rounded-full active:bg-orange-200">
               <Icon icon="material-symbols:menu" width={36} height={36}></Icon>

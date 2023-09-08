@@ -78,7 +78,7 @@ const LoginPage = ({ setToken }) => {
               <div className="flex justify-center gap-x-2 items-center shadow-md shadow-black rounded-lg">
                 <img src={ImageLogo} className="w-20 h-20 object-cover"></img>
                 <p className="text-gray-300 font-mar text-4xl font-bold">
-                  SAHIBA
+                  Cashmere House
                 </p>
               </div>
 

@@ -14,7 +14,7 @@ const HeaderAd = () => {
               <Icon icon="material-symbols:menu" width={36} height={36}></Icon>
             </button>
             <div className="">
-              <p className="text-2xl">Sahiba Admin</p>
+              <p className="text-2xl">Cashmere house Admin</p>
             </div>
           </div>
           <div className="flex items-center justify-center gap-x-2">

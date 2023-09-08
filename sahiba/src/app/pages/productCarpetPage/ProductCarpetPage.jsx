@@ -214,6 +214,8 @@ const ProductCarpetPage = () => {
       description: "2x4 ft, 4x6 ft,5x8 ft, 8x10 ft",
     },
   ];
+
+  
   const [list, setList] = useState([
     {
       filterType: "Color?",
@@ -394,7 +396,7 @@ const ProductCarpetPage = () => {
             {list.map((item, key) => {
               return <AcconrdionComponent key={key} datas={item} />;
             })}
-          </div>
+          </div>  
           <div className="h-full w-full flex flex-wrap justify-center gap-x-20 gap-y-10 col-span-3 ">
             {CardProductFilter.map(({ url, title, price, description }) => {
               return (
